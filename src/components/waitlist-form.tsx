@@ -64,10 +64,8 @@ const FIELDS: Field[] = [
   },
 ];
 
-// Underline, not a box. Seven boxed inputs stacked is the most form-like a
-// form can look; a rule under each keeps it closer to a printed slip.
 const controlClass =
-  "w-full border-0 border-b border-rule bg-transparent px-0 py-2.5 font-sans text-[16px] text-ink focus:border-ink";
+  "w-full border-2 border-ink bg-paper px-3.5 py-3 font-sans text-[16px] text-ink";
 
 type Status = "idle" | "submitting" | "done" | "already";
 
@@ -122,8 +120,8 @@ export function WaitlistForm() {
 
   if (status === "done" || status === "already") {
     return (
-      <div className="border-l-2 border-accent pl-6">
-        <p className="font-display text-[26px]">
+      <div className="border-l-[6px] border-marigold pl-6">
+        <p className="text-[28px] font-extrabold tracking-[-0.03em]">
           {status === "done"
             ? "You're on the list."
             : "You're already on the list."}
@@ -138,7 +136,7 @@ export function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       {FIELDS.map((field) => (
         <div key={field.id} className="flex flex-col gap-2">
           <label
@@ -187,7 +185,7 @@ export function WaitlistForm() {
         <p
           id="waitlist-error"
           role="alert"
-          className="-mt-2 border-l-2 border-ink pl-3 text-[14px]"
+          className="-mt-1 border-l-[6px] border-marigold pl-3 text-[14px] font-medium"
         >
           {error}
         </p>
@@ -197,7 +195,7 @@ export function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="cursor-pointer border-none bg-ink px-7 py-4 font-sans text-[16px] text-paper hover:bg-accent disabled:cursor-wait disabled:opacity-60"
+          className="cursor-pointer border-2 border-ink bg-marigold px-7 py-4 font-sans text-[17px] font-semibold text-ink shadow-[5px_5px_0_0_var(--color-ink)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0_0_var(--color-ink)] disabled:cursor-wait disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Send me my first week"}
         </button>

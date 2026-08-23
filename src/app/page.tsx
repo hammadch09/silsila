@@ -63,26 +63,23 @@ const REASSURANCES = [
 const labelClass =
   "font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3";
 
-// Full-bleed shell. Prose inside still gets a max-width — the width is for the
-// visuals and the grids, not for 120-character lines of text.
 const shellClass = "mx-auto w-full max-w-[1180px] px-6 lg:px-10";
 
-// Section headings sit well below the hero but well above body copy. The gap
-// between the three sizes is what makes the page feel composed rather than
-// uniformly medium.
-const headingClass = "text-[34px] sm:text-[42px] lg:text-[46px]";
+const headingClass = "text-[40px] sm:text-[52px] lg:text-[58px]";
 
 export default function Home() {
   const cells = buildHeatmapCells();
 
   return (
     <>
-      <header className="sticky top-0 z-10 border-b border-rule bg-paper/85 backdrop-blur">
-        <div className={`${shellClass} flex h-16 items-center justify-between`}>
-          <span className="font-mono text-[15px] tracking-[-0.01em]">qadam</span>
+      <header className="sticky top-0 z-20 border-b-2 border-ink bg-marigold">
+        <div className={`${shellClass} flex h-14 items-center justify-between`}>
+          <span className="font-mono text-[15px] font-medium tracking-[-0.01em]">
+            qadam
+          </span>
           <a
             href="#form"
-            className="bg-ink px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-paper uppercase no-underline hover:bg-accent"
+            className="border-2 border-ink bg-ink px-4 py-1.5 font-mono text-[11px] tracking-[0.14em] text-marigold uppercase no-underline hover:bg-paper hover:text-ink"
           >
             Join waitlist
           </a>
@@ -90,24 +87,24 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* HERO */}
-        <section className={`${shellClass} pt-20 pb-24 lg:pt-28`}>
-          <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
+        {/* HERO — the headline gets the full 1180px on its own row. Boxed into
+            seven columns it wrapped to three lines and orphaned "Aur koi";
+            across the full measure it sets in two and can be genuinely large,
+            which is the whole point of a face like this. */}
+        <section className={`${shellClass} pt-16 pb-20 lg:pt-20`}>
+          <p className={labelClass}>
+            Early access · computing students · 100 places
+          </p>
+
+          <h1 className="mt-7 text-[46px] sm:text-[72px] lg:text-[96px]">
+            Roz ek kaam.
+            <br />
+            Aur koi <span className="mark">poochne wala.</span>
+          </h1>
+
+          <div className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <p className={labelClass}>
-                Early access · computing students · 100 places
-              </p>
-
-              {/* The italic second line is the signature. Instrument Serif's
-                  italic is the most distinctive thing in the type stack, and
-                  the two-register slogan is what a screenshot will show. */}
-              <h1 className="mt-8 text-[46px] leading-[0.98] sm:text-[68px] lg:text-[80px]">
-                Roz ek kaam.
-                <br />
-                <em className="italic">Aur koi poochne wala.</em>
-              </h1>
-
-              <p className="mt-9 max-w-[42ch] text-[20px] leading-[1.45]">
+              <p className="max-w-[40ch] text-[21px] leading-[1.35] font-medium">
                 A 3-month plan. One 30-minute task a day. Graded, not ticked.
                 All on WhatsApp.
               </p>
@@ -116,13 +113,15 @@ export default function Home() {
                 You already got a roadmap from ChatGPT. You did three days of
                 it, then the semester happened. It&rsquo;s not that you&rsquo;re
                 not serious —{" "}
-                <span className="text-ink">nobody asked on day four.</span>
+                <span className="font-semibold text-ink">
+                  nobody asked on day four.
+                </span>
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <a
                   href="#form"
-                  className="inline-block bg-ink px-7 py-4 text-[16px] text-paper no-underline hover:bg-accent"
+                  className="inline-block border-2 border-ink bg-marigold px-7 py-4 text-[17px] font-semibold text-ink no-underline shadow-[5px_5px_0_0_var(--color-ink)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0_0_var(--color-ink)]"
                 >
                   Get your first week — free
                 </a>
@@ -130,17 +129,35 @@ export default function Home() {
                   No calls · takes a minute
                 </span>
               </div>
+
+              {/* The whole commitment as three numbers. Fills the column
+                  beside the log, and answers "how much is this going to
+                  cost me" before anyone has to ask. */}
+              <dl className="mt-12 grid max-w-[30rem] grid-cols-3 gap-4 border-t-2 border-ink pt-6">
+                {[
+                  { v: "3", l: "months" },
+                  { v: "84", l: "tasks" },
+                  { v: "30–45", l: "min a day" },
+                ].map((stat) => (
+                  <div key={stat.l}>
+                    <dd className="text-[34px] leading-none font-bold tracking-[-0.03em] tabular-nums">
+                      {stat.v}
+                    </dd>
+                    <dt className="mt-2 font-mono text-[11px] tracking-[0.12em] text-ink-3 uppercase">
+                      {stat.l}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
             </div>
 
-            {/* The log explains the product faster than any paragraph. No
-                outer box — a hairline rule per exchange is enough, and the
-                page stops looking like a dashboard. */}
+            {/* The log explains the product faster than any paragraph. */}
             <div className="lg:col-span-5">
               <p className={labelClass}>A day on Qadam</p>
 
-              <div className="mt-6 flex flex-col">
-                <div className="border-t border-rule py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
+              <div className="mt-5 border-2 border-ink bg-raised shadow-[6px_6px_0_0_var(--color-pine)]">
+                <div className="border-b border-rule px-5 py-4">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
                     QADAM · DAY 12
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -150,17 +167,17 @@ export default function Home() {
                 </div>
 
                 {/* Urdu in, plain English out — product.md §Language. */}
-                <div className="border-t border-rule py-4 pl-8">
+                <div className="border-b border-rule bg-surface px-5 py-4">
                   <p className="font-mono text-[10px] tracking-[0.14em] text-ink-3">
                     YOU
                   </p>
-                  <p className="mt-2 text-[15px] text-ink-2">
+                  <p className="mt-2 text-[15px]">
                     agar API down ho jaye to kya karun?
                   </p>
                 </div>
 
-                <div className="border-t border-rule py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
+                <div className="border-b border-rule px-5 py-4">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
                     QADAM
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -170,17 +187,15 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="border-t border-rule py-4 pl-8">
+                <div className="border-b border-rule bg-surface px-5 py-4">
                   <p className="font-mono text-[10px] tracking-[0.14em] text-ink-3">
                     YOU
                   </p>
-                  <p className="mt-2 text-[15px] text-ink-2">
-                    done — rates.netlify.app
-                  </p>
+                  <p className="mt-2 text-[15px]">done — rates.netlify.app</p>
                 </div>
 
-                <div className="border-y border-rule py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
+                <div className="px-5 py-4">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
                     QADAM · GRADED 4/5
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -203,40 +218,43 @@ export default function Home() {
           </div>
         </section>
 
-        {/* A WEEK */}
-        <section className="border-t border-rule bg-surface py-24">
+        <div className="dot-rule" aria-hidden />
+
+        {/* A WEEK — stays on cream so the task-type colours keep the surface
+            they were validated against. */}
+        <section className="border-y-2 border-ink bg-surface py-20">
           <div className={shellClass}>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p className={labelClass}>What a week looks like</p>
-                <h2 className={`mt-6 ${headingClass}`}>
+                <h2 className={`mt-5 ${headingClass}`}>
                   Seven days.
                   <br />
-                  <em className="italic">Seven small things.</em>
+                  Seven <span className="mark">small things.</span>
                 </h2>
               </div>
-              <p className="max-w-[38ch] text-[16px] text-ink-2">
+              <p className="max-w-[36ch] text-[16px] text-ink-2">
                 Nothing here needs a free afternoon. That&rsquo;s the whole
                 design — a semester project can&rsquo;t justify skipping 30
                 minutes.
               </p>
             </div>
 
-            <div className="mt-14">
+            <div className="mt-12">
               <WeekStrip />
             </div>
           </div>
         </section>
 
-        {/* THE MIX */}
-        <section className={`${shellClass} py-24`}>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+        {/* THE MIX — the chart section, on the validated cream surface. */}
+        <section className={`${shellClass} py-20`}>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className={labelClass}>The mix</p>
-              <h2 className={`mt-6 ${headingClass}`}>
-                Not tutorials <em className="italic">on repeat.</em>
+              <h2 className={`mt-5 ${headingClass}`}>
+                Not tutorials on repeat.
               </h2>
-              <p className="mt-7 text-[16px] text-ink-2">
+              <p className="mt-6 text-[16px] text-ink-2">
                 If every task were &ldquo;watch a React video&rdquo;, this would
                 be a worse Coursera. The rotation is the product.
               </p>
@@ -246,70 +264,84 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="lg:col-span-8 lg:pt-10">
+            <div className="lg:col-span-8 lg:pt-8">
               <TaskMixBar />
             </div>
           </div>
         </section>
 
-        {/* HOW */}
-        <section className="border-t border-rule py-24">
+        {/* HOW — full-bleed marigold. The loudest field on the page, and the
+            section a student most needs to actually read. */}
+        <section className="border-y-2 border-ink bg-marigold py-20">
           <div className={shellClass}>
-            <p className={labelClass}>How it works</p>
-            <h2 className={`mt-6 max-w-[16ch] ${headingClass}`}>
-              A plan that runs itself, and <em className="italic">checks</em> on
-              you.
+            <p className="font-mono text-[11px] tracking-[0.18em] text-ink/70 uppercase">
+              How it works
+            </p>
+            <h2 className={`mt-5 max-w-[16ch] ${headingClass}`}>
+              A plan that runs itself, and checks on you.
             </h2>
 
-            <ol className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {STEPS.map((step, index) => (
-                <li key={step.title}>
-                  <span className="font-mono text-[11px] tracking-[0.14em] text-ink-3 tabular-nums">
+                <li key={step.title} className="border-t-2 border-ink pt-5">
+                  <span className="font-mono text-[13px] font-medium tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="mt-4 font-display text-[24px] leading-[1.15]">
+                  <p className="mt-3 text-[22px] leading-[1.15] font-extrabold tracking-[-0.02em]">
                     {step.title}
                   </p>
-                  <p className="mt-3 text-[15px] text-ink-2">{step.body}</p>
+                  <p className="mt-2.5 text-[15px] text-ink/85">{step.body}</p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        {/* TIMELINE */}
-        <section className="border-t border-rule bg-surface py-24">
+        {/* TIMELINE — full-bleed pine. No chart colours here, so a dark field
+            is free. */}
+        <section className="bg-pine py-20 text-paper">
           <div className={shellClass}>
-            <p className={labelClass}>The milestone is an internship</p>
-            <h2 className={`mt-6 max-w-[20ch] ${headingClass}`}>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-paper/55 uppercase">
+              The milestone is an internship
+            </p>
+            <h2 className={`mt-5 max-w-[18ch] ${headingClass}`}>
               Not graduation. That&rsquo;s{" "}
-              <em className="italic">too far away</em> to hold anyone.
+              <span className="text-marigold">too far away</span> to hold
+              anyone.
             </h2>
-            <p className="mt-7 max-w-[54ch] text-[16px] text-ink-2">
+            <p className="mt-6 max-w-[52ch] text-[16px] text-paper/75">
               Most companies here hire interns out of semesters 4 to 6.
               That&rsquo;s close enough to work toward, and it happens while
               you&rsquo;re still a student.
             </p>
 
-            <ol className="mt-16 grid gap-10 lg:grid-cols-3 lg:gap-14">
+            <ol className="mt-14 grid gap-8 lg:grid-cols-3 lg:gap-10">
               {TIMELINE.map((row) => (
                 <li
                   key={row.when}
-                  className={`border-t pt-6 ${
-                    row.emphasis ? "border-accent" : "border-rule"
-                  }`}
+                  className={
+                    row.emphasis
+                      ? "border-2 border-marigold bg-marigold p-6 text-ink"
+                      : "border-t-2 border-paper/25 p-6 pr-0 pl-0"
+                  }
                 >
                   <p
                     className={`font-mono text-[11px] tracking-[0.14em] ${
-                      row.emphasis ? "text-accent" : "text-ink-3"
+                      row.emphasis ? "text-ink/70" : "text-paper/55"
                     }`}
                   >
                     {row.when}
                   </p>
-                  <p className="mt-4 font-display text-[26px] leading-[1.1]">
+                  <p className="mt-3 text-[26px] leading-[1.1] font-extrabold tracking-[-0.02em]">
                     {row.title}
                   </p>
-                  <p className="mt-3 text-[15px] text-ink-2">{row.what}</p>
+                  <p
+                    className={`mt-2.5 text-[15px] ${
+                      row.emphasis ? "text-ink/85" : "text-paper/75"
+                    }`}
+                  >
+                    {row.what}
+                  </p>
                 </li>
               ))}
             </ol>
@@ -317,23 +349,21 @@ export default function Home() {
         </section>
 
         {/* PROFILE */}
-        <section className={`${shellClass} py-24`}>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+        <section className={`${shellClass} py-20`}>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className={labelClass}>What you end up with</p>
-              <h2 className={`mt-6 ${headingClass}`}>
-                A page instead of a <em className="italic">blank CV.</em>
+              <h2 className={`mt-5 ${headingClass}`}>
+                A page, not a <span className="mark">blank CV.</span>
               </h2>
-              <p className="mt-7 text-[16px] text-ink-2">
+              <p className="mt-6 text-[16px] text-ink-2">
                 Every graded submission lands here. After two 3-month plans it
                 is the thing you send an employer.
               </p>
             </div>
 
             <div className="lg:col-span-8">
-              {/* The one raised plate on the page. It earns it — this is
-                  meant to look like an artefact you'd send someone. */}
-              <div className="bg-raised p-8 shadow-[0_1px_2px_rgba(20,18,15,0.04),0_12px_32px_-12px_rgba(20,18,15,0.10)] lg:p-10">
+              <div className="border-2 border-ink bg-raised p-6 shadow-[8px_8px_0_0_var(--color-pine)] lg:p-9">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-mono text-[15px]">qadam.pk/ayesha-r</p>
                   <p className="text-[13px] text-ink-3">
@@ -344,7 +374,7 @@ export default function Home() {
                 <div
                   role="img"
                   aria-label="Six months of daily submissions, sparse at the start and dense by the end."
-                  className="mt-8 grid grid-cols-[repeat(26,1fr)] gap-[3px]"
+                  className="mt-7 grid grid-cols-[repeat(26,1fr)] gap-[3px]"
                 >
                   {cells.map((background, index) => (
                     <div
@@ -359,10 +389,10 @@ export default function Home() {
                   26 WEEKS →
                 </p>
 
-                <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-rule-soft pt-8">
+                <dl className="mt-9 grid grid-cols-3 gap-6 border-t-2 border-ink pt-7">
                   {PROFILE_STATS.map((stat) => (
                     <div key={stat.label}>
-                      <dd className="font-display text-[44px] leading-none tabular-nums">
+                      <dd className="text-[46px] leading-none font-extrabold tracking-[-0.04em] tabular-nums">
                         {stat.value}
                       </dd>
                       <dt className="mt-3 text-[13px] text-ink-3">
@@ -376,16 +406,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* THE PROMISE — product.md §1b, deliberately unsoftened. The one dark
-            band on the page, because this is the part that should stop you. */}
-        <section className="bg-ink py-28 text-paper">
+        {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
+        <section className="border-y-2 border-ink bg-ink py-24 text-paper">
           <div className={shellClass}>
-            <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">
                 <p className="font-mono text-[11px] tracking-[0.18em] text-paper/45 uppercase">
                   What we promise
                 </p>
-                <ul className="mt-8 flex flex-col gap-4 text-[19px] text-paper/50">
+                <ul className="mt-7 flex flex-col gap-4 text-[19px] text-paper/50">
                   <li>We don&rsquo;t promise you a job.</li>
                   <li>We don&rsquo;t promise you&rsquo;ll start a company.</li>
                   <li>We don&rsquo;t promise you&rsquo;ll be in the top 1%.</li>
@@ -393,16 +422,16 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-7">
-                <p className="max-w-[26ch] font-display text-[34px] leading-[1.12] sm:text-[42px]">
+                <p className="max-w-[22ch] text-[36px] leading-[1.02] font-extrabold tracking-[-0.035em] sm:text-[46px]">
                   When you graduate, you will have{" "}
-                  <em className="italic">something to say.</em>
+                  <span className="text-marigold">something to say.</span>
                 </p>
-                <p className="mt-7 max-w-[46ch] text-[17px] text-paper/75">
+                <p className="mt-7 max-w-[44ch] text-[17px] text-paper/75">
                   Something in your skill set. A profile that&rsquo;s been
                   worked on. Things you actually built. You will not be starting
                   from zero.
                 </p>
-                <p className="mt-8 max-w-[48ch] text-[15px] text-paper/45">
+                <p className="mt-7 max-w-[46ch] text-[15px] text-paper/45">
                   Every skills course sold to Pakistani students promises a job
                   in three months. You&rsquo;ve heard it before. We&rsquo;d
                   rather promise something we can keep.
@@ -413,43 +442,46 @@ export default function Home() {
         </section>
 
         {/* FORM */}
-        <section id="form" className={`${shellClass} scroll-mt-16 py-24`}>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+        <section id="form" className={`${shellClass} scroll-mt-16 py-20`}>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <h2 className={headingClass}>
-                Get your first week&rsquo;s plan —{" "}
-                <em className="italic">free.</em>
+                Get your first week&rsquo;s plan — <span className="mark">free.</span>
               </h2>
-              <p className="mt-6 max-w-[38ch] text-[16px] text-ink-2">
+              <p className="mt-6 max-w-[36ch] text-[16px] text-ink-2">
                 Six questions. We send the plan to your WhatsApp within 48
                 hours.
               </p>
 
-              <dl className="mt-12 flex flex-col gap-6 border-t border-rule pt-10">
+              <dl className="mt-10 flex flex-col gap-6 border-t-2 border-ink pt-8">
                 {REASSURANCES.map(([term, detail]) => (
                   <div key={term}>
-                    <dt className="font-medium">{term}</dt>
+                    <dt className="font-semibold">{term}</dt>
                     <dd className="mt-1 text-[15px] text-ink-2">{detail}</dd>
                   </div>
                 ))}
               </dl>
             </div>
 
-            <div className="lg:col-span-7 lg:pt-4">
-              <WaitlistForm />
+            <div className="lg:col-span-7">
+              <div className="border-2 border-ink bg-raised p-6 shadow-[8px_8px_0_0_var(--color-marigold)] lg:p-8">
+                <WaitlistForm />
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-rule">
+      <footer className="border-t-2 border-ink bg-marigold">
         <div
-          className={`${shellClass} flex flex-wrap justify-between gap-3 py-12 text-[13px] text-ink-3`}
+          className={`${shellClass} flex flex-wrap justify-between gap-3 py-9 text-[13px]`}
         >
           <span>
             Qadam — a daily companion for students working it out alone.
           </span>
-          <a href="mailto:hello@qadam.pk">hello@qadam.pk</a>
+          <a href="mailto:hello@qadam.pk" className="decoration-ink">
+            hello@qadam.pk
+          </a>
         </div>
       </footer>
     </>

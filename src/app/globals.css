@@ -1,28 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm paper, warm ink. Pure #fff and pure #000 are the two most default
-     colours on the web — everything rendered on them inherits that feeling.
-     These are the same idea shifted a few degrees warm, which is most of why
-     the page reads as printed rather than as a browser default. */
-  --color-paper: #faf9f5;
-  --color-surface: #f2efe7;
+  /* Cream, ink, and two loud colours used at full-bleed scale.
+     The previous versions treated colour as an accent on a white page, which
+     is what every other site does. Here colour is the surface: whole sections
+     are marigold or pine, and the page is read as a sequence of fields. */
+  --color-paper: #fffaf0;
+  --color-surface: #fbf0dc;
   --color-raised: #ffffff;
 
-  --color-ink: #14120f;
-  --color-ink-2: #4a453d;
-  --color-ink-3: #6e685c;
+  --color-ink: #16130e;
+  --color-ink-2: #4a4238;
+  --color-ink-3: #6f6558;
 
-  --color-rule: #e0dad0;
-  --color-rule-soft: #ebe6dc;
+  --color-rule: #e6dcc7;
+  --color-rule-soft: #f0e8d8;
 
-  /* Deep pine. Used perhaps eight times on the page — links, the QADAM
-     speaker labels, one emphasised card. Colour at large is reserved for the
-     charts, where it carries meaning. */
-  --color-accent: #14453f;
+  /* Marigold. Genda — the flower at every event in the subcontinent — and
+     nowhere near the palette any other edtech product reaches for. */
+  --color-marigold: #ff7a00;
 
-  --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  /* Pine. The cool counterweight; keeps the marigold from reading as a
+     warning colour. */
+  --color-pine: #123f39;
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
@@ -35,28 +38,33 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Display type is set tight and optically large. Instrument Serif is a
-     high-contrast face — it needs the size to show what it is, and it needs
-     the tracking pulled in or it reads loose at display sizes. */
+  /* Display type is set heavy, huge and tight. Bricolage has real width and
+     weight range — using the middle of it would waste the face. */
   h1,
   h2 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
+    /* 700, not 800. At 800 Bricolage's lowercase y straightens until "days"
+       reads as "daus" at display size — checked in a render, not guessed. */
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    /* Not tighter than this. An inline background box is as tall as the font's
+       content area (~1.15em) no matter the line-height, so at 0.97 the .mark
+       block on one line paints straight over the descenders of the line above
+       — "days" rendered as "daus". Caught in a screenshot, not in the code. */
+    line-height: 1.14;
   }
 
   a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--color-marigold);
   }
 
   a:hover {
@@ -64,7 +72,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 3px solid var(--color-marigold);
     outline-offset: 3px;
   }
 
@@ -72,10 +80,35 @@
     color: var(--color-ink-3);
   }
 
-  /* Figures should line up in columns and in running text alike. */
   .tabular-nums,
   input,
   select {
     font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Marker highlight. A painted block behind a phrase, sitting slightly
+     proud of the text and tucked behind the descenders. */
+  .mark {
+    background: var(--color-marigold);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 0 0.16em;
+    margin: 0 -0.04em;
+  }
+
+  /* The one repeating motif: a row of marigold dots, one per day. Used as a
+     section rule so the "one small thing, every day" idea is present even
+     where nothing says it. */
+  .dot-rule {
+    height: 6px;
+    background-image: radial-gradient(
+      circle,
+      var(--color-marigold) 42%,
+      transparent 44%
+    );
+    background-size: 18px 6px;
+    background-repeat: repeat-x;
   }
 }

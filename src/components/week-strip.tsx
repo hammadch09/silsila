@@ -12,17 +12,19 @@ export function WeekStrip() {
   return (
     <div className="-mx-6 overflow-x-auto px-6 pb-2 lg:mx-0 lg:px-0">
       <ol className="flex min-w-[720px] gap-3 lg:min-w-0">
-        {/* No box per day. A 2px rule in the task-type colour tops each column
-            and the rest is whitespace — bordered cards are what made the page
-            read like a dashboard. */}
         {SAMPLE_WEEK.map((entry) => (
-          <li key={entry.day} className="flex flex-1 flex-col">
+          <li
+            key={entry.day}
+            className="flex flex-1 flex-col border-2 border-ink bg-raised"
+          >
+            {/* The task-type colour is a solid cap rather than a hairline, so
+                the week reads as seven different things at a glance. */}
             <span
               aria-hidden
-              className="h-[2px] w-full"
+              className="h-2.5 w-full border-b-2 border-ink"
               style={{ background: TASK_COLORS[entry.type] }}
             />
-            <div className="flex flex-1 flex-col pt-4">
+            <div className="flex flex-1 flex-col p-4">
               <p className="font-mono text-[10px] tracking-[0.14em] text-ink-3">
                 {entry.day}
               </p>
