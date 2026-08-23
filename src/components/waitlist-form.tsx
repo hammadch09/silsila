@@ -2,6 +2,11 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 
+import {
+  DEFAULT_UNIVERSITY,
+  DEPARTMENTS,
+  UNIVERSITIES,
+} from "@/lib/intake-options";
 import { isValidPakistaniMobile, WHATSAPP_ERROR } from "@/lib/validation";
 
 type Option = { value: string; label: string };
@@ -13,13 +18,32 @@ type Field = {
   required?: boolean;
   placeholder?: string;
   options?: Option[];
+  /** Pre-selected value. Skips the placeholder row entirely. */
+  defaultValue?: string;
+  helper?: string;
 };
 
 // Option values are the Prisma enum members, so nothing has to be translated
 // between the form and the database.
 const FIELDS: Field[] = [
-  { id: "university", label: "University", type: "text", required: true },
-  { id: "department", label: "Department", type: "text", required: true },
+  {
+    id: "university",
+    label: "University",
+    required: true,
+    // One option, so there is no decision to make — pre-select it rather than
+    // making someone open a dropdown to pick the only entry. The helper says
+    // why the list is short, so a student elsewhere is not left guessing.
+    defaultValue: DEFAULT_UNIVERSITY,
+    helper: "Early access is one campus only. More soon.",
+    options: UNIVERSITIES.map((name) => ({ value: name, label: name })),
+  },
+  {
+    id: "department",
+    label: "Department",
+    required: true,
+    helper: "Computing programs only for now.",
+    options: DEPARTMENTS.map((name) => ({ value: name, label: name })),
+  },
   {
     id: "semester",
     label: "Semester",
@@ -69,8 +93,15 @@ const controlClass =
 
 type Status = "idle" | "submitting" | "done" | "already";
 
+const INITIAL_FORM: Record<string, string> = Object.fromEntries(
+  FIELDS.filter((field) => field.defaultValue).map((field) => [
+    field.id,
+    field.defaultValue as string,
+  ]),
+);
+
 export function WaitlistForm() {
-  const [form, setForm] = useState<Record<string, string>>({});
+  const [form, setForm] = useState<Record<string, string>>(INITIAL_FORM);
   const [error, setError] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
@@ -153,9 +184,14 @@ export function WaitlistForm() {
               required={field.required}
               value={form[field.id] ?? ""}
               onChange={onChange}
+              aria-describedby={
+                field.helper ? `${field.id}-helper` : undefined
+              }
               className={controlClass}
             >
-              <option value="">Select</option>
+              {/* A pre-selected field has nothing to choose, so it gets no
+                  empty placeholder row to fall back into. */}
+              {field.defaultValue ? null : <option value="">Select</option>}
               {field.options.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -178,6 +214,12 @@ export function WaitlistForm() {
               className={controlClass}
             />
           )}
+
+          {field.helper ? (
+            <p id={`${field.id}-helper`} className="text-[13px] text-ink-3">
+              {field.helper}
+            </p>
+          ) : null}
         </div>
       ))}
 

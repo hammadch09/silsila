@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { LaptopAccess, WeeklyHours } from "@/generated/prisma/enums";
+import { DEPARTMENTS, UNIVERSITIES } from "@/lib/intake-options";
 
 export const WHATSAPP_ERROR =
   "Enter a valid Pakistani number: 03XXXXXXXXX or +923XXXXXXXXX.";
@@ -26,8 +27,14 @@ export function normaliseWhatsapp(raw: string): string {
 /// Mirrors the six intake questions in product.md §5.
 export const waitlistIntakeSchema = z.object({
   whatsapp: z.string().trim().refine(isValidPakistaniMobile, WHATSAPP_ERROR),
-  university: z.string().trim().min(2).max(120),
-  department: z.string().trim().min(2).max(120),
+  // Closed lists, enforced here and not only in the dropdown — the route takes
+  // JSON from anywhere, so the form's options are a convenience, not a control.
+  university: z.enum(UNIVERSITIES, {
+    message: "We're only open to Islamia University Bahawalpur right now.",
+  }),
+  department: z.enum(DEPARTMENTS, {
+    message: "Pick one of the computing programs.",
+  }),
   semester: z.coerce.number().int().min(1).max(8),
   // Optional on purpose. "Not sure yet" is a valid answer, and so is silence —
   // a required essay box at the bottom of a form loses people (product.md §5).
