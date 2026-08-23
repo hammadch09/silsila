@@ -1,3 +1,4 @@
+import { SilsilaLockup, SilsilaMark } from "@/components/logo";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { WeekStrip } from "@/components/week-strip";
@@ -74,9 +75,7 @@ export default function Home() {
     <>
       <header className="sticky top-0 z-20 border-b-2 border-ink bg-marigold">
         <div className={`${shellClass} flex h-14 items-center justify-between`}>
-          <span className="font-mono text-[15px] font-medium tracking-[-0.01em]">
-            silsila
-          </span>
+          <SilsilaLockup markClassName="h-[22px] w-[22px]" mono />
           <a
             href="#form"
             className="border-2 border-ink bg-ink px-4 py-1.5 font-mono text-[11px] tracking-[0.14em] text-marigold uppercase no-underline hover:bg-paper hover:text-ink"
@@ -476,7 +475,8 @@ export default function Home() {
         <div
           className={`${shellClass} flex flex-wrap justify-between gap-3 py-9 text-[13px]`}
         >
-          <span>
+          <span className="inline-flex items-center gap-2.5">
+            <SilsilaMark className="h-5 w-5 shrink-0" mono />
             Silsila — a daily companion for students working it out alone.
           </span>
           <a href="mailto:hello@silsila.pk" className="decoration-ink">
