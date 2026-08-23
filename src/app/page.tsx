@@ -10,19 +10,23 @@ const PROBLEMS = [
 const STEPS = [
   {
     title: "It builds the plan.",
-    body: "Four questions at signup, then a week-by-week roadmap for your field. Not a generic one — yours, for your semester and the hours you actually have.",
+    body: "You say what you're after — a job, or something of your own. It asks your semester, your level, and the hours you actually have. Then it writes a 3-month plan, down to individual days.",
   },
   {
     title: "It sends one task a day.",
     body: "30–45 minutes. Small enough that a semester project can't justify skipping it.",
   },
   {
-    title: "It asks what you did.",
-    body: "You send a link, a screenshot, three lines. Qadam reads it, tells you what to fix, and remembers what you said you'd do last Tuesday.",
+    title: "It grades what you send back.",
+    body: "Not a tick. A grade against the task's own criteria, one thing you did well, one thing to fix next time. For most students this is the first time anyone has looked at their work and told them where it stands.",
+  },
+  {
+    title: "You can ask it anything, any time.",
+    body: "Stuck at 11pm with nobody to ask is the moment people quit. Ask in Urdu, Roman Urdu or English — it knows your plan, your level and what you sent last week, so the answer fits you rather than the internet.",
   },
   {
     title: "It piles up.",
-    body: "Every submission adds to a profile you can send an employer. In two years it's unrecognisable.",
+    body: "Every graded submission adds to a profile you can send an employer. Finish one 3-month plan, start the next.",
   },
 ];
 
@@ -51,14 +55,34 @@ const SAMPLE_TASKS = [
   },
 ];
 
+// §2b — the internship window is the near-term outcome, not graduation.
+const TIMELINE = [
+  {
+    when: "SEM 1–3",
+    what: "Foundations. Build the habit, widen what you know exists.",
+  },
+  {
+    when: "SEM 4–6",
+    what: "Internship push. Portfolio pieces that survive a real screen, a CV and LinkedIn at a real standard, how to find openings, how to apply, what to expect on day one.",
+    emphasis: true,
+  },
+  {
+    when: "SEM 7–8",
+    what: "Full-time readiness, or the founder track.",
+  },
+];
+
 const PROFILE_STATS = [
-  { value: "148", label: "tasks done" },
+  { value: "148", label: "tasks graded" },
   { value: "9", label: "things built" },
-  { value: "31", label: "reviewed" },
+  { value: "4.1", label: "grade average" },
 ];
 
 const REASSURANCES = [
-  ["No streaks to lose.", "Miss a week for exams. Come back and it picks a lighter task."],
+  [
+    "No streaks to lose.",
+    "Miss a week for exams. Come back and it picks a lighter task.",
+  ],
   ["Free while we're in early access.", "No card, no calls."],
   ["Works on your phone.", "Everything runs through WhatsApp."],
 ];
@@ -90,7 +114,9 @@ export default function Home() {
       <main className="flex-1">
         {/* HERO */}
         <section className={`${shellClass} pt-20 pb-16`}>
-          <p className={labelClass}>Early access · 100 students</p>
+          <p className={labelClass}>
+            Early access · computing students · 100 places
+          </p>
 
           <h1 className="mt-6 text-[34px] leading-[1.15] font-semibold tracking-[-0.025em] sm:text-[42px]">
             You&rsquo;ve asked ChatGPT what to do.
@@ -104,8 +130,9 @@ export default function Home() {
 
           <div className="mt-8 border-l-2 border-ink pl-5">
             <p className="max-w-[46ch] text-[17px]">
-              Qadam does. It builds your plan, sends you one small task a day,
-              and asks what you did with it. 30–45 minutes. All on WhatsApp.
+              Qadam does. It writes you a 3-month plan, sends one small task a
+              day, grades what you send back, and answers when you&rsquo;re
+              stuck. 30–45 minutes. All on WhatsApp.
             </p>
           </div>
 
@@ -122,8 +149,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* THE LOG — the product in three messages, no phone chrome. */}
-        <section className={`${shellClass} pb-16`}>
+        {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>What we promise</p>
+
+          <ul className="mt-5 flex flex-col gap-2 text-[17px] text-ink-3">
+            <li>We don&rsquo;t promise you a job.</li>
+            <li>We don&rsquo;t promise you&rsquo;ll start a company.</li>
+            <li>We don&rsquo;t promise you&rsquo;ll be in the top 1%.</li>
+          </ul>
+
+          <div className="mt-7 border-l-2 border-ink pl-5">
+            <p className="max-w-[48ch] text-[17px]">
+              What we promise is this. When you graduate, you will have
+              something to say. Something in your skill set. A profile
+              that&rsquo;s been worked on. Things you actually built. You will
+              not be starting from zero.
+            </p>
+          </div>
+
+          <p className="mt-5 max-w-[52ch] text-[13px] text-ink-3">
+            Every skills course sold to Pakistani students promises a job in
+            three months. You&rsquo;ve heard it before. We&rsquo;d rather
+            promise something we can keep.
+          </p>
+        </section>
+
+        {/* THE LOG — the product in five messages, no phone chrome. */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
           <p className={labelClass}>A day on Qadam</p>
 
           <div className="mt-4 border border-rule">
@@ -137,6 +190,27 @@ export default function Home() {
               </p>
             </div>
 
+            {/* Urdu in, simple English out — product.md §Language. */}
+            <div className="border-b border-rule bg-surface px-5 py-4">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-ink-3">
+                YOU
+              </p>
+              <p className="mt-2 text-[15px]">
+                agar API down ho jaye to kya karun?
+              </p>
+            </div>
+
+            <div className="border-b border-rule px-5 py-4">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-accent">
+                QADAM
+              </p>
+              <p className="mt-2 text-[15px]">
+                Show the last rate you saved, with the time you saved it. Then
+                show a short line: &ldquo;Could not update just now.&rdquo;
+                That is what a real app does.
+              </p>
+            </div>
+
             <div className="border-b border-rule bg-surface px-5 py-4">
               <p className="font-mono text-[11px] tracking-[0.1em] text-ink-3">
                 YOU
@@ -146,18 +220,23 @@ export default function Home() {
 
             <div className="px-5 py-4">
               <p className="font-mono text-[11px] tracking-[0.1em] text-accent">
-                QADAM
+                QADAM · GRADED 4/5
               </p>
               <p className="mt-2 text-[15px]">
-                Works. Your currency codes are hardcoded — swap them for the
-                API&rsquo;s list tomorrow. Added to your profile.
+                <span className="text-ink-3">Good —</span> it&rsquo;s deployed,
+                and you handled the offline case.
+              </p>
+              <p className="mt-1.5 text-[15px]">
+                <span className="text-ink-3">Fix next time —</span> your
+                currency codes are hardcoded. Pull them from the API&rsquo;s own
+                list. Added to your profile.
               </p>
             </div>
           </div>
 
-          <p className="mt-3 text-[13px] text-ink-3">
-            Reviewed by Qadam, not marked done by you. A checkbox teaches
-            nothing and can be lied to.
+          <p className="mt-3 max-w-[52ch] text-[13px] text-ink-3">
+            Graded, not marked done by you. A checkbox teaches nothing and can
+            be lied to.
           </p>
         </section>
 
@@ -196,6 +275,37 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* TIMELINE */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>The milestone is an internship</p>
+
+          <p className="mt-5 max-w-[52ch] text-[17px]">
+            Not graduation. Most companies here hire interns out of semesters 4
+            to 6 — that&rsquo;s close enough to work toward, and it happens
+            while you&rsquo;re still a student.
+          </p>
+
+          <dl className="mt-7">
+            {TIMELINE.map((row, index) => (
+              <div
+                key={row.when}
+                className={`flex flex-col gap-1 py-4 sm:flex-row sm:gap-6 ${
+                  index === 0 ? "" : "border-t border-rule-soft"
+                }`}
+              >
+                <dt
+                  className={`font-mono text-[11px] tracking-[0.1em] sm:w-[72px] sm:shrink-0 sm:pt-1 ${
+                    row.emphasis ? "text-accent" : "text-ink-3"
+                  }`}
+                >
+                  {row.when}
+                </dt>
+                <dd className="max-w-[46ch] text-[15px]">{row.what}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* TASKS */}
@@ -264,8 +374,8 @@ export default function Home() {
           </div>
 
           <p className="mt-3 max-w-[52ch] text-[13px] text-ink-3">
-            Six months in. This is what you send an employer instead of a blank
-            one-page CV.
+            Two 3-month plans in. This is what you send an employer instead of a
+            blank one-page CV.
           </p>
         </section>
 
@@ -303,7 +413,9 @@ export default function Home() {
         <div
           className={`${shellClass} flex flex-wrap justify-between gap-3 py-8 text-[13px] text-ink-3`}
         >
-          <span>Qadam — a daily companion for students working it out alone.</span>
+          <span>
+            Qadam — a daily companion for students working it out alone.
+          </span>
           <a href="mailto:hello@qadam.pk">hello@qadam.pk</a>
         </div>
       </footer>
