@@ -1,18 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import {
+  Instrument_Sans,
+  Instrument_Serif,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+// Display. One weight, high contrast, and an italic worth using — it carries
+// the whole premium register on its own, which is why the rest of the page
+// can stay quiet.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-// Mono carries the labels, day markers and figures. It is what makes the page
-// read as a log rather than a brochure.
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Labels, day markers and figures. Keeps the honest "this is a system" note
+// under the serif, so the page reads considered rather than merely pretty.
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -25,12 +39,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#faf9f5",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${plexMono.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${instrumentSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}
       </body>

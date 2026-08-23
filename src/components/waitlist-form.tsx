@@ -64,8 +64,10 @@ const FIELDS: Field[] = [
   },
 ];
 
+// Underline, not a box. Seven boxed inputs stacked is the most form-like a
+// form can look; a rule under each keeps it closer to a printed slip.
 const controlClass =
-  "w-full border border-rule bg-paper px-3 py-2.5 font-sans text-[15px] text-ink focus:border-ink";
+  "w-full border-0 border-b border-rule bg-transparent px-0 py-2.5 font-sans text-[16px] text-ink focus:border-ink";
 
 type Status = "idle" | "submitting" | "done" | "already";
 
@@ -120,8 +122,8 @@ export function WaitlistForm() {
 
   if (status === "done" || status === "already") {
     return (
-      <div className="border-l-2 border-ink pl-5">
-        <p className="font-medium">
+      <div className="border-l-2 border-accent pl-6">
+        <p className="font-display text-[26px]">
           {status === "done"
             ? "You're on the list."
             : "You're already on the list."}
@@ -136,12 +138,12 @@ export function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
       {FIELDS.map((field) => (
         <div key={field.id} className="flex flex-col gap-2">
           <label
             htmlFor={field.id}
-            className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3"
+            className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3"
           >
             {field.label}
           </label>
@@ -195,7 +197,7 @@ export function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="cursor-pointer border-none bg-ink px-5 py-3 font-sans text-[15px] font-medium text-paper hover:bg-ink-2 disabled:cursor-wait disabled:opacity-60"
+          className="cursor-pointer border-none bg-ink px-7 py-4 font-sans text-[16px] text-paper hover:bg-accent disabled:cursor-wait disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Send me my first week"}
         </button>

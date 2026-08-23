@@ -1,37 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paper, ink, one accent. No gradients, no glows, no glass. If a thing
-     needs separating from another thing, use a hairline or whitespace. */
-  --color-paper: #ffffff;
-  --color-surface: #fafafa;
+  /* Warm paper, warm ink. Pure #fff and pure #000 are the two most default
+     colours on the web — everything rendered on them inherits that feeling.
+     These are the same idea shifted a few degrees warm, which is most of why
+     the page reads as printed rather than as a browser default. */
+  --color-paper: #faf9f5;
+  --color-surface: #f2efe7;
+  --color-raised: #ffffff;
 
-  --color-ink: #0a0a0a;
-  --color-ink-2: #4a4a4a;
-  --color-ink-3: #767676;
+  --color-ink: #14120f;
+  --color-ink-2: #4a453d;
+  --color-ink-3: #6e685c;
 
-  --color-rule: #e4e4e4;
-  --color-rule-soft: #f0f0f0;
+  --color-rule: #e0dad0;
+  --color-rule-soft: #ebe6dc;
 
-  /* Used about six times on the whole page. That is the point. */
-  --color-accent: #1a56db;
+  /* Deep pine. Used perhaps eight times on the page — links, the QADAM
+     speaker labels, one emphasised card. Colour at large is reserved for the
+     charts, where it carries meaning. */
+  --color-accent: #14453f;
 
-  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 @layer base {
   /* Base rules must stay layered — unlayered CSS outranks every
-     `@layer utilities` rule regardless of specificity, so an unlayered
-     `a { color }` would beat a `text-*` utility on a link-styled button. */
+     `@layer utilities` rule regardless of specificity. */
   body {
     margin: 0;
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Display type is set tight and optically large. Instrument Serif is a
+     high-contrast face — it needs the size to show what it is, and it needs
+     the tracking pulled in or it reads loose at display sizes. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
   }
 
   a {
@@ -39,7 +56,7 @@
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
-    text-decoration-color: var(--color-rule);
+    text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
   }
 
   a:hover {
@@ -48,10 +65,17 @@
 
   :focus-visible {
     outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
 
   input::placeholder {
     color: var(--color-ink-3);
+  }
+
+  /* Figures should line up in columns and in running text alike. */
+  .tabular-nums,
+  input,
+  select {
+    font-variant-numeric: tabular-nums;
   }
 }
