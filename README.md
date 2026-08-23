@@ -1,4 +1,4 @@
-# Qadam
+# Silsila
 
 Next.js 16 (App Router) + Prisma 7 + PostgreSQL boilerplate.
 
@@ -102,7 +102,7 @@ current page is a rewrite, not a port of it.
 `a { color: … }` beats a `text-*` utility on a link-styled button — which is
 exactly how the previous version ended up with invisible CTA labels.
 
-**The copy says Qadam reviews submissions, not a person.** The AI builds the
+**The copy says Silsila reviews submissions, not a person.** The AI builds the
 plan, sends the daily task, and reads what comes back. Keep it that way unless
 the product changes — an earlier draft claimed "checked by a real person",
 which the product does not do.

@@ -1,6 +1,6 @@
-# [Working name: Qadam] — Product Document v1
+# Silsila — Product Document v1
 
-*Qadam (قدم) = "step." Placeholder — alternatives at the end of this doc.*
+*Silsila (سلسلہ) = "an unbroken chain, a series, a continuity." Chosen over the Qadam placeholder — see §9.*
 
 **Status:** Pre-launch. Gap validated informally. Next milestone is a landing page + intake waitlist.
 **Owner:** Hammad
@@ -325,16 +325,24 @@ Static page. Form posts to Google Sheets. No backend. Do not build auth, dashboa
 - Can AI grading be trusted on artifacts (code, deployed pages), or does it need human spot-checks indefinitely?
 - Who maintains market-trend content, and how often? This is the one content stream that can't be written once and cached.
 - Does the product hold a student who joins in semester 7 with nothing built? Or is there a minimum viable runway below which we should be honest about limited value?
-- Name.
 
-## 9. Name candidates
+## 9. Name — decided
+
+**Silsila** (سلسلہ). Adopted across the product and the codebase.
+
+*Silsila* is an unbroken chain, a series, a continuity — one thing following another without a break. That is a more precise description of what is being sold than *qadam* was: a single step is the thing students can already take on their own and repeatedly do, once. The chain is the part that fails on day four, and the chain is what the product supplies. It also gives the design a motif it can actually use — the dots and the contribution grid on the landing page are both links in a chain rather than decoration.
+
+Watch for: the name carries a Sufi-lineage association (a *silsila* is an order of transmission from teacher to student), which reads as fitting rather than as a problem, and there is a well-known 1981 film of the same name — worth checking what search results look like before spending on the handle.
+
+### Candidates considered
 
 | Name | Note |
 |---|---|
-| **Qadam** (قدم) | "Step." Clean, local, easy to say. Current placeholder. |
+| **Silsila** (سلسلہ) | "An unbroken chain." **Chosen.** |
+| **Qadam** (قدم) | "Step." Clean and local, but names the thing students can already do alone. Previous placeholder. |
 | **Rozana** | "Daily." Says exactly what it is. |
 | **Aagay** | "Forward / ahead." Casual, how students actually talk. |
 | **Ustaad** | "Teacher/master." Strong, but may over-promise mentorship. |
 | **Kal** | "Tomorrow." Poetic, possibly too abstract. |
 
-Check domain + Instagram handle availability before committing.
+Still to do: confirm domain and Instagram handle availability.

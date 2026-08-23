@@ -21,7 +21,7 @@ const webDevWeekOne = [
     dayIndex: 1,
     type: TaskType.SKILL,
     title: "Set up your machine",
-    body: "Install Node and VS Code. Create a GitHub account. Push an empty repo called `qadam-log`.",
+    body: "Install Node and VS Code. Create a GitHub account. Push an empty repo called `silsila-log`.",
     estimateMins: 40,
   },
   {
@@ -35,7 +35,7 @@ const webDevWeekOne = [
     dayIndex: 3,
     type: TaskType.SKILL,
     title: "JavaScript basics, section 1",
-    body: "Complete section 1 of the JS course. Push your solutions to `qadam-log`.",
+    body: "Complete section 1 of the JS course. Push your solutions to `silsila-log`.",
     estimateMins: 45,
   },
   {

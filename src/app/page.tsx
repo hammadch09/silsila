@@ -75,7 +75,7 @@ export default function Home() {
       <header className="sticky top-0 z-20 border-b-2 border-ink bg-marigold">
         <div className={`${shellClass} flex h-14 items-center justify-between`}>
           <span className="font-mono text-[15px] font-medium tracking-[-0.01em]">
-            qadam
+            silsila
           </span>
           <a
             href="#form"
@@ -153,12 +153,12 @@ export default function Home() {
 
             {/* The log explains the product faster than any paragraph. */}
             <div className="lg:col-span-5">
-              <p className={labelClass}>A day on Qadam</p>
+              <p className={labelClass}>A day on Silsila</p>
 
               <div className="mt-5 border-2 border-ink bg-raised shadow-[6px_6px_0_0_var(--color-pine)]">
                 <div className="border-b border-rule px-5 py-4">
                   <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
-                    QADAM · DAY 12
+                    SILSILA · DAY 12
                   </p>
                   <p className="mt-2 text-[15px]">
                     Build a page that fetches live currency rates. Deploy it.
@@ -178,7 +178,7 @@ export default function Home() {
 
                 <div className="border-b border-rule px-5 py-4">
                   <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
-                    QADAM
+                    SILSILA
                   </p>
                   <p className="mt-2 text-[15px]">
                     Show the last rate you saved, with the time you saved it.
@@ -196,7 +196,7 @@ export default function Home() {
 
                 <div className="px-5 py-4">
                   <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
-                    QADAM · GRADED 4/5
+                    SILSILA · GRADED 4/5
                   </p>
                   <p className="mt-2 text-[15px]">
                     <span className="text-ink-3">Good —</span> it&rsquo;s
@@ -365,7 +365,7 @@ export default function Home() {
             <div className="lg:col-span-8">
               <div className="border-2 border-ink bg-raised p-6 shadow-[8px_8px_0_0_var(--color-pine)] lg:p-9">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="font-mono text-[15px]">qadam.pk/ayesha-r</p>
+                  <p className="font-mono text-[15px]">silsila.pk/ayesha-r</p>
                   <p className="text-[13px] text-ink-3">
                     Semester 5 · Computer Science · Bahawalpur
                   </p>
@@ -477,10 +477,10 @@ export default function Home() {
           className={`${shellClass} flex flex-wrap justify-between gap-3 py-9 text-[13px]`}
         >
           <span>
-            Qadam — a daily companion for students working it out alone.
+            Silsila — a daily companion for students working it out alone.
           </span>
-          <a href="mailto:hello@qadam.pk" className="decoration-ink">
-            hello@qadam.pk
+          <a href="mailto:hello@silsila.pk" className="decoration-ink">
+            hello@silsila.pk
           </a>
         </div>
       </footer>

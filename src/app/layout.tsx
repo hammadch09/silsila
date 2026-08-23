@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Qadam — roz ek kaam, aur koi poochne wala",
+  title: "Silsila — roz ek kaam, aur koi poochne wala",
   description:
     "A 3-month plan. One 30-minute task a day. Graded, not ticked. All on WhatsApp. For computing students in Pakistan who got the roadmap and stopped on day four.",
 };
