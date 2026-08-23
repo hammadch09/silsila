@@ -66,14 +66,13 @@ prisma.config.ts       Prisma 7 config; loads .env, points at the seed script
 src/
   app/
     page.tsx           landing page (static)
-    layout.tsx         Manrope + the pre-hydration `data-js` flag
+    layout.tsx         IBM Plex Sans + Mono
     globals.css        palette tokens + base styles
     dashboard/         DB-backed view
     api/health/        DB liveness check
     api/waitlist/      GET count, POST intake
   components/
-    waitlist-form.tsx  the intake form (client)
-    reveal-on-scroll.tsx  one IntersectionObserver for the whole page
+    waitlist-form.tsx  the intake form (client) — the only client component
   lib/
     prisma.ts          PrismaClient singleton
     validation.ts      Zod intake schema + WhatsApp normalisation
@@ -83,16 +82,30 @@ src/
 
 ## Landing page notes
 
-Ported from the design artifact kept at `design/Qadam Landing.dc.html` (open it
-directly in a browser to compare). Inline styles became
-Tailwind utilities; the palette lives as `@theme` tokens in `globals.css`
-(`bg-ink`, `text-accent`, `text-muted`, …). It is **dark-only by design** —
-there is no light mode to maintain.
+White paper, near-black ink, IBM Plex Sans with IBM Plex Mono carrying the
+labels, day markers and figures. One accent (`#1a56db`), used sparingly.
+Palette tokens live in `globals.css` under `@theme` — `bg-paper`, `text-ink`,
+`text-ink-2/3`, `border-rule`.
+
+**The restraint is the design.** No gradients, no glows, no glass, no shadows,
+no scroll animation, no cards-with-fills. Separation is a hairline or
+whitespace. Anything that reads as an effect has been removed on purpose — the
+first version of this page was dark with a neon accent and gradient headline,
+and it looked like every AI-generated landing page. If you add an effect back,
+have a reason.
+
+The earlier design is kept at `design/Qadam Landing.dc.html` for reference; the
+current page is a rewrite, not a port of it.
 
 **Base styles must stay inside `@layer base`.** Unlayered CSS outranks every
 `@layer utilities` rule no matter the specificity, so an unlayered
-`a { color: … }` beats `text-ink` and paints the CTA label the same green as
-the button behind it.
+`a { color: … }` beats a `text-*` utility on a link-styled button — which is
+exactly how the previous version ended up with invisible CTA labels.
+
+**The copy says Qadam reviews submissions, not a person.** The AI builds the
+plan, sends the daily task, and reads what comes back. Keep it that way unless
+the product changes — an earlier draft claimed "checked by a real person",
+which the product does not do.
 
 **The form posts to `/api/waitlist`,** not a Google Sheet. Select options carry
 the Prisma enum values (`FIVE_TO_TEN`, `PHONE_ONLY`) so nothing is translated
@@ -102,11 +115,6 @@ as "you're already on the list" rather than an error.
 **Numbers are Pakistani-only** — `03XXXXXXXXX` or `+923XXXXXXXXX`, validated on
 both sides and normalised to `+92…` before storage, so the same student typing
 `0321-1234567` and `+92 321 1234567` is one row.
-
-**Scroll reveal degrades safely.** Elements are hidden by CSS only under
-`html[data-js]`, which an inline script sets before first paint — so a visitor
-without JS gets the whole page instead of a blank one. That attribute is why
-`<html>` carries `suppressHydrationWarning`.
 
 ## Things worth knowing
 

@@ -1,84 +1,57 @@
 @import "tailwindcss";
 
 @theme {
-  /* Qadam palette. Dark-only by design — this page has no light mode. */
-  --color-ink: #05100c;
-  --color-accent: #4ef08c;
-  --color-accent-soft: #9ff0c0;
-  --color-accent-hover: #8bffbb;
+  /* Paper, ink, one accent. No gradients, no glows, no glass. If a thing
+     needs separating from another thing, use a hairline or whitespace. */
+  --color-paper: #ffffff;
+  --color-surface: #fafafa;
 
-  --color-body: #e8f2ec;
-  --color-body-soft: #cfdcd5;
-  --color-body-warm: #cfeadd;
-  --color-muted: #9db3a8;
-  --color-muted-dim: #8ba496;
-  --color-muted-dimmer: #7d968a;
-  --color-muted-darkest: #6f8a7d;
-  --color-label: #b7ccc0;
-  --color-danger: #ff9d7d;
+  --color-ink: #0a0a0a;
+  --color-ink-2: #4a4a4a;
+  --color-ink-3: #767676;
 
-  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --color-rule: #e4e4e4;
+  --color-rule-soft: #f0f0f0;
+
+  /* Used about six times on the whole page. That is the point. */
+  --color-accent: #1a56db;
+
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-/* Everything below must sit in `base`. Unlayered rules outrank every
-   `@layer utilities` rule regardless of specificity, so an unlayered
-   `a { color }` would beat `text-ink` and paint the CTA text the same green
-   as the button behind it. */
 @layer base {
+  /* Base rules must stay layered — unlayered CSS outranks every
+     `@layer utilities` rule regardless of specificity, so an unlayered
+     `a { color }` would beat a `text-*` utility on a link-styled button. */
   body {
     margin: 0;
-    background: var(--color-ink);
-    color: var(--color-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 16px;
     line-height: 1.6;
-    font-size: 15.5px;
+    -webkit-font-smoothing: antialiased;
   }
 
   a {
-    color: var(--color-accent);
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-rule);
   }
 
   a:hover {
-    color: var(--color-accent-hover);
+    text-decoration-color: currentColor;
   }
 
-  input:focus,
-  select:focus,
-  button:focus-visible,
-  a:focus-visible {
+  :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
 
   input::placeholder {
-    color: #5d7a6d;
-  }
-
-  /* The dropdown list itself renders on a light background in most browsers. */
-  select option {
-    color: #0a1a14;
-  }
-
-  /* Scroll reveal. Elements start hidden only when JS is available to unhide
-     them, so a no-JS visitor sees the full page rather than a blank one. */
-  html[data-js] [data-reveal] {
-    opacity: 0;
-    transform: translateY(12px);
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
-  }
-
-  html[data-js] [data-reveal].is-revealed {
-    opacity: 1;
-    transform: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html[data-js] [data-reveal] {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+    color: var(--color-ink-3);
   }
 }

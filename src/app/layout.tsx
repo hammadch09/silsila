@@ -1,44 +1,37 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Mono carries the labels, day markers and figures. It is what makes the page
+// read as a log rather than a brochure.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Qadam — one small task a day, checked by a real person",
+  title: "Qadam — one task a day, and something that asks",
   description:
-    "You got the roadmap. You did three days. Nobody checked in on day four. That's the part we fix. 30–45 minutes a day, all on WhatsApp.",
+    "You got the roadmap. You did three days. Nobody checked in on day four. Qadam builds your plan, sends one task a day, and asks what you did with it. On WhatsApp.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05100c",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning covers exactly one thing: the `data-js`
-    // attribute the script below adds before React hydrates. Scoped to <html>
-    // itself, so mismatches anywhere else still surface.
-    <html
-      lang="en"
-      className={`${manrope.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <head>
-        {/* Marks JS as available before first paint, so reveal elements only
-            start hidden when something can reveal them. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.setAttribute('data-js','')`,
-          }}
-        />
-      </head>
-      <body className="flex min-h-full flex-col bg-ink text-body">
+    <html lang="en" className={`${plexSans.variable} ${plexMono.variable} h-full`}>
+      <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}
       </body>
     </html>

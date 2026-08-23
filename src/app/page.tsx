@@ -1,4 +1,3 @@
-import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buildHeatmapCells } from "@/lib/profile-heatmap";
 
@@ -10,299 +9,304 @@ const PROBLEMS = [
 
 const STEPS = [
   {
-    title: "One small task a day.",
-    body: "30–45 minutes. Skill work, a talk worth watching, something small to build, a message to send.",
+    title: "It builds the plan.",
+    body: "Four questions at signup, then a week-by-week roadmap for your field. Not a generic one — yours, for your semester and the hours you actually have.",
   },
   {
-    title: "You show your work.",
-    body: "A link, a screenshot, three lines. Someone actually looks at it.",
+    title: "It sends one task a day.",
+    body: "30–45 minutes. Small enough that a semester project can't justify skipping it.",
+  },
+  {
+    title: "It asks what you did.",
+    body: "You send a link, a screenshot, three lines. Qadam reads it, tells you what to fix, and remembers what you said you'd do last Tuesday.",
   },
   {
     title: "It piles up.",
-    body: "Every task adds to a profile you can send to an employer. In two years it's unrecognisable.",
+    body: "Every submission adds to a profile you can send an employer. In two years it's unrecognisable.",
   },
 ];
 
+// The five task types from product.md §3. Showing the mix is the point — the
+// alternative reads like a worse Coursera.
 const SAMPLE_TASKS = [
-  "Complete section 4 of the JavaScript course. Push your solutions to GitHub.",
-  "Watch this 18-minute talk on how Careem was built. Write 3 lines on what surprised you.",
-  "Build a page that shows live currency rates. Deploy it.",
-  "Rewrite your LinkedIn headline. Three examples inside.",
-  "Message one senior working in the field you want. Template provided.",
+  {
+    type: "SKILL",
+    body: "Complete section 4 of the JavaScript course. Push your solutions to GitHub.",
+  },
+  {
+    type: "HORIZON",
+    body: "Watch this 18-minute talk on how Careem was built. Write 3 lines on what surprised you.",
+  },
+  {
+    type: "ARTIFACT",
+    body: "Build a page that shows live currency rates. Deploy it.",
+  },
+  {
+    type: "SIGNAL",
+    body: "Rewrite your LinkedIn headline. Three examples inside.",
+  },
+  {
+    type: "HUMAN",
+    body: "Message one senior working in the field you want. Template provided.",
+  },
 ];
 
 const PROFILE_STATS = [
   { value: "148", label: "tasks done" },
   { value: "9", label: "things built" },
-  { value: "31", label: "reviews" },
+  { value: "31", label: "reviewed" },
 ];
 
 const REASSURANCES = [
-  "No streaks to lose. Miss a week for exams — come back, we'll pick a lighter task.",
-  "Free while we're in early access.",
-  "Works on your phone. Everything runs through WhatsApp.",
+  ["No streaks to lose.", "Miss a week for exams. Come back and it picks a lighter task."],
+  ["Free while we're in early access.", "No card, no calls."],
+  ["Works on your phone.", "Everything runs through WhatsApp."],
 ];
 
-const eyebrowClass =
-  "text-[11.5px] font-extrabold uppercase tracking-[1.6px] text-muted-darkest";
+const labelClass =
+  "font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3";
+
+const shellClass = "mx-auto w-full max-w-[640px] px-6";
 
 export default function Home() {
   const cells = buildHeatmapCells();
 
   return (
-    <div className="relative overflow-hidden bg-ink text-body">
-      <RevealOnScroll />
-
-      {/* Glow behind the hero. Decorative, so it never eats a tap. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 bg-[radial-gradient(circle,rgba(78,240,140,0.16)_0%,rgba(78,240,140,0)_68%)]"
-      />
-
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-white/[0.06] bg-ink/70 px-4 py-2.5 backdrop-blur-[14px]">
-        <span className="text-[16.5px] font-extrabold tracking-[-0.4px] text-white">
-          Qadam
-        </span>
-        <a
-          href="#form"
-          className="rounded-full bg-accent px-4 py-2.5 text-[13px] font-extrabold text-ink no-underline hover:text-ink"
-        >
-          Join waitlist
-        </a>
+    <>
+      <header className="border-b border-rule">
+        <div className={`${shellClass} flex h-14 items-center justify-between`}>
+          <span className="font-mono text-[15px] font-medium tracking-[-0.01em]">
+            qadam
+          </span>
+          <a
+            href="#form"
+            className="font-mono text-[12px] uppercase tracking-[0.12em] text-ink-2 no-underline hover:text-ink"
+          >
+            Join waitlist
+          </a>
+        </div>
       </header>
 
-      <main>
+      <main className="flex-1">
         {/* HERO */}
-        <section className="relative px-5 pt-11 pb-[34px]">
-          <div className="mx-auto max-w-[600px]">
-            <div
-              data-reveal
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/[0.28] bg-accent/[0.07] py-1.5 pr-3 pl-2 text-xs font-semibold text-accent-soft"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_#4ef08c]" />
-              Early access · open to 100 students
-            </div>
+        <section className={`${shellClass} pt-20 pb-16`}>
+          <p className={labelClass}>Early access · 100 students</p>
 
-            <h1
-              data-reveal
-              className="mb-4 text-[clamp(30px,8.4vw,44px)] leading-[1.08] font-extrabold tracking-[-1.4px] text-white"
-            >
-              Har din ek chhota kaam —{" "}
-              <span className="bg-[linear-gradient(96deg,#4ef08c,#9ff0c0)] bg-clip-text text-transparent">
-                checked by a real person.
-              </span>
-            </h1>
+          <h1 className="mt-6 text-[34px] leading-[1.15] font-semibold tracking-[-0.025em] sm:text-[42px]">
+            You&rsquo;ve asked ChatGPT what to do.
+          </h1>
 
-            <p data-reveal className="mb-[26px] max-w-[38ch] text-[17px] text-muted">
-              You got the roadmap. You did three days. Nobody checked in on day
-              four. That&rsquo;s the part we fix. 30–45 minutes a day, all on
-              WhatsApp.
+          <p className="mt-5 max-w-[46ch] text-[17px] text-ink-2">
+            You got a roadmap. You did three days of it. Then the semester
+            happened. It&rsquo;s not that you&rsquo;re not serious —{" "}
+            <span className="text-ink">nobody checked in on day four.</span>
+          </p>
+
+          <div className="mt-8 border-l-2 border-ink pl-5">
+            <p className="max-w-[46ch] text-[17px]">
+              Qadam does. It builds your plan, sends you one small task a day,
+              and asks what you did with it. 30–45 minutes. All on WhatsApp.
             </p>
+          </div>
 
-            <div data-reveal className="flex flex-wrap items-center gap-2.5">
-              <a
-                href="#form"
-                className="inline-block rounded-full bg-accent px-[26px] py-3.5 text-[15.5px] font-extrabold text-ink no-underline shadow-[0_10px_28px_rgba(78,240,140,0.22)] hover:text-ink"
-              >
-                Get your first week
-              </a>
-              <span className="text-[13px] text-muted-darkest">
-                Free · no calls
-              </span>
-            </div>
-
-            {/* Phone mock — the daily loop in three messages. */}
-            <div
-              data-reveal
-              className="mx-auto mt-9 max-w-[296px] rounded-[32px] border border-white/[0.09] bg-[linear-gradient(180deg,#0d1f18,#081611)] px-3 pt-3 pb-[18px] shadow-[0_30px_70px_rgba(0,0,0,0.55)]"
+          <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <a
+              href="#form"
+              className="inline-block bg-ink px-5 py-3 text-[15px] font-medium text-paper no-underline hover:bg-ink-2"
             >
-              <div className="mx-auto mb-3.5 h-[5px] w-16 rounded-full bg-white/15" />
-              <div className="flex flex-col gap-[9px]">
-                <div className="max-w-[92%] self-start rounded-[16px_16px_16px_5px] border border-white/[0.07] bg-white/[0.07] px-3 py-2.5 text-[13px] leading-normal">
-                  <span className="mb-[3px] block text-[11px] font-extrabold tracking-[0.3px] text-accent">
-                    QADAM · DAY 12
-                  </span>
-                  Build a page that shows live currency rates. Deploy it. ~40
-                  min.
-                </div>
-                <div className="max-w-[92%] self-end rounded-[16px_16px_5px_16px] border border-accent/[0.22] bg-accent/[0.14] px-3 py-2.5 text-[13px] text-[#d5f7e4]">
-                  done — rates.netlify.app
-                </div>
-                <div className="max-w-[92%] self-start rounded-[16px_16px_16px_5px] border border-white/[0.07] bg-white/[0.07] px-3 py-2.5 text-[13px] leading-normal">
-                  Nice. Currency codes are hardcoded — swap them for the API
-                  list tomorrow. Added to your profile.
-                </div>
-              </div>
-            </div>
+              Get your first week
+            </a>
+            <span className="text-[14px] text-ink-3">
+              Free · no calls · takes a minute
+            </span>
           </div>
         </section>
 
-        {/* PROBLEM */}
-        <section className="px-5 py-7">
-          <div className="mx-auto max-w-[600px]">
-            <h2 data-reveal className={`mb-4 ${eyebrowClass}`}>
-              Why it stalls
-            </h2>
-            <div className="flex flex-col gap-2.5">
-              {PROBLEMS.map((problem) => (
-                <p
-                  key={problem}
-                  data-reveal
-                  className="rounded-[18px] border border-white/[0.075] bg-white/[0.045] px-[19px] py-[17px] text-base"
-                >
-                  {problem}
-                </p>
-              ))}
+        {/* THE LOG — the product in three messages, no phone chrome. */}
+        <section className={`${shellClass} pb-16`}>
+          <p className={labelClass}>A day on Qadam</p>
+
+          <div className="mt-4 border border-rule">
+            <div className="border-b border-rule px-5 py-4">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-accent">
+                QADAM · DAY 12
+              </p>
+              <p className="mt-2 text-[15px]">
+                Build a page that fetches and displays live currency rates.
+                Deploy it. ~40 min.
+              </p>
             </div>
-            <p
-              data-reveal
-              className="mt-[18px] text-[16.5px] font-semibold text-accent-soft"
-            >
-              It&rsquo;s not that you&rsquo;re not serious. Nobody checked in on
-              day four.
-            </p>
-          </div>
-        </section>
 
-        {/* HOW */}
-        <section className="px-5 py-[26px]">
-          <div className="mx-auto max-w-[600px]">
-            <h2 data-reveal className={`mb-[18px] ${eyebrowClass}`}>
-              How it works
-            </h2>
+            <div className="border-b border-rule bg-surface px-5 py-4">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-ink-3">
+                YOU
+              </p>
+              <p className="mt-2 text-[15px]">done — rates.netlify.app</p>
+            </div>
 
-            <ol className="flex flex-col gap-[18px]">
-              {STEPS.map((step, index) => (
-                <li key={step.title} data-reveal className="flex gap-3.5">
-                  <span className="flex h-8 w-8 flex-none items-center justify-center rounded-xl border border-accent/30 bg-accent/[0.14] text-sm font-extrabold text-accent">
-                    {index + 1}
-                  </span>
-                  <p className="text-muted">
-                    <strong className="text-white">{step.title}</strong>{" "}
-                    {step.body}
-                  </p>
-                </li>
-              ))}
-            </ol>
-
-            {/* Sample public profile — the reason they don't quit. */}
-            <div
-              data-reveal
-              className="mt-6 rounded-[22px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-[18px] backdrop-blur-[8px]"
-            >
-              <div className="mb-3.5 flex items-center justify-between gap-2.5">
-                <div>
-                  <p className="mb-0.5 text-[14.5px] font-extrabold text-white">
-                    qadam.pk/ayesha-r
-                  </p>
-                  <p className="text-[12.5px] text-muted-dimmer">
-                    Semester 5 · Computer Science · Bahawalpur
-                  </p>
-                </div>
-                <span className="rounded-full border border-accent/30 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-accent">
-                  live
-                </span>
-              </div>
-
-              <div
-                aria-hidden
-                className="grid grid-cols-[repeat(26,1fr)] gap-[3px]"
-              >
-                {cells.map((background, index) => (
-                  <div
-                    key={index}
-                    className="aspect-square rounded-[2px]"
-                    style={{ background }}
-                  />
-                ))}
-              </div>
-
-              <div className="mt-4 grid grid-cols-3 gap-2">
-                {PROFILE_STATS.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-[14px] bg-white/5 px-2.5 py-3 text-center"
-                  >
-                    <p className="text-[21px] font-extrabold tracking-[-0.6px] text-white">
-                      {stat.value}
-                    </p>
-                    <p className="text-[11.5px] text-muted-dimmer">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-3.5 text-[12.5px] text-muted-dimmer">
-                This is what you send an employer instead of a blank one-page
-                CV.
+            <div className="px-5 py-4">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-accent">
+                QADAM
+              </p>
+              <p className="mt-2 text-[15px]">
+                Works. Your currency codes are hardcoded — swap them for the
+                API&rsquo;s list tomorrow. Added to your profile.
               </p>
             </div>
           </div>
+
+          <p className="mt-3 text-[13px] text-ink-3">
+            Reviewed by Qadam, not marked done by you. A checkbox teaches
+            nothing and can be lied to.
+          </p>
+        </section>
+
+        {/* PROBLEM */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>Why it stalls</p>
+
+          <ul className="mt-5">
+            {PROBLEMS.map((problem, index) => (
+              <li
+                key={problem}
+                className={`py-4 text-[17px] ${
+                  index === 0 ? "" : "border-t border-rule-soft"
+                }`}
+              >
+                {problem}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* HOW */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>How it works</p>
+
+          <ol className="mt-6 flex flex-col gap-7">
+            {STEPS.map((step, index) => (
+              <li key={step.title} className="flex gap-5">
+                <span className="pt-1 font-mono text-[12px] text-ink-3 tabular-nums">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="max-w-[52ch]">
+                  <p className="font-medium">{step.title}</p>
+                  <p className="mt-1 text-[15px] text-ink-2">{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         {/* TASKS */}
-        <section className="px-5 py-[26px]">
-          <div className="mx-auto max-w-[600px]">
-            <h2 data-reveal className={`mb-3.5 ${eyebrowClass}`}>
-              Real tasks
-            </h2>
-            <ul className="flex flex-col gap-[9px]">
-              {SAMPLE_TASKS.map((task) => (
-                <li
-                  key={task}
-                  data-reveal
-                  className="flex items-start gap-[11px] rounded-2xl border border-white/[0.07] bg-white/[0.04] px-4 py-3.5 text-[15px] text-body-soft"
-                >
-                  <span
-                    aria-hidden
-                    className="text-[13px] leading-[1.6] font-extrabold text-accent"
-                  >
-                    ↳
-                  </span>
-                  <span>{task}</span>
-                </li>
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>Five kinds of task, rotated</p>
+
+          <ul className="mt-5">
+            {SAMPLE_TASKS.map((task, index) => (
+              <li
+                key={task.type}
+                className={`flex flex-col gap-1 py-4 sm:flex-row sm:gap-6 ${
+                  index === 0 ? "" : "border-t border-rule-soft"
+                }`}
+              >
+                <span className="font-mono text-[11px] tracking-[0.1em] text-ink-3 sm:w-[72px] sm:shrink-0 sm:pt-1">
+                  {task.type}
+                </span>
+                <span className="text-[15px]">{task.body}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-5 max-w-[52ch] text-[13px] text-ink-3">
+            The last one has the worst completion rate and the highest long-term
+            value. It stays in.
+          </p>
+        </section>
+
+        {/* PROFILE */}
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <p className={labelClass}>What you end up with</p>
+
+          <div className="mt-5 border border-rule p-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p className="font-mono text-[14px]">qadam.pk/ayesha-r</p>
+              <p className="text-[13px] text-ink-3">
+                Semester 5 · Computer Science · Bahawalpur
+              </p>
+            </div>
+
+            <div
+              aria-hidden
+              className="mt-5 grid grid-cols-[repeat(26,1fr)] gap-[3px]"
+            >
+              {cells.map((background, index) => (
+                <div
+                  key={index}
+                  className="aspect-square"
+                  style={{ background }}
+                />
               ))}
-            </ul>
+            </div>
+
+            <dl className="mt-6 flex gap-10 border-t border-rule-soft pt-5">
+              {PROFILE_STATS.map((stat) => (
+                <div key={stat.label}>
+                  <dd className="font-mono text-[22px] tracking-[-0.02em] tabular-nums">
+                    {stat.value}
+                  </dd>
+                  <dt className="mt-0.5 text-[13px] text-ink-3">
+                    {stat.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
           </div>
+
+          <p className="mt-3 max-w-[52ch] text-[13px] text-ink-3">
+            Six months in. This is what you send an employer instead of a blank
+            one-page CV.
+          </p>
         </section>
 
         {/* REASSURANCE */}
-        <section className="px-5 py-[26px]">
-          <div
-            data-reveal
-            className="mx-auto flex max-w-[600px] flex-col gap-[13px] rounded-[22px] border border-accent/[0.22] bg-accent/[0.06] p-[22px] text-[15.5px] text-body-warm"
-          >
-            {REASSURANCES.map((line) => (
-              <p key={line}>{line}</p>
+        <section className={`${shellClass} border-t border-rule py-14`}>
+          <dl className="flex flex-col gap-5">
+            {REASSURANCES.map(([term, detail]) => (
+              <div key={term} className="sm:flex sm:gap-6">
+                <dt className="font-medium sm:w-[15rem] sm:shrink-0">{term}</dt>
+                <dd className="text-[15px] text-ink-2">{detail}</dd>
+              </div>
             ))}
-          </div>
+          </dl>
         </section>
 
         {/* FORM */}
-        <section id="form" className="scroll-mt-16 px-5 pt-[26px] pb-11">
-          <div className="mx-auto max-w-[600px] rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] px-5 py-6">
-            <h2 className="mb-1.5 text-[23px] font-extrabold tracking-[-0.7px] text-white">
-              Get your first week&rsquo;s plan — free.
-            </h2>
-            <p className="mb-[22px] text-[15px] text-muted-dim">
-              We&rsquo;ll send it on WhatsApp within 48 hours.
-            </p>
+        <section
+          id="form"
+          className={`${shellClass} scroll-mt-14 border-t border-rule py-14`}
+        >
+          <h2 className="text-[26px] font-semibold tracking-[-0.02em]">
+            Get your first week&rsquo;s plan — free.
+          </h2>
+          <p className="mt-2 max-w-[46ch] text-[15px] text-ink-2">
+            Six questions. We send the plan to your WhatsApp within 48 hours.
+          </p>
 
+          <div className="mt-8">
             <WaitlistForm />
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/[0.07]">
-        <div className="mx-auto flex max-w-[600px] flex-wrap justify-between gap-2 px-5 pt-[22px] pb-[34px] text-[12.5px] text-muted-dimmer">
-          <span>
-            <strong className="text-body">Qadam</strong> — a daily companion for
-            students figuring it out on their own.
-          </span>
+      <footer className="border-t border-rule">
+        <div
+          className={`${shellClass} flex flex-wrap justify-between gap-3 py-8 text-[13px] text-ink-3`}
+        >
+          <span>Qadam — a daily companion for students working it out alone.</span>
           <a href="mailto:hello@qadam.pk">hello@qadam.pk</a>
         </div>
       </footer>
-    </div>
+    </>
   );
 }

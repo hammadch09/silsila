@@ -65,7 +65,7 @@ const FIELDS: Field[] = [
 ];
 
 const controlClass =
-  "rounded-2xl border border-white/15 bg-white/5 px-3.5 py-3 font-sans text-base text-body";
+  "w-full border border-rule bg-paper px-3 py-2.5 font-sans text-[15px] text-ink focus:border-ink";
 
 type Status = "idle" | "submitting" | "done" | "already";
 
@@ -120,11 +120,13 @@ export function WaitlistForm() {
 
   if (status === "done" || status === "already") {
     return (
-      <div className="rounded-[18px] border border-accent/30 bg-accent/10 p-[22px]">
-        <p className="mb-1.5 text-lg font-extrabold text-white">
-          {status === "done" ? "You're on the list." : "You're already on the list."}
+      <div className="border-l-2 border-ink pl-5">
+        <p className="font-medium">
+          {status === "done"
+            ? "You're on the list."
+            : "You're already on the list."}
         </p>
-        <p className="text-[#a9c7b8]">
+        <p className="mt-1 max-w-[46ch] text-[15px] text-ink-2">
           {status === "done"
             ? "Check WhatsApp in the next 48 hours. Your first task will be short."
             : "We already have this number. Your first week is on its way."}
@@ -134,12 +136,12 @@ export function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-[15px]">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       {FIELDS.map((field) => (
-        <div key={field.id} className="flex flex-col gap-1.5">
+        <div key={field.id} className="flex flex-col gap-2">
           <label
             htmlFor={field.id}
-            className="text-[13px] font-bold text-label"
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3"
           >
             {field.label}
           </label>
@@ -183,23 +185,24 @@ export function WaitlistForm() {
         <p
           id="waitlist-error"
           role="alert"
-          className="-mt-2 text-[13.5px] text-danger"
+          className="-mt-2 border-l-2 border-ink pl-3 text-[14px]"
         >
           {error}
         </p>
       ) : null}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-1.5 cursor-pointer rounded-full border-none bg-accent px-[18px] py-[15px] font-sans text-base font-extrabold text-ink shadow-[0_10px_26px_rgba(78,240,140,0.2)] disabled:cursor-wait disabled:opacity-70"
-      >
-        {status === "submitting" ? "Sending…" : "Send me my first week"}
-      </button>
-
-      <p className="text-center text-[12.5px] text-muted-dimmer">
-        We&rsquo;ll only message you about this. No spam, no calls.
-      </p>
+      <div className="mt-1 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="cursor-pointer border-none bg-ink px-5 py-3 font-sans text-[15px] font-medium text-paper hover:bg-ink-2 disabled:cursor-wait disabled:opacity-60"
+        >
+          {status === "submitting" ? "Sending…" : "Send me my first week"}
+        </button>
+        <p className="text-[13px] text-ink-3">
+          We&rsquo;ll only message you about this. No spam, no calls.
+        </p>
+      </div>
     </form>
   );
 }

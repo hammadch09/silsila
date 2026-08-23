@@ -1,9 +1,7 @@
-const SHADES = [
-  "rgba(255,255,255,0.07)",
-  "rgba(78,240,140,0.28)",
-  "rgba(78,240,140,0.6)",
-  "#4ef08c",
-] as const;
+// Grey at rest, accent when there is work. The middle steps stay pale on
+// purpose — this is the one dense element on the page and a saturated grid
+// would shout over everything around it.
+const SHADES = ["#f2f2f2", "#dde5f8", "#a8c0f0", "#1a56db"] as const;
 
 export const HEATMAP_CELL_COUNT = 182;
 
@@ -19,10 +17,12 @@ export function buildHeatmapCells(count = HEATMAP_CELL_COUNT): string[] {
   for (let i = 0; i < count; i++) {
     seed = (seed * 1103515245 + 12345) % 2147483648;
     const r = seed / 2147483648;
-    const ramp = 0.25 + (i / count) * 0.6;
+    // Starts thin and thickens. Six months of showing up should be legible as
+    // a shape, not just a texture.
+    const ramp = 0.12 + (i / count) * 0.78;
 
     cells.push(
-      SHADES[r < ramp * 0.45 ? 3 : r < ramp * 0.8 ? 2 : r < ramp * 1.05 ? 1 : 0],
+      SHADES[r < ramp * 0.4 ? 3 : r < ramp * 0.72 ? 2 : r < ramp ? 1 : 0],
     );
   }
 

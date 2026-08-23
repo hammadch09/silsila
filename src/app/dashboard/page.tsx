@@ -6,6 +6,9 @@ import { prisma } from "@/lib/prisma";
 // works end to end. Put it behind auth before this is reachable in production.
 export const dynamic = "force-dynamic";
 
+const labelClass =
+  "font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3";
+
 export default async function Dashboard() {
   const [waitlistCount, tracks] = await Promise.all([
     prisma.waitlistEntry.count(),
@@ -19,60 +22,55 @@ export default async function Dashboard() {
   ]);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-10 px-6 py-16">
-      <header className="flex flex-col gap-2">
-        <h1 className="text-3xl font-extrabold tracking-tight text-white">
-          Dashboard
-        </h1>
-        <p className="text-sm text-muted-dimmer">
-          Reads from Postgres on every request.
-        </p>
-      </header>
+    <main className="mx-auto w-full max-w-[640px] flex-1 px-6 py-16">
+      <h1 className="text-[26px] font-semibold tracking-[-0.02em]">Dashboard</h1>
+      <p className="mt-2 text-[15px] text-ink-2">
+        Reads from Postgres on every request.
+      </p>
 
-      <section className="flex flex-col gap-2">
-        <h2 className="text-[11.5px] font-extrabold tracking-[1.6px] uppercase text-muted-darkest">
-          Waitlist
-        </h2>
-        <p className="text-4xl font-extrabold tabular-nums text-white">
+      <section className="mt-12 border-t border-rule pt-8">
+        <p className={labelClass}>Waitlist</p>
+        <p className="mt-3 font-mono text-[34px] tracking-[-0.02em] tabular-nums">
           {waitlistCount}
         </p>
-        <p className="text-sm text-muted-dimmer">
+        <p className="mt-1 text-[13px] text-ink-3">
           completed intake {waitlistCount === 1 ? "form" : "forms"}
         </p>
       </section>
 
-      <section className="flex flex-col gap-4">
-        <h2 className="text-[11.5px] font-extrabold tracking-[1.6px] uppercase text-muted-darkest">
-          Tracks
-        </h2>
+      <section className="mt-12 border-t border-rule pt-8">
+        <p className={labelClass}>Tracks</p>
 
         {tracks.length === 0 ? (
-          <p className="text-sm text-muted-dimmer">
-            No tracks yet. Run <code className="font-mono">npm run db:seed</code>.
+          <p className="mt-4 text-[15px] text-ink-2">
+            No tracks yet. Run <code className="font-mono">npm run db:seed</code>
+            .
           </p>
         ) : (
-          <ul className="flex flex-col gap-6">
+          <ul className="mt-5 flex flex-col gap-8">
             {tracks.map((track) => (
-              <li
-                key={track.id}
-                className="rounded-[18px] border border-white/[0.075] bg-white/[0.045] p-5"
-              >
-                <h3 className="font-bold text-white">{track.title}</h3>
-                <p className="mt-1 text-sm text-muted">{track.description}</p>
-                <p className="mt-2 text-xs text-muted-dimmer">
+              <li key={track.id}>
+                <p className="font-medium">{track.title}</p>
+                <p className="mt-1 max-w-[52ch] text-[15px] text-ink-2">
+                  {track.description}
+                </p>
+                <p className="mt-1 font-mono text-[11px] text-ink-3">
                   {track.tasks.length} tasks · {track._count.users} enrolled
                 </p>
 
-                <ol className="mt-4 flex flex-col gap-2">
+                <ol className="mt-4 border-t border-rule-soft">
                   {track.tasks.map((task) => (
-                    <li key={task.id} className="flex gap-3 text-sm">
-                      <span className="w-12 shrink-0 font-mono text-xs text-muted-darkest">
-                        Day {task.dayIndex}
+                    <li
+                      key={task.id}
+                      className="flex gap-4 border-b border-rule-soft py-2.5 text-[14px]"
+                    >
+                      <span className="w-12 shrink-0 font-mono text-[11px] text-ink-3 tabular-nums">
+                        {String(task.dayIndex).padStart(2, "0")}
                       </span>
-                      <span className="w-20 shrink-0 font-mono text-xs text-accent">
+                      <span className="w-[72px] shrink-0 font-mono text-[11px] tracking-[0.08em] text-accent">
                         {task.type}
                       </span>
-                      <span className="text-body-soft">{task.title}</span>
+                      <span>{task.title}</span>
                     </li>
                   ))}
                 </ol>
@@ -82,7 +80,7 @@ export default async function Dashboard() {
         )}
       </section>
 
-      <footer className="text-xs text-muted-darkest">
+      <footer className="mt-12 border-t border-rule pt-6 text-[13px] text-ink-3">
         <Link href="/">← Landing page</Link> ·{" "}
         <a href="/api/health">/api/health</a>
       </footer>
