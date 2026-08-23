@@ -19,9 +19,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Qadam — a 3-month plan, one task a day, graded",
+  title: "Qadam — roz ek kaam, aur koi poochne wala",
   description:
-    "You got the roadmap. You did three days. Nobody checked in on day four. Qadam writes you a 3-month plan, sends one small task a day, grades what you send back, and answers when you're stuck. On WhatsApp.",
+    "A 3-month plan. One 30-minute task a day. Graded, not ticked. All on WhatsApp. For computing students in Pakistan who got the roadmap and stopped on day four.",
 };
 
 export const viewport: Viewport = {

@@ -1,12 +1,6 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buildHeatmapCells } from "@/lib/profile-heatmap";
 
-const PROBLEMS = [
-  "Your syllabus is ten years behind the industry.",
-  "There's no one around you who's done what you want to do.",
-  "Plans are free. Following through alone is the part nobody helps with.",
-];
-
 const STEPS = [
   {
     title: "It builds the plan.",
@@ -112,67 +106,42 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* HERO */}
-        <section className={`${shellClass} pt-20 pb-16`}>
+        {/* HERO — the slogan first, then in one plain line what it actually
+            is, then the emotional beat. A student should be able to repeat the
+            first line to a friend without opening the page again. */}
+        <section className={`${shellClass} pt-20 pb-14`}>
           <p className={labelClass}>
             Early access · computing students · 100 places
           </p>
 
-          <h1 className="mt-6 text-[34px] leading-[1.15] font-semibold tracking-[-0.025em] sm:text-[42px]">
-            You&rsquo;ve asked ChatGPT what to do.
+          <h1 className="mt-6 text-[34px] leading-[1.12] font-semibold tracking-[-0.025em] sm:text-[44px]">
+            Roz ek kaam.
+            <br />
+            Aur koi poochne wala.
           </h1>
 
-          <p className="mt-5 max-w-[46ch] text-[17px] text-ink-2">
-            You got a roadmap. You did three days of it. Then the semester
-            happened. It&rsquo;s not that you&rsquo;re not serious —{" "}
-            <span className="text-ink">nobody checked in on day four.</span>
+          <p className="mt-6 max-w-[44ch] text-[18px]">
+            A 3-month plan. One 30-minute task a day. Graded, not ticked. All on
+            WhatsApp.
           </p>
 
-          <div className="mt-8 border-l-2 border-ink pl-5">
-            <p className="max-w-[46ch] text-[17px]">
-              Qadam does. It writes you a 3-month plan, sends one small task a
-              day, grades what you send back, and answers when you&rsquo;re
-              stuck. 30–45 minutes. All on WhatsApp.
-            </p>
-          </div>
+          <p className="mt-5 max-w-[46ch] text-[16px] text-ink-2">
+            You already got a roadmap from ChatGPT. You did three days of it,
+            then the semester happened. It&rsquo;s not that you&rsquo;re not
+            serious — <span className="text-ink">nobody asked on day four.</span>
+          </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
             <a
               href="#form"
-              className="inline-block bg-ink px-5 py-3 text-[15px] font-medium text-paper no-underline hover:bg-ink-2"
+              className="inline-block bg-ink px-6 py-3.5 text-[16px] font-medium text-paper no-underline hover:bg-ink-2"
             >
-              Get your first week
+              Get your first week — free
             </a>
             <span className="text-[14px] text-ink-3">
-              Free · no calls · takes a minute
+              No calls · takes a minute
             </span>
           </div>
-        </section>
-
-        {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
-        <section className={`${shellClass} border-t border-rule py-14`}>
-          <p className={labelClass}>What we promise</p>
-
-          <ul className="mt-5 flex flex-col gap-2 text-[17px] text-ink-3">
-            <li>We don&rsquo;t promise you a job.</li>
-            <li>We don&rsquo;t promise you&rsquo;ll start a company.</li>
-            <li>We don&rsquo;t promise you&rsquo;ll be in the top 1%.</li>
-          </ul>
-
-          <div className="mt-7 border-l-2 border-ink pl-5">
-            <p className="max-w-[48ch] text-[17px]">
-              What we promise is this. When you graduate, you will have
-              something to say. Something in your skill set. A profile
-              that&rsquo;s been worked on. Things you actually built. You will
-              not be starting from zero.
-            </p>
-          </div>
-
-          <p className="mt-5 max-w-[52ch] text-[13px] text-ink-3">
-            Every skills course sold to Pakistani students promises a job in
-            three months. You&rsquo;ve heard it before. We&rsquo;d rather
-            promise something we can keep.
-          </p>
         </section>
 
         {/* THE LOG — the product in five messages, no phone chrome. */}
@@ -240,22 +209,30 @@ export default function Home() {
           </p>
         </section>
 
-        {/* PROBLEM */}
+        {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
         <section className={`${shellClass} border-t border-rule py-14`}>
-          <p className={labelClass}>Why it stalls</p>
+          <p className={labelClass}>What we promise</p>
 
-          <ul className="mt-5">
-            {PROBLEMS.map((problem, index) => (
-              <li
-                key={problem}
-                className={`py-4 text-[17px] ${
-                  index === 0 ? "" : "border-t border-rule-soft"
-                }`}
-              >
-                {problem}
-              </li>
-            ))}
+          <ul className="mt-5 flex flex-col gap-2 text-[17px] text-ink-3">
+            <li>We don&rsquo;t promise you a job.</li>
+            <li>We don&rsquo;t promise you&rsquo;ll start a company.</li>
+            <li>We don&rsquo;t promise you&rsquo;ll be in the top 1%.</li>
           </ul>
+
+          <div className="mt-7 border-l-2 border-ink pl-5">
+            <p className="max-w-[48ch] text-[17px]">
+              What we promise is this. When you graduate, you will have
+              something to say. Something in your skill set. A profile
+              that&rsquo;s been worked on. Things you actually built. You will
+              not be starting from zero.
+            </p>
+          </div>
+
+          <p className="mt-5 max-w-[52ch] text-[13px] text-ink-3">
+            Every skills course sold to Pakistani students promises a job in
+            three months. You&rsquo;ve heard it before. We&rsquo;d rather
+            promise something we can keep.
+          </p>
         </section>
 
         {/* HOW */}
