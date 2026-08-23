@@ -27,10 +27,19 @@ npm run db:seed         # one track, seven tasks, one waitlist entry
 npm run dev
 ```
 
-Open http://localhost:3000. The home page reads from the database on every
-request, so an empty page means the seed did not run.
+Open http://localhost:3000 for the landing page. `/dashboard` reads from the
+database on every request — if it shows no tracks, the seed did not run.
 
 Sanity check: `curl localhost:3000/api/health` → `{"status":"ok","database":"up"}`.
+
+## Routes
+
+| Route | What it is |
+|---|---|
+| `/` | Landing page. Statically prerendered; the form is the only client component. |
+| `/dashboard` | Waitlist count + seeded tracks, straight from Postgres. **No auth yet.** |
+| `/api/waitlist` | `GET` count · `POST` validated intake |
+| `/api/health` | Database liveness |
 
 ## Scripts
 
@@ -56,14 +65,48 @@ prisma/
 prisma.config.ts       Prisma 7 config; loads .env, points at the seed script
 src/
   app/
-    page.tsx           server component reading from the DB
+    page.tsx           landing page (static)
+    layout.tsx         Manrope + the pre-hydration `data-js` flag
+    globals.css        palette tokens + base styles
+    dashboard/         DB-backed view
     api/health/        DB liveness check
     api/waitlist/      GET count, POST intake
+  components/
+    waitlist-form.tsx  the intake form (client)
+    reveal-on-scroll.tsx  one IntersectionObserver for the whole page
   lib/
     prisma.ts          PrismaClient singleton
     validation.ts      Zod intake schema + WhatsApp normalisation
+    profile-heatmap.ts deterministic sample contribution grid
   generated/prisma/    generated client — gitignored, rebuilt by `prisma generate`
 ```
+
+## Landing page notes
+
+Ported from the design artifact kept at `design/Qadam Landing.dc.html` (open it
+directly in a browser to compare). Inline styles became
+Tailwind utilities; the palette lives as `@theme` tokens in `globals.css`
+(`bg-ink`, `text-accent`, `text-muted`, …). It is **dark-only by design** —
+there is no light mode to maintain.
+
+**Base styles must stay inside `@layer base`.** Unlayered CSS outranks every
+`@layer utilities` rule no matter the specificity, so an unlayered
+`a { color: … }` beats `text-ink` and paints the CTA label the same green as
+the button behind it.
+
+**The form posts to `/api/waitlist`,** not a Google Sheet. Select options carry
+the Prisma enum values (`FIVE_TO_TEN`, `PHONE_ONLY`) so nothing is translated
+between the form and the database. A duplicate number returns 409 and is shown
+as "you're already on the list" rather than an error.
+
+**Numbers are Pakistani-only** — `03XXXXXXXXX` or `+923XXXXXXXXX`, validated on
+both sides and normalised to `+92…` before storage, so the same student typing
+`0321-1234567` and `+92 321 1234567` is one row.
+
+**Scroll reveal degrades safely.** Elements are hidden by CSS only under
+`html[data-js]`, which an inline script sets before first paint — so a visitor
+without JS gets the whole page instead of a blank one. That attribute is why
+`<html>` carries `suppressHydrationWarning`.
 
 ## Things worth knowing
 

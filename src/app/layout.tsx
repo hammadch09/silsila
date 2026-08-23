@@ -1,29 +1,46 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Qadam",
-  description: "One small step a day, with someone checking in on day four.",
+  title: "Qadam — one small task a day, checked by a real person",
+  description:
+    "You got the roadmap. You did three days. Nobody checked in on day four. That's the part we fix. 30–45 minutes a day, all on WhatsApp.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#05100c",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // suppressHydrationWarning covers exactly one thing: the `data-js`
+    // attribute the script below adds before React hydrates. Scoped to <html>
+    // itself, so mismatches anywhere else still surface.
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        {/* Marks JS as available before first paint, so reveal elements only
+            start hidden when something can reveal them. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.setAttribute('data-js','')`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-full flex-col bg-ink text-body">
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Qadam palette. Dark-only by design — this page has no light mode. */
+  --color-ink: #05100c;
+  --color-accent: #4ef08c;
+  --color-accent-soft: #9ff0c0;
+  --color-accent-hover: #8bffbb;
+
+  --color-body: #e8f2ec;
+  --color-body-soft: #cfdcd5;
+  --color-body-warm: #cfeadd;
+  --color-muted: #9db3a8;
+  --color-muted-dim: #8ba496;
+  --color-muted-dimmer: #7d968a;
+  --color-muted-darkest: #6f8a7d;
+  --color-label: #b7ccc0;
+  --color-danger: #ff9d7d;
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Everything below must sit in `base`. Unlayered rules outrank every
+   `@layer utilities` rule regardless of specificity, so an unlayered
+   `a { color }` would beat `text-ink` and paint the CTA text the same green
+   as the button behind it. */
+@layer base {
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 15.5px;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  input:focus,
+  select:focus,
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  input::placeholder {
+    color: #5d7a6d;
+  }
+
+  /* The dropdown list itself renders on a light background in most browsers. */
+  select option {
+    color: #0a1a14;
+  }
+
+  /* Scroll reveal. Elements start hidden only when JS is available to unhide
+     them, so a no-JS visitor sees the full page rather than a blank one. */
+  html[data-js] [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  html[data-js] [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html[data-js] [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 }

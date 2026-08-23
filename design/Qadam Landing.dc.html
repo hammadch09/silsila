@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#05100c; }
+  * { box-sizing:border-box; }
+  a { color:#4ef08c; }
+  a:hover { color:#8bffbb; }
+  input:focus, select:focus, button:focus-visible { outline:2px solid #4ef08c; outline-offset:2px; }
+  input::placeholder { color:#5d7a6d; }
+  select option { color:#0a1a14; }
+</style>
+</helmet>
+
+<div style="font-family:'Manrope',system-ui,sans-serif; color:#e8f2ec; line-height:1.6; font-size:15.5px; background:#05100c; position:relative; overflow:hidden;">
+
+  <div style="position:absolute; top:-160px; left:50%; transform:translateX(-50%); width:620px; height:620px; background:radial-gradient(circle, rgba(78,240,140,0.16) 0%, rgba(78,240,140,0) 68%); pointer-events:none;"></div>
+
+  <header style="position:sticky; top:0; z-index:9; padding:10px 16px; background:rgba(5,16,12,0.72); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-weight:800; font-size:16.5px; letter-spacing:-0.4px; color:#fff;">Qadam</span>
+    <a href="#form" style="background:#4ef08c; color:#05100c; text-decoration:none; font-size:13px; font-weight:800; padding:9px 16px; border-radius:999px;">Join waitlist</a>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative; padding:44px 20px 34px;">
+    <div style="max-width:600px; margin:0 auto;">
+      <div data-reveal="" style="display:inline-flex; align-items:center; gap:8px; padding:6px 12px 6px 8px; border:1px solid rgba(78,240,140,0.28); background:rgba(78,240,140,0.07); border-radius:999px; font-size:12px; font-weight:600; color:#9ff0c0; margin-bottom:20px;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#4ef08c; box-shadow:0 0 10px #4ef08c;"></span>
+        Early access · open to 100 students
+      </div>
+
+      <h1 data-reveal="" style="font-size:clamp(30px,8.4vw,44px); line-height:1.08; font-weight:800; letter-spacing:-1.4px; margin:0 0 16px; color:#fff;">
+        Har din ek chhota kaam — <span style="background:linear-gradient(96deg,#4ef08c,#9ff0c0); -webkit-background-clip:text; background-clip:text; color:transparent;">checked by a real person.</span>
+      </h1>
+      <p data-reveal="" style="margin:0 0 26px; font-size:17px; color:#9db3a8; max-width:38ch;">
+        You got the roadmap. You did three days. Nobody checked in on day four. That's the part we fix. 30–45 minutes a day, all on WhatsApp.
+      </p>
+      <div data-reveal="" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+        <a href="#form" style="display:inline-block; background:#4ef08c; color:#05100c; text-decoration:none; font-size:15.5px; font-weight:800; padding:14px 26px; border-radius:999px; box-shadow:0 10px 28px rgba(78,240,140,0.22);">Get your first week</a>
+        <span style="font-size:13px; color:#6f8a7d;">Free · no calls</span>
+      </div>
+
+      <!-- phone -->
+      <div data-reveal="" style="margin:36px auto 0; max-width:296px; background:linear-gradient(180deg,#0d1f18,#081611); border:1px solid rgba(255,255,255,0.09); border-radius:32px; padding:12px 12px 18px; box-shadow:0 30px 70px rgba(0,0,0,0.55);">
+        <div style="height:5px; width:64px; background:rgba(255,255,255,0.14); border-radius:99px; margin:0 auto 14px;"></div>
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <div style="align-self:flex-start; max-width:92%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); border-radius:16px 16px 16px 5px; padding:10px 12px; font-size:13px; line-height:1.5;">
+            <span style="display:block; font-weight:800; color:#4ef08c; font-size:11px; margin-bottom:3px; letter-spacing:0.3px;">QADAM · DAY 12</span>
+            Build a page that shows live currency rates. Deploy it. ~40 min.
+          </div>
+          <div style="align-self:flex-end; max-width:92%; background:rgba(78,240,140,0.14); border:1px solid rgba(78,240,140,0.22); border-radius:16px 16px 5px 16px; padding:10px 12px; font-size:13px; color:#d5f7e4;">
+            done — rates.netlify.app
+          </div>
+          <div style="align-self:flex-start; max-width:92%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); border-radius:16px 16px 16px 5px; padding:10px 12px; font-size:13px; line-height:1.5;">
+            Nice. Currency codes are hardcoded — swap them for the API list tomorrow. Added to your profile.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section style="padding:28px 20px;">
+    <div style="max-width:600px; margin:0 auto;">
+      <p data-reveal="" style="margin:0 0 16px; font-size:11.5px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; color:#6f8a7d;">Why it stalls</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div data-reveal="" style="background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.075); border-radius:18px; padding:17px 19px; font-size:16px;">Your syllabus is ten years behind the industry.</div>
+        <div data-reveal="" style="background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.075); border-radius:18px; padding:17px 19px; font-size:16px;">There's no one around you who's done what you want to do.</div>
+        <div data-reveal="" style="background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.075); border-radius:18px; padding:17px 19px; font-size:16px;">Plans are free. Following through alone is the part nobody helps with.</div>
+      </div>
+      <p data-reveal="" style="margin:18px 0 0; font-size:16.5px; font-weight:600; color:#9ff0c0;">It's not that you're not serious. Nobody checked in on day four.</p>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section style="padding:26px 20px;">
+    <div style="max-width:600px; margin:0 auto;">
+      <p data-reveal="" style="margin:0 0 18px; font-size:11.5px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; color:#6f8a7d;">How it works</p>
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div data-reveal="" style="display:flex; gap:14px;">
+          <span style="flex:0 0 auto; width:32px; height:32px; border-radius:12px; background:rgba(78,240,140,0.14); border:1px solid rgba(78,240,140,0.3); color:#4ef08c; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;">1</span>
+          <p style="margin:0; color:#9db3a8;"><strong style="color:#fff;">One small task a day.</strong> 30–45 minutes. Skill work, a talk worth watching, something small to build, a message to send.</p>
+        </div>
+        <div data-reveal="" style="display:flex; gap:14px;">
+          <span style="flex:0 0 auto; width:32px; height:32px; border-radius:12px; background:rgba(78,240,140,0.14); border:1px solid rgba(78,240,140,0.3); color:#4ef08c; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;">2</span>
+          <p style="margin:0; color:#9db3a8;"><strong style="color:#fff;">You show your work.</strong> A link, a screenshot, three lines. Someone actually looks at it.</p>
+        </div>
+        <div data-reveal="" style="display:flex; gap:14px;">
+          <span style="flex:0 0 auto; width:32px; height:32px; border-radius:12px; background:rgba(78,240,140,0.14); border:1px solid rgba(78,240,140,0.3); color:#4ef08c; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;">3</span>
+          <p style="margin:0; color:#9db3a8;"><strong style="color:#fff;">It piles up.</strong> Every task adds to a profile you can send to an employer. In two years it's unrecognisable.</p>
+        </div>
+      </div>
+
+      <!-- profile bento -->
+      <div data-reveal="" style="margin-top:24px; background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03)); border:1px solid rgba(255,255,255,0.09); border-radius:22px; padding:18px; backdrop-filter:blur(8px);">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px;">
+          <div>
+            <p style="margin:0 0 2px; font-size:14.5px; font-weight:800; color:#fff;">qadam.pk/ayesha-r</p>
+            <p style="margin:0; font-size:12.5px; color:#7d968a;">Semester 5 · Computer Science · Bahawalpur</p>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:#4ef08c; border:1px solid rgba(78,240,140,0.3); border-radius:999px; padding:4px 10px; white-space:nowrap;">live</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(26,1fr); gap:3px;">
+          <sc-for list="{{ cells }}" as="cell" hint-placeholder-count="182">
+            <div style="aspect-ratio:1; border-radius:2px; background:{{ cell.bg }};"></div>
+          </sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:12px 10px; text-align:center;">
+            <p style="margin:0; font-size:21px; font-weight:800; color:#fff; letter-spacing:-0.6px;">148</p>
+            <p style="margin:0; font-size:11.5px; color:#7d968a;">tasks done</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:12px 10px; text-align:center;">
+            <p style="margin:0; font-size:21px; font-weight:800; color:#fff; letter-spacing:-0.6px;">9</p>
+            <p style="margin:0; font-size:11.5px; color:#7d968a;">things built</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:12px 10px; text-align:center;">
+            <p style="margin:0; font-size:21px; font-weight:800; color:#fff; letter-spacing:-0.6px;">31</p>
+            <p style="margin:0; font-size:11.5px; color:#7d968a;">reviews</p>
+          </div>
+        </div>
+        <p style="margin:14px 0 0; font-size:12.5px; color:#7d968a;">This is what you send an employer instead of a blank one-page CV.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TASKS -->
+  <section style="padding:26px 20px;">
+    <div style="max-width:600px; margin:0 auto;">
+      <p data-reveal="" style="margin:0 0 14px; font-size:11.5px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; color:#6f8a7d;">Real tasks</p>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <div data-reveal="" style="display:flex; gap:11px; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:14px 16px; font-size:15px; color:#cfdcd5;"><span style="color:#4ef08c; font-weight:800; font-size:13px; line-height:1.6;">↳</span><span>Complete section 4 of the JavaScript course. Push your solutions to GitHub.</span></div>
+        <div data-reveal="" style="display:flex; gap:11px; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:14px 16px; font-size:15px; color:#cfdcd5;"><span style="color:#4ef08c; font-weight:800; font-size:13px; line-height:1.6;">↳</span><span>Watch this 18-minute talk on how Careem was built. Write 3 lines on what surprised you.</span></div>
+        <div data-reveal="" style="display:flex; gap:11px; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:14px 16px; font-size:15px; color:#cfdcd5;"><span style="color:#4ef08c; font-weight:800; font-size:13px; line-height:1.6;">↳</span><span>Build a page that shows live currency rates. Deploy it.</span></div>
+        <div data-reveal="" style="display:flex; gap:11px; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:14px 16px; font-size:15px; color:#cfdcd5;"><span style="color:#4ef08c; font-weight:800; font-size:13px; line-height:1.6;">↳</span><span>Rewrite your LinkedIn headline. Three examples inside.</span></div>
+        <div data-reveal="" style="display:flex; gap:11px; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:14px 16px; font-size:15px; color:#cfdcd5;"><span style="color:#4ef08c; font-weight:800; font-size:13px; line-height:1.6;">↳</span><span>Message one senior working in the field you want. Template provided.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASSURANCE -->
+  <section style="padding:26px 20px;">
+    <div data-reveal="" style="max-width:600px; margin:0 auto; border:1px solid rgba(78,240,140,0.22); background:rgba(78,240,140,0.06); border-radius:22px; padding:22px; display:flex; flex-direction:column; gap:13px; font-size:15.5px; color:#cfeadd;">
+      <p style="margin:0;">No streaks to lose. Miss a week for exams — come back, we'll pick a lighter task.</p>
+      <p style="margin:0;">Free while we're in early access.</p>
+      <p style="margin:0;">Works on your phone. Everything runs through WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="form" style="padding:26px 20px 44px;">
+    <div style="max-width:600px; margin:0 auto; background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03)); border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:24px 20px;">
+      <h2 style="margin:0 0 6px; font-size:23px; font-weight:800; letter-spacing:-0.7px; color:#fff;">Get your first week's plan — free.</h2>
+      <p style="margin:0 0 22px; color:#8ba496; font-size:15px;">We'll send it on WhatsApp within 48 hours.</p>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:rgba(78,240,140,0.1); border:1px solid rgba(78,240,140,0.3); border-radius:18px; padding:22px;">
+          <p style="margin:0 0 6px; font-weight:800; font-size:18px; color:#fff;">You're on the list.</p>
+          <p style="margin:0; color:#a9c7b8;">Check WhatsApp in the next 48 hours. Your first task will be short.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ handleSubmit }}" style="display:flex; flex-direction:column; gap:15px;">
+        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="7">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <label for="{{ f.id }}" style="font-size:13px; font-weight:700; color:#b7ccc0;">{{ f.label }}</label>
+            <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}">
+              <select id="{{ f.id }}" name="{{ f.id }}" required="{{ f.required }}" value="{{ f.value }}" onChange="{{ onChange }}" style="padding:13px 14px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; font-size:16px; font-family:inherit; background:rgba(255,255,255,0.05); color:#e8f2ec;">
+                <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="4">
+                  <option value="{{ o.value }}">{{ o.label }}</option>
+                </sc-for>
+              </select>
+            </sc-if>
+            <sc-if value="{{ f.isInput }}" hint-placeholder-val="{{ true }}">
+              <input id="{{ f.id }}" name="{{ f.id }}" type="{{ f.type }}" required="{{ f.required }}" placeholder="{{ f.placeholder }}" value="{{ f.value }}" onChange="{{ onChange }}" style="padding:13px 14px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; font-size:16px; font-family:inherit; background:rgba(255,255,255,0.05); color:#e8f2ec;" />
+            </sc-if>
+          </div>
+        </sc-for>
+        <sc-if value="{{ whatsappError }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:-8px 0 0; font-size:13.5px; color:#ff9d7d;">{{ whatsappError }}</p>
+        </sc-if>
+        <button type="submit" style="margin-top:6px; background:#4ef08c; color:#05100c; border:none; padding:15px 18px; border-radius:999px; font-size:16px; font-weight:800; font-family:inherit; cursor:pointer; box-shadow:0 10px 26px rgba(78,240,140,0.2);">Send me my first week</button>
+        <p style="margin:0; font-size:12.5px; color:#7d968a; text-align:center;">We'll only message you about this. No spam, no calls.</p>
+      </form>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,0.07);">
+    <div style="max-width:600px; margin:0 auto; padding:22px 20px 34px; display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; font-size:12.5px; color:#7d968a;">
+      <span><strong style="color:#e8f2ec;">Qadam</strong> — a daily companion for students figuring it out on their own.</span>
+      <a href="mailto:hello@qadam.pk">hello@qadam.pk</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Configure your intake endpoint here (Google Sheets web app / Formspree URL).
+const FORM_ENDPOINT = "https://example.com/REPLACE_WITH_YOUR_ENDPOINT";
+const ok = v => /^(03\d{9}|\+923\d{9})$/.test(v.replace(/[\s-]/g, ""));
+
+const SHADES = ["rgba(255,255,255,0.07)", "rgba(78,240,140,0.28)", "rgba(78,240,140,0.6)", "#4ef08c"];
+const CELLS = (() => {
+  const out = []; let seed = 7;
+  for (let i = 0; i < 182; i++) {
+    seed = (seed * 1103515245 + 12345) % 2147483648;
+    const r = seed / 2147483648, ramp = 0.25 + (i / 182) * 0.6;
+    out.push({ bg: SHADES[r < ramp * 0.45 ? 3 : r < ramp * 0.8 ? 2 : r < ramp * 1.05 ? 1 : 0] });
+  }
+  return out;
+})();
+
+const FIELD_DEFS = [
+  { id: "university", label: "University", type: "text", required: true },
+  { id: "department", label: "Department", type: "text", required: true },
+  { id: "semester", label: "Semester", required: true, options: ["1","2","3","4","5","6","7","8"] },
+  { id: "goal", label: "What do you want to do after you graduate?", type: "text", placeholder: "Not sure yet — that's fine, say that" },
+  { id: "hours", label: "Hours a week you can realistically give", required: true, options: ["3–5","5–10","10+"] },
+  { id: "laptop", label: "Laptop access", required: true, options: ["Yes","Sometimes","Phone only"] },
+  { id: "whatsapp", label: "WhatsApp number", type: "tel", required: true, placeholder: "03XXXXXXXXX" }
+];
+
+class Component extends DCLogic {
+  state = { form: {}, whatsappError: "", submitted: false };
+
+  componentDidMount() {
+    // Cheap scroll reveal: no library, one observer, transform + opacity only.
+    const nodes = document.querySelectorAll("[data-reveal]");
+    if (!("IntersectionObserver" in window)) return;
+    nodes.forEach(n => {
+      n.style.opacity = "0";
+      n.style.transform = "translateY(12px)";
+      n.style.transition = "opacity .5s ease, transform .5s ease";
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = "1";
+          e.target.style.transform = "none";
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    nodes.forEach(n => io.observe(n));
+    this._io = io;
+  }
+
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+
+  onChange = (e) => {
+    const { name, value } = e.target;
+    this.setState(s => ({ form: { ...s.form, [name]: value }, whatsappError: name === "whatsapp" ? "" : s.whatsappError }));
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = this.state.form;
+    if (!ok(form.whatsapp || "")) {
+      this.setState({ whatsappError: "Enter a valid Pakistani number: 03XXXXXXXXX or +923XXXXXXXXX." });
+      return;
+    }
+    try {
+      await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
+    } catch (err) {}
+    this.setState({ submitted: true });
+  };
+
+  renderVals() {
+    const fields = FIELD_DEFS.map(f => ({
+      ...f,
+      isSelect: !!f.options, isInput: !f.options, required: !!f.required,
+      type: f.type || "text", placeholder: f.placeholder || "",
+      value: this.state.form[f.id] || "",
+      options: f.options ? [{ value: "", label: "Select" }].concat(f.options.map(o => ({ value: o, label: o }))) : []
+    }));
+    return {
+      cells: CELLS, fields,
+      onChange: this.onChange, handleSubmit: this.handleSubmit,
+      whatsappError: this.state.whatsappError,
+      submitted: this.state.submitted, notSubmitted: !this.state.submitted
+    };
+  }
+}
+</script>
+</body>
+</html>
