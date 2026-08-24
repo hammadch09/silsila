@@ -23,6 +23,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  // Without this the OG image resolves against localhost in production and the
+  // WhatsApp link preview silently breaks — which is the one preview that
+  // matters most here.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  ),
   title: "Silsila — roz ek kaam, aur koi poochne wala",
   description:
     "A 3-month plan. One 30-minute task a day. Graded, not ticked. All on WhatsApp. For computing students in Pakistan who got the roadmap and stopped on day four.",

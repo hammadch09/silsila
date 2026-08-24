@@ -27,8 +27,8 @@ npm run db:seed         # one track, seven tasks, one waitlist entry
 npm run dev
 ```
 
-Open http://localhost:3000 for the landing page. `/dashboard` reads from the
-database on every request — if it shows no tracks, the seed did not run.
+Open http://localhost:3000 for the landing page, and `/admin` for the waitlist
+dashboard — it asks for `ADMIN_PASSWORD` from your `.env`.
 
 Sanity check: `curl localhost:3000/api/health` → `{"status":"ok","database":"up"}`.
 
@@ -37,7 +37,8 @@ Sanity check: `curl localhost:3000/api/health` → `{"status":"ok","database":"u
 | Route | What it is |
 |---|---|
 | `/` | Landing page. Statically prerendered; the form is the only client component. |
-| `/dashboard` | Waitlist count + seeded tracks, straight from Postgres. **No auth yet.** |
+| `/admin` | Waitlist dashboard. Password-gated. |
+| `/admin/login` | The only unauthenticated page under `/admin`. |
 | `/api/waitlist` | `GET` count · `POST` validated intake |
 | `/api/health` | Database liveness |
 
@@ -68,7 +69,7 @@ src/
     page.tsx           landing page (static)
     layout.tsx         IBM Plex Sans + Mono
     globals.css        palette tokens + base styles
-    dashboard/         DB-backed view
+    admin/             password-gated waitlist dashboard
     api/health/        DB liveness check
     api/waitlist/      GET count, POST intake
   components/
@@ -115,6 +116,19 @@ as "you're already on the list" rather than an error.
 **Numbers are Pakistani-only** — `03XXXXXXXXX` or `+923XXXXXXXXX`, validated on
 both sides and normalised to `+92…` before storage, so the same student typing
 `0321-1234567` and `+92 321 1234567` is one row.
+
+## Admin
+
+`/admin` lists every intake, filters by stage, and turns each number into a
+WhatsApp link with the first line already typed — Phase 0/1 runs by hand over
+WhatsApp, so that is the button that matters. Stage moves PENDING → PLAN_SENT →
+ACTIVATED, or DROPPED.
+
+Auth is one shared password in `ADMIN_PASSWORD`, checked in `src/middleware.ts`
+so anything added under `/admin` is protected by default rather than protected
+only if someone remembers. The cookie holds a SHA-256 of the password, not the
+password, and is httpOnly. **Replace this the moment a second person needs
+access, or the moment the dashboard can delete anything.**
 
 ## Things worth knowing
 
