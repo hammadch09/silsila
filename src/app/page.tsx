@@ -1,4 +1,5 @@
 import { SilsilaLockup, SilsilaMark } from "@/components/logo";
+import { HeroVisual } from "@/components/hero-visual";
 import { PlanVsReality } from "@/components/plan-vs-reality";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -96,11 +97,24 @@ export default function Home() {
             Early access · computing students · 100 places
           </p>
 
+          {/* The name is the thesis, so the headline uses it as a verb. "Koi
+              poochne wala" was a complaint — the phrase Urdu speakers use for
+              nobody-cares-about-me — which is the wrong register for a product
+              that refuses to shame anyone. "Silsila chalta rahe" is what you
+              say when you want a good thing to keep going. */}
           <h1 className="mt-7 text-[40px] sm:text-[58px] lg:text-[68px]">
             Roz ek kaam.
             <br />
-            Aur koi <span className="text-accent">poochne wala.</span>
+            <span className="text-accent">Silsila</span> chalta rahe.
           </h1>
+
+          <p className="mt-6 max-w-[52ch] text-[15px] text-ink-3">
+            <span className="font-mono text-[13px] tracking-[0.04em] text-ink-2">
+              silsila
+            </span>{" "}
+            (سلسلہ) — an unbroken chain. One thing after another, without a
+            break. That&rsquo;s the entire product.
+          </p>
 
           <div className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
@@ -151,66 +165,11 @@ export default function Home() {
               </dl>
             </div>
 
-            {/* The log explains the product faster than any paragraph. */}
+            {/* The product as an object, not a description: the chat on a
+                phone, the grade and the filling grid floating off it. */}
             <div className="lg:col-span-5">
-              <p className={labelClass}>A day on Silsila</p>
-
-              <div className="mt-5 overflow-hidden rounded-2xl bg-raised shadow-[var(--shadow-card)]">
-                <div className="border-b border-rule px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
-                    SILSILA · DAY 12
-                  </p>
-                  <p className="mt-2 text-[15px]">
-                    Build a page that fetches live currency rates. Deploy it.
-                    ~40 min.
-                  </p>
-                </div>
-
-                {/* Urdu in, plain English out — product.md §Language. */}
-                <div className="border-b border-rule bg-surface px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-ink-3">
-                    YOU
-                  </p>
-                  <p className="mt-2 text-[15px]">
-                    agar API down ho jaye to kya karun?
-                  </p>
-                </div>
-
-                <div className="border-b border-rule px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
-                    SILSILA
-                  </p>
-                  <p className="mt-2 text-[15px]">
-                    Show the last rate you saved, with the time you saved it.
-                    Then a short line: &ldquo;Could not update just now.&rdquo;
-                    That is what a real app does.
-                  </p>
-                </div>
-
-                <div className="border-b border-rule bg-surface px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-ink-3">
-                    YOU
-                  </p>
-                  <p className="mt-2 text-[15px]">done — rates.netlify.app</p>
-                </div>
-
-                <div className="px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
-                    SILSILA · GRADED 4/5
-                  </p>
-                  <p className="mt-2 text-[15px]">
-                    <span className="text-ink-3">Good —</span> it&rsquo;s
-                    deployed, and you handled the offline case.
-                  </p>
-                  <p className="mt-1.5 text-[15px]">
-                    <span className="text-ink-3">Fix next time —</span> your
-                    currency codes are hardcoded. Pull them from the API&rsquo;s
-                    own list.
-                  </p>
-                </div>
-              </div>
-
-              <p className="mt-4 text-[13px] text-ink-3">
+              <HeroVisual />
+              <p className="mt-8 text-center text-[13px] text-ink-3">
                 Graded, not marked done by you. A checkbox teaches nothing and
                 can be lied to.
               </p>
@@ -436,7 +395,11 @@ export default function Home() {
         </section>
 
         {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
-        <section className="bg-deep py-32 text-paper">
+        <section className="relative overflow-hidden bg-deep py-32 text-paper">
+          <div
+            aria-hidden
+            className="absolute -top-1/3 left-1/2 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(33,88,208,0.35),transparent_70%)]"
+          />
           <div className={shellClass}>
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">

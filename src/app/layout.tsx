@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
-  title: "Silsila — roz ek kaam, aur koi poochne wala",
+  title: "Silsila — roz ek kaam, silsila chalta rahe",
   description:
-    "A 3-month plan. One 30-minute task a day. Graded, not ticked. All on WhatsApp. For computing students in Pakistan who got the roadmap and stopped on day four.",
+    "Silsila (سلسلہ) means an unbroken chain. A 3-month plan, one 30-minute task a day, graded — for computing students in Pakistan who got the roadmap and stopped on day four.",
 };
 
 export const viewport: Viewport = {
