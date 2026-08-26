@@ -1,4 +1,5 @@
 import { SilsilaLockup, SilsilaMark } from "@/components/logo";
+import { PlanVsReality } from "@/components/plan-vs-reality";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { WeekStrip } from "@/components/week-strip";
@@ -217,8 +218,44 @@ export default function Home() {
           </div>
         </section>
 
-        {/* A WEEK — stays on cream so the task-type colours keep the surface
-            they were validated against. */}
+        {/* THE PROBLEM — named before anything is sold. The grid here is the
+            same one that closes the page as six months of finished work, so
+            the reader meets the shape at its worst and recognises it at its
+            best. */}
+        <section className={`${shellClass} py-28`}>
+          <p className={labelClass}>Why plans die</p>
+
+          <h2 className={`mt-6 max-w-[20ch] ${headingClass}`}>
+            You&rsquo;ve made this plan before.
+          </h2>
+
+          <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <p className="max-w-[52ch] text-[18px] text-ink-2 lg:col-span-7">
+              Maybe in first semester. Maybe last week. You wrote it down, you
+              were serious, and you meant every line of it. You were not being
+              lazy — you were being{" "}
+              <span className="text-ink">a person with a life</span>.
+            </p>
+            <p className="max-w-[46ch] text-[16px] text-ink-2 lg:col-span-5">
+              Four years of starting over is a degree, a blank CV, and the
+              belief that it was your fault. It wasn&rsquo;t. Consistency
+              isn&rsquo;t a personality trait you were born without — it&rsquo;s
+              a thing other people have help with.
+            </p>
+          </div>
+
+          <div className="mt-16">
+            <PlanVsReality />
+          </div>
+
+          <p className="mt-16 max-w-[26ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[32px]">
+            The plan was never the hard part.{" "}
+            <span className="text-accent">Day four was.</span>
+          </p>
+        </section>
+
+        {/* A WEEK — the task-type colours keep the light surface they were
+            validated against. */}
         <section className="py-28">
           <div className={shellClass}>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -243,7 +280,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* THE MIX — the chart section, on the validated cream surface. */}
+        {/* THE MIX — the chart section, on the validated light surface. */}
         <section className={`${shellClass} py-20`}>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -294,8 +331,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TIMELINE — full-bleed pine. No chart colours here, so a dark field
-            is free. */}
+        {/* TIMELINE */}
         <section className="py-28">
           <div className={shellClass}>
             <p className={labelClass}>
