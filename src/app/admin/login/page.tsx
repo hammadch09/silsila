@@ -13,7 +13,7 @@ export default function AdminLogin() {
       <div className="w-full max-w-[360px]">
         <SilsilaMark className="h-8 w-8" />
 
-        <h1 className="mt-6 text-[32px] leading-none font-bold tracking-[-0.03em]">
+        <h1 className="mt-6 text-[30px] leading-none font-semibold tracking-[-0.025em]">
           Admin
         </h1>
 
@@ -32,14 +32,14 @@ export default function AdminLogin() {
             autoFocus
             autoComplete="current-password"
             aria-describedby={error ? "login-error" : undefined}
-            className="w-full border-2 border-ink bg-paper px-3.5 py-3 font-sans text-[16px]"
+            className="w-full rounded-lg border border-rule bg-raised px-3.5 py-2.5 font-sans text-[15px] text-ink shadow-[0_1px_2px_rgba(13,17,23,0.04)] focus:border-accent"
           />
 
           {error ? (
             <p
               id="login-error"
               role="alert"
-              className="border-l-[6px] border-marigold pl-3 text-[14px] font-medium"
+              className="rounded-lg bg-accent-soft px-3 py-2 text-[14px] text-accent"
             >
               {error}
             </p>
@@ -48,7 +48,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={pending}
-            className="mt-2 cursor-pointer border-2 border-ink bg-marigold px-6 py-3.5 text-[16px] font-semibold text-ink shadow-[5px_5px_0_0_var(--color-ink)] disabled:cursor-wait disabled:opacity-60"
+            className="mt-2 cursor-pointer rounded-xl border-none bg-accent px-6 py-3.5 text-[16px] font-medium text-white shadow-[var(--shadow-card)] transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-60"
           >
             {pending ? "Checking…" : "Open dashboard"}
           </button>

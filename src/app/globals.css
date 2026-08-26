@@ -1,32 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cream, ink, and two loud colours used at full-bleed scale.
-     The previous versions treated colour as an accent on a white page, which
-     is what every other site does. Here colour is the surface: whole sections
-     are marigold or pine, and the page is read as a sequence of fields. */
-  --color-paper: #fffaf0;
-  --color-surface: #fbf0dc;
+  /* Calm base, contained colour.
+     The previous system made whole sections marigold and pine — colour as the
+     surface. That reads loud and hand-made. Here the page is a quiet near-white
+     and colour lives inside things: a chart, a status dot, one accent. Depth
+     comes from soft shadow and hairline, not from 2px outlines. */
+  --color-paper: #fbfbfd;
+  --color-surface: #f4f5f8;
   --color-raised: #ffffff;
 
-  --color-ink: #16130e;
-  --color-ink-2: #4a4238;
-  --color-ink-3: #6f6558;
+  --color-ink: #0d1117;
+  --color-ink-2: #4a5261;
+  --color-ink-3: #7c8598;
 
-  --color-rule: #e6dcc7;
-  --color-rule-soft: #f0e8d8;
+  --color-rule: #e5e8ee;
+  --color-rule-soft: #eef0f4;
 
-  /* Marigold. Genda — the flower at every event in the subcontinent — and
-     nowhere near the palette any other edtech product reaches for. */
+  /* One accent. On a calm page it does not need to shout to be seen. */
+  --color-accent: #2158d0;
+  --color-accent-soft: #eaf0fd;
+
+  /* Kept as tokens because the task-type colours and the logo still use them,
+     but no longer used as page backgrounds. */
   --color-marigold: #ff7a00;
+  --color-deep: #0d1117;
 
-  /* Pine. The cool counterweight; keeps the marigold from reading as a
-     warning colour. */
-  --color-pine: #123f39;
-
-  --font-display: var(--font-bricolage), system-ui, sans-serif;
-  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-schibsted), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Soft, layered, low-opacity. A single hard offset shadow was the most
+     brutalist thing on the page. */
+  --shadow-card:
+    0 1px 2px rgba(13, 17, 23, 0.04), 0 8px 24px -8px rgba(13, 17, 23, 0.08);
+  --shadow-lift:
+    0 1px 2px rgba(13, 17, 23, 0.05), 0 20px 48px -16px rgba(13, 17, 23, 0.14);
 }
 
 @layer base {
@@ -37,34 +45,25 @@
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Display type is set heavy, huge and tight. Bricolage has real width and
-     weight range — using the middle of it would waste the face. */
   h1,
   h2 {
-    font-family: var(--font-display);
-    /* 700, not 800. At 800 Bricolage's lowercase y straightens until "days"
-       reads as "daus" at display size — checked in a render, not guessed. */
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    /* Not tighter than this. An inline background box is as tall as the font's
-       content area (~1.15em) no matter the line-height, so at 0.97 the .mark
-       block on one line paints straight over the descenders of the line above
-       — "days" rendered as "daus". Caught in a screenshot, not in the code. */
-    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
   }
 
   a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-thickness: 2px;
-    text-decoration-color: var(--color-marigold);
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentColor 25%, transparent);
   }
 
   a:hover {
@@ -72,8 +71,8 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-marigold);
-    outline-offset: 3px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 
   input::placeholder {
@@ -88,27 +87,15 @@
 }
 
 @layer components {
-  /* Marker highlight. A painted block behind a phrase, sitting slightly
-     proud of the text and tucked behind the descenders. */
+  /* Emphasis, quietly. A soft tinted field behind the phrase instead of a
+     block of solid orange. */
   .mark {
-    background: var(--color-marigold);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-    padding: 0 0.16em;
+    border-radius: 4px;
+    padding: 0.02em 0.14em;
     margin: 0 -0.04em;
-  }
-
-  /* The one repeating motif: a row of marigold dots, one per day. Used as a
-     section rule so the "one small thing, every day" idea is present even
-     where nothing says it. */
-  .dot-rule {
-    height: 6px;
-    background-image: radial-gradient(
-      circle,
-      var(--color-marigold) 42%,
-      transparent 44%
-    );
-    background-size: 18px 6px;
-    background-repeat: repeat-x;
   }
 }

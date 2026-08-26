@@ -71,9 +71,9 @@ export default async function AdminDashboard({
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <header className="border-b-2 border-ink bg-marigold">
+      <header className="border-b border-rule bg-raised">
         <div className="mx-auto flex h-14 w-full max-w-[1400px] items-center justify-between px-6">
-          <SilsilaLockup markClassName="h-[22px] w-[22px]" mono />
+          <SilsilaLockup markClassName="h-[22px] w-[22px]" />
           <div className="flex items-center gap-5">
             <Link
               href="/"
@@ -84,7 +84,7 @@ export default async function AdminDashboard({
             <form action={logOut}>
               <button
                 type="submit"
-                className="cursor-pointer border-none bg-transparent p-0 font-mono text-[11px] tracking-[0.14em] uppercase underline decoration-ink underline-offset-4"
+                className="cursor-pointer border-none bg-transparent p-0 font-mono text-[11px] tracking-[0.14em] uppercase underline underline-offset-4"
               >
                 Log out
               </button>
@@ -94,7 +94,7 @@ export default async function AdminDashboard({
       </header>
 
       <main className="mx-auto w-full max-w-[1400px] flex-1 px-6 py-10">
-        <h1 className="text-[32px] leading-none font-bold tracking-[-0.03em]">
+        <h1 className="text-[30px] leading-none font-semibold tracking-[-0.025em]">
           Waitlist
         </h1>
 
@@ -123,7 +123,7 @@ export default async function AdminDashboard({
           <div className="mt-8 overflow-x-auto">
             <table className="w-full min-w-[1080px] border-collapse text-[14px]">
               <thead>
-                <tr className="border-b-2 border-ink text-left">
+                <tr className="border-b border-ink text-left">
                   {[
                     "Joined",
                     "WhatsApp",
@@ -187,7 +187,7 @@ export default async function AdminDashboard({
                           name="status"
                           defaultValue={entry.status}
                           aria-label={`Stage for ${entry.whatsapp}`}
-                          className="border-2 border-ink bg-paper px-2 py-1.5 font-sans text-[13px]"
+                          className="rounded-lg border border-rule bg-raised px-2.5 py-1.5 font-sans text-[13px]"
                         >
                           {STATUS_ORDER.map((status) => (
                             <option key={status} value={status}>
@@ -197,7 +197,7 @@ export default async function AdminDashboard({
                         </select>
                         <button
                           type="submit"
-                          className="cursor-pointer border-2 border-ink bg-marigold px-3 py-1.5 font-mono text-[11px] tracking-[0.1em] uppercase"
+                          className="cursor-pointer rounded-lg bg-ink px-3.5 py-1.5 text-[13px] font-medium text-paper hover:bg-accent"
                         >
                           Save
                         </button>
@@ -234,11 +234,13 @@ function FilterTile({
   return (
     <Link
       href={href}
-      className={`min-w-[7.5rem] border-2 px-4 py-3 no-underline ${
-        active ? "border-ink bg-ink text-paper" : "border-ink bg-paper"
+      className={`min-w-[7.5rem] rounded-xl border px-4 py-3 no-underline shadow-[var(--shadow-card)] ${
+        active
+          ? "border-ink bg-ink text-paper"
+          : "border-rule bg-raised hover:border-ink-3"
       }`}
     >
-      <span className="block text-[26px] leading-none font-bold tabular-nums">
+      <span className="block text-[24px] leading-none font-semibold tabular-nums">
         {count}
       </span>
       <span

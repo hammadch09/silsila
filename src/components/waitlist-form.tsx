@@ -89,7 +89,7 @@ const FIELDS: Field[] = [
 ];
 
 const controlClass =
-  "w-full border-2 border-ink bg-paper px-3.5 py-3 font-sans text-[16px] text-ink";
+  "w-full rounded-lg border border-rule bg-raised px-3.5 py-2.5 font-sans text-[15px] text-ink shadow-[0_1px_2px_rgba(13,17,23,0.04)] focus:border-accent";
 
 type Status = "idle" | "submitting" | "done" | "already";
 
@@ -151,8 +151,8 @@ export function WaitlistForm() {
 
   if (status === "done" || status === "already") {
     return (
-      <div className="border-l-[6px] border-marigold pl-6">
-        <p className="text-[28px] font-extrabold tracking-[-0.03em]">
+      <div className="rounded-xl border border-accent bg-accent-soft p-6">
+        <p className="text-[22px] font-semibold tracking-[-0.02em]">
           {status === "done"
             ? "You're on the list."
             : "You're already on the list."}
@@ -227,7 +227,7 @@ export function WaitlistForm() {
         <p
           id="waitlist-error"
           role="alert"
-          className="-mt-1 border-l-[6px] border-marigold pl-3 text-[14px] font-medium"
+          className="-mt-1 rounded-lg bg-accent-soft px-3 py-2 text-[14px] text-accent"
         >
           {error}
         </p>
@@ -237,7 +237,7 @@ export function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="cursor-pointer border-2 border-ink bg-marigold px-7 py-4 font-sans text-[17px] font-semibold text-ink shadow-[5px_5px_0_0_var(--color-ink)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0_0_var(--color-ink)] disabled:cursor-wait disabled:opacity-60"
+          className="cursor-pointer rounded-xl border-none bg-accent px-7 py-3.5 font-sans text-[16px] font-medium text-white shadow-[var(--shadow-card)] transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Send me my first week"}
         </button>

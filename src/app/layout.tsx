@@ -1,20 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 
-// One family doing display and body. Bricolage is a grotesque with genuinely
-// odd proportions — flared stems, tight apertures, a variable width axis — so
-// it has a voice at 90px and still sets clean at 16px. Coherent without being
-// characterless, which is the thing Inter and Plex cannot do.
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// A neo-grotesque, not a geometric and not a character face. Bricolage had a
+// voice at 96px and that voice was "fun" — wrong register for a product asking
+// students to trust it with two years. This one is quiet, has real weight
+// range, and does not look like the default.
+const schibsted = Schibsted_Grotesk({
+  variable: "--font-schibsted",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-// Labels, day markers, figures. The one cool, technical note in a warm page —
-// it keeps the whole thing from tipping into poster.
+// Labels, day markers, figures. Keeps data reading as data.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
@@ -35,14 +34,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ff7a00",
+  themeColor: "#fbfbfd",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${schibsted.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}

@@ -51,7 +51,7 @@ export function SilsilaMark({ className, mono = false, title }: MarkProps) {
         width="4.5"
         height="18.5"
         rx="2.25"
-        fill={mono ? "currentColor" : "var(--color-marigold)"}
+        fill={mono ? "currentColor" : "var(--color-accent)"}
       />
     </svg>
   );

@@ -15,13 +15,13 @@ export function WeekStrip() {
         {SAMPLE_WEEK.map((entry) => (
           <li
             key={entry.day}
-            className="flex flex-1 flex-col border-2 border-ink bg-raised"
+            className="flex flex-1 flex-col overflow-hidden rounded-xl bg-raised shadow-[var(--shadow-card)]"
           >
             {/* The task-type colour is a solid cap rather than a hairline, so
                 the week reads as seven different things at a glance. */}
             <span
               aria-hidden
-              className="h-2.5 w-full border-b-2 border-ink"
+              className="h-1.5 w-full"
               style={{ background: TASK_COLORS[entry.type] }}
             />
             <div className="flex flex-1 flex-col p-4">

@@ -66,19 +66,19 @@ const labelClass =
 
 const shellClass = "mx-auto w-full max-w-[1180px] px-6 lg:px-10";
 
-const headingClass = "text-[40px] sm:text-[52px] lg:text-[58px]";
+const headingClass = "text-[32px] sm:text-[40px] lg:text-[44px]";
 
 export default function Home() {
   const cells = buildHeatmapCells();
 
   return (
     <>
-      <header className="sticky top-0 z-20 border-b-2 border-ink bg-marigold">
+      <header className="sticky top-0 z-20 border-b border-rule bg-paper/85 backdrop-blur">
         <div className={`${shellClass} flex h-14 items-center justify-between`}>
-          <SilsilaLockup markClassName="h-[22px] w-[22px]" mono />
+          <SilsilaLockup markClassName="h-[22px] w-[22px]" />
           <a
             href="#form"
-            className="border-2 border-ink bg-ink px-4 py-1.5 font-mono text-[11px] tracking-[0.14em] text-marigold uppercase no-underline hover:bg-paper hover:text-ink"
+            className="rounded-lg bg-ink px-4 py-2 text-[13px] font-medium text-paper no-underline hover:bg-accent"
           >
             Join waitlist
           </a>
@@ -90,15 +90,15 @@ export default function Home() {
             seven columns it wrapped to three lines and orphaned "Aur koi";
             across the full measure it sets in two and can be genuinely large,
             which is the whole point of a face like this. */}
-        <section className={`${shellClass} pt-16 pb-20 lg:pt-20`}>
+        <section className={`${shellClass} pt-20 pb-24 lg:pt-24`}>
           <p className={labelClass}>
             Early access · computing students · 100 places
           </p>
 
-          <h1 className="mt-7 text-[46px] sm:text-[72px] lg:text-[96px]">
+          <h1 className="mt-7 text-[40px] sm:text-[58px] lg:text-[68px]">
             Roz ek kaam.
             <br />
-            Aur koi <span className="mark">poochne wala.</span>
+            Aur koi <span className="text-accent">poochne wala.</span>
           </h1>
 
           <div className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
@@ -120,7 +120,7 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <a
                   href="#form"
-                  className="inline-block border-2 border-ink bg-marigold px-7 py-4 text-[17px] font-semibold text-ink no-underline shadow-[5px_5px_0_0_var(--color-ink)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0_0_var(--color-ink)]"
+                  className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
                 >
                   Get your first week — free
                 </a>
@@ -132,14 +132,14 @@ export default function Home() {
               {/* The whole commitment as three numbers. Fills the column
                   beside the log, and answers "how much is this going to
                   cost me" before anyone has to ask. */}
-              <dl className="mt-12 grid max-w-[30rem] grid-cols-3 gap-4 border-t-2 border-ink pt-6">
+              <dl className="mt-12 grid max-w-[30rem] grid-cols-3 gap-4 border-t border-rule pt-6">
                 {[
                   { v: "3", l: "months" },
                   { v: "84", l: "tasks" },
                   { v: "30–45", l: "min a day" },
                 ].map((stat) => (
                   <div key={stat.l}>
-                    <dd className="text-[34px] leading-none font-bold tracking-[-0.03em] tabular-nums">
+                    <dd className="text-[30px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
                       {stat.v}
                     </dd>
                     <dt className="mt-2 font-mono text-[11px] tracking-[0.12em] text-ink-3 uppercase">
@@ -154,9 +154,9 @@ export default function Home() {
             <div className="lg:col-span-5">
               <p className={labelClass}>A day on Silsila</p>
 
-              <div className="mt-5 border-2 border-ink bg-raised shadow-[6px_6px_0_0_var(--color-pine)]">
+              <div className="mt-5 overflow-hidden rounded-2xl bg-raised shadow-[var(--shadow-card)]">
                 <div className="border-b border-rule px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
                     SILSILA · DAY 12
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -176,7 +176,7 @@ export default function Home() {
                 </div>
 
                 <div className="border-b border-rule px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
                     SILSILA
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -194,7 +194,7 @@ export default function Home() {
                 </div>
 
                 <div className="px-5 py-4">
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-marigold">
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-accent">
                     SILSILA · GRADED 4/5
                   </p>
                   <p className="mt-2 text-[15px]">
@@ -217,11 +217,9 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="dot-rule" aria-hidden />
-
         {/* A WEEK — stays on cream so the task-type colours keep the surface
             they were validated against. */}
-        <section className="border-y-2 border-ink bg-surface py-20">
+        <section className="py-28">
           <div className={shellClass}>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
@@ -269,11 +267,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* HOW — full-bleed marigold. The loudest field on the page, and the
-            section a student most needs to actually read. */}
-        <section className="border-y-2 border-ink bg-marigold py-20">
+        {/* HOW — the section a student most needs to actually read, so it gets
+            cards on a quiet surface rather than a shouted colour field. */}
+        <section className="py-28">
           <div className={shellClass}>
-            <p className="font-mono text-[11px] tracking-[0.18em] text-ink/70 uppercase">
+            <p className={labelClass}>
               How it works
             </p>
             <h2 className={`mt-5 max-w-[16ch] ${headingClass}`}>
@@ -282,14 +280,14 @@ export default function Home() {
 
             <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {STEPS.map((step, index) => (
-                <li key={step.title} className="border-t-2 border-ink pt-5">
-                  <span className="font-mono text-[13px] font-medium tabular-nums">
+                <li key={step.title} className="rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)]">
+                  <span className="font-mono text-[12px] text-ink-3 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="mt-3 text-[22px] leading-[1.15] font-extrabold tracking-[-0.02em]">
+                  <p className="mt-3 text-[19px] leading-[1.2] font-semibold tracking-[-0.02em]">
                     {step.title}
                   </p>
-                  <p className="mt-2.5 text-[15px] text-ink/85">{step.body}</p>
+                  <p className="mt-2.5 text-[15px] text-ink-2">{step.body}</p>
                 </li>
               ))}
             </ol>
@@ -298,17 +296,17 @@ export default function Home() {
 
         {/* TIMELINE — full-bleed pine. No chart colours here, so a dark field
             is free. */}
-        <section className="bg-pine py-20 text-paper">
+        <section className="py-28">
           <div className={shellClass}>
-            <p className="font-mono text-[11px] tracking-[0.18em] text-paper/55 uppercase">
+            <p className={labelClass}>
               The milestone is an internship
             </p>
             <h2 className={`mt-5 max-w-[18ch] ${headingClass}`}>
               Not graduation. That&rsquo;s{" "}
-              <span className="text-marigold">too far away</span> to hold
+              <span className="mark">too far away</span> to hold
               anyone.
             </h2>
-            <p className="mt-6 max-w-[52ch] text-[16px] text-paper/75">
+            <p className="mt-6 max-w-[52ch] text-[16px] text-ink-2">
               Most companies here hire interns out of semesters 4 to 6.
               That&rsquo;s close enough to work toward, and it happens while
               you&rsquo;re still a student.
@@ -318,26 +316,22 @@ export default function Home() {
               {TIMELINE.map((row) => (
                 <li
                   key={row.when}
-                  className={
-                    row.emphasis
-                      ? "border-2 border-marigold bg-marigold p-6 text-ink"
-                      : "border-t-2 border-paper/25 p-6 pr-0 pl-0"
-                  }
+                  className={`rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)] ${
+                    row.emphasis ? "ring-1 ring-accent" : ""
+                  }`}
                 >
                   <p
                     className={`font-mono text-[11px] tracking-[0.14em] ${
-                      row.emphasis ? "text-ink/70" : "text-paper/55"
+                      row.emphasis ? "text-accent" : "text-ink-3"
                     }`}
                   >
                     {row.when}
                   </p>
-                  <p className="mt-3 text-[26px] leading-[1.1] font-extrabold tracking-[-0.02em]">
+                  <p className="mt-3 text-[20px] leading-[1.2] font-semibold tracking-[-0.02em]">
                     {row.title}
                   </p>
                   <p
-                    className={`mt-2.5 text-[15px] ${
-                      row.emphasis ? "text-ink/85" : "text-paper/75"
-                    }`}
+                    className="mt-2.5 text-[15px] text-ink-2"
                   >
                     {row.what}
                   </p>
@@ -362,7 +356,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-8">
-              <div className="border-2 border-ink bg-raised p-6 shadow-[8px_8px_0_0_var(--color-pine)] lg:p-9">
+              <div className="rounded-2xl bg-raised p-6 shadow-[var(--shadow-lift)] lg:p-9">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="font-mono text-[15px]">silsila.pk/ayesha-r</p>
                   <p className="text-[13px] text-ink-3">
@@ -388,10 +382,10 @@ export default function Home() {
                   26 WEEKS →
                 </p>
 
-                <dl className="mt-9 grid grid-cols-3 gap-6 border-t-2 border-ink pt-7">
+                <dl className="mt-9 grid grid-cols-3 gap-6 border-t border-rule pt-7">
                   {PROFILE_STATS.map((stat) => (
                     <div key={stat.label}>
-                      <dd className="text-[46px] leading-none font-extrabold tracking-[-0.04em] tabular-nums">
+                      <dd className="text-[40px] leading-none font-semibold tracking-[-0.035em] tabular-nums">
                         {stat.value}
                       </dd>
                       <dt className="mt-3 text-[13px] text-ink-3">
@@ -406,7 +400,7 @@ export default function Home() {
         </section>
 
         {/* THE PROMISE — product.md §1b, deliberately unsoftened. */}
-        <section className="border-y-2 border-ink bg-ink py-24 text-paper">
+        <section className="bg-deep py-32 text-paper">
           <div className={shellClass}>
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">
@@ -421,9 +415,9 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-7">
-                <p className="max-w-[22ch] text-[36px] leading-[1.02] font-extrabold tracking-[-0.035em] sm:text-[46px]">
+                <p className="max-w-[24ch] text-[32px] leading-[1.12] font-semibold tracking-[-0.03em] sm:text-[40px]">
                   When you graduate, you will have{" "}
-                  <span className="text-marigold">something to say.</span>
+                  <span className="text-accent">something to say.</span>
                 </p>
                 <p className="mt-7 max-w-[44ch] text-[17px] text-paper/75">
                   Something in your skill set. A profile that&rsquo;s been
@@ -452,7 +446,7 @@ export default function Home() {
                 hours.
               </p>
 
-              <dl className="mt-10 flex flex-col gap-6 border-t-2 border-ink pt-8">
+              <dl className="mt-10 flex flex-col gap-6 border-t border-rule pt-8">
                 {REASSURANCES.map(([term, detail]) => (
                   <div key={term}>
                     <dt className="font-semibold">{term}</dt>
@@ -463,7 +457,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="border-2 border-ink bg-raised p-6 shadow-[8px_8px_0_0_var(--color-marigold)] lg:p-8">
+              <div className="rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)] lg:p-8">
                 <WaitlistForm />
               </div>
             </div>
@@ -471,15 +465,15 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t-2 border-ink bg-marigold">
+      <footer className="border-t border-rule">
         <div
           className={`${shellClass} flex flex-wrap justify-between gap-3 py-9 text-[13px]`}
         >
           <span className="inline-flex items-center gap-2.5">
-            <SilsilaMark className="h-5 w-5 shrink-0" mono />
+            <SilsilaMark className="h-5 w-5 shrink-0" />
             Silsila — a daily companion for students working it out alone.
           </span>
-          <a href="mailto:hello@silsila.pk" className="decoration-ink">
+          <a href="mailto:hello@silsila.pk">
             hello@silsila.pk
           </a>
         </div>
