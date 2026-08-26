@@ -2,6 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import {
+  ChainRun,
+  driftLinks,
+  steadyLinks,
+  type LinkState,
+} from "@/components/chain-run";
+
 const WEEKS = 16;
 const DAYS = WEEKS * 7; // four months
 const PLAY_MS = 7000;
@@ -54,6 +61,11 @@ function range(from: number, to: number) {
 
 const DRIFT = driftPath();
 const STEADY = steadyPath();
+
+// The same two runs at week granularity, drawn as chain.
+const DRIFT_LINKS = driftLinks();
+const STEADY_LINKS = steadyLinks();
+const WEEK_LINKS = DRIFT_LINKS.length;
 
 /** Things get built only after enough consecutive work has gone in. */
 const BUILD_DAYS = [12, 26, 39, 51, 64, 76, 88, 99, 108];
@@ -143,6 +155,8 @@ export function TwoPaths() {
           cells={DRIFT.map((state, index) =>
             index < elapsed ? state : "hidden",
           )}
+          links={DRIFT_LINKS}
+          revealed={Math.ceil((elapsed / DAYS) * WEEK_LINKS)}
           days={driftDone}
           built={0}
           footer="A folder of unfinished tutorials, and three nights of panic at the end."
@@ -154,6 +168,8 @@ export function TwoPaths() {
           cells={STEADY.map((state, index) =>
             index < elapsed ? state : "hidden",
           )}
+          links={STEADY_LINKS}
+          revealed={Math.ceil((elapsed / DAYS) * WEEK_LINKS)}
           days={steadyDone}
           built={built}
           footer="The gaps are exam week and a shaadi. You came back. That’s the only rule."
@@ -168,6 +184,8 @@ function Panel({
   label,
   title,
   cells,
+  links,
+  revealed,
   days,
   built,
   footer,
@@ -176,6 +194,8 @@ function Panel({
   label: string;
   title: string;
   cells: Cell[];
+  links: LinkState[];
+  revealed: number;
   days: number;
   built: number;
   footer: string;
@@ -199,10 +219,21 @@ function Panel({
         {title}
       </p>
 
+      <ChainRun
+        links={links}
+        revealed={revealed}
+        label={
+          isPeach
+            ? "A chain that forms for two weeks, comes apart, and ends in a scramble."
+            : "A chain that runs sixteen weeks with two links missing."
+        }
+        className="mt-7 w-full"
+      />
+
       <div
         role="img"
         aria-label={`${days} of ${DAYS} days worked.`}
-        className="mt-6 grid grid-cols-[repeat(14,minmax(0,1fr))] gap-[3px]"
+        className="mt-7 grid grid-cols-[repeat(14,minmax(0,1fr))] gap-[3px]"
       >
         {cells.map((state, index) => (
           <span
