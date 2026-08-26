@@ -21,6 +21,22 @@
   --color-accent: #2158d0;
   --color-accent-soft: #eaf0fd;
 
+  /* A pastel system, not a single accent. This is where the premium feel
+     actually comes from: soft tinted fields carrying the colour, with a
+     saturated partner for the mark or the type that sits on them. One blue on
+     white reads as a template no matter how good the typography is. */
+  --color-sky: #dce9fb;
+  --color-sky-deep: #2158d0;
+  --color-mint: #dcefe4;
+  --color-mint-deep: #157f5a;
+  --color-peach: #fce7d8;
+  --color-peach-deep: #c4551f;
+  --color-lilac: #e8e4fa;
+  --color-lilac-deep: #5b4bc4;
+  --color-blush: #fbe2ea;
+  --color-blush-deep: #c13c6b;
+  --color-sand: #f6efe4;
+
   /* Kept as tokens because the task-type colours and the logo still use them,
      but no longer used as page backgrounds. */
   --color-marigold: #ff7a00;

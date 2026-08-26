@@ -1,8 +1,8 @@
 import { SilsilaLockup, SilsilaMark } from "@/components/logo";
+import { TwoPaths } from "@/components/two-paths";
 import { SemesterTrack } from "@/components/semester-track";
 import { STEP_VISUALS } from "@/components/step-visuals";
 import { HeroVisual } from "@/components/hero-visual";
-import { PlanVsReality } from "@/components/plan-vs-reality";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { WeekStrip } from "@/components/week-strip";
@@ -71,99 +71,71 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* HERO — the headline gets the full 1180px on its own row. Boxed into
-            seven columns it wrapped to three lines and orphaned "Aur koi";
-            across the full measure it sets in two and can be genuinely large,
-            which is the whole point of a face like this. */}
-        <section className={`${shellClass} pt-20 pb-24 lg:pt-24`}>
+        {/* HERO — the two paths are the pitch. A student recognises the
+            left panel before reading a word of copy, and the right panel is
+            the product without needing to explain it. */}
+        <section className={`${shellClass} pt-16 pb-24 lg:pt-20`}>
           <p className={labelClass}>
             Early access · computing students · 100 places
           </p>
 
-          {/* The name is the thesis, so the headline uses it as a verb. "Koi
-              poochne wala" was a complaint — the phrase Urdu speakers use for
-              nobody-cares-about-me — which is the wrong register for a product
-              that refuses to shame anyone. "Silsila chalta rahe" is what you
-              say when you want a good thing to keep going. */}
-          <h1 className="mt-7 text-[40px] sm:text-[58px] lg:text-[68px]">
-            Roz ek kaam.
-            <br />
-            <span className="text-accent">Silsila</span> chalta rahe.
-          </h1>
-
-          <p className="mt-6 max-w-[52ch] text-[15px] text-ink-3">
-            <span className="font-mono text-[13px] tracking-[0.04em] text-ink-2">
-              silsila
-            </span>{" "}
-            (سلسلہ) — an unbroken chain. One thing after another, without a
-            break. That&rsquo;s the entire product.
-          </p>
-
-          <div className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="mt-7 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <p className="max-w-[40ch] text-[21px] leading-[1.35] font-medium">
-                A 3-month plan. One 30-minute task a day. Graded, not ticked.
-                All on WhatsApp.
-              </p>
-
-              <p className="mt-5 max-w-[46ch] text-[16px] text-ink-2">
-                You already got a roadmap from ChatGPT. You did three days of
-                it, then the semester happened. It&rsquo;s not that you&rsquo;re
-                not serious —{" "}
-                <span className="font-semibold text-ink">
-                  nobody asked on day four.
-                </span>
-              </p>
-
-              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <a
-                  href="#form"
-                  className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
-                >
-                  Get your first week — free
-                </a>
-                <span className="text-[14px] text-ink-3">
-                  No calls · takes a minute
-                </span>
-              </div>
-
-              {/* The whole commitment as three numbers. Fills the column
-                  beside the log, and answers "how much is this going to
-                  cost me" before anyone has to ask. */}
-              <dl className="mt-12 grid max-w-[30rem] grid-cols-3 gap-4 border-t border-rule pt-6">
-                {[
-                  { v: "3", l: "months" },
-                  { v: "84", l: "tasks" },
-                  { v: "30–45", l: "min a day" },
-                ].map((stat) => (
-                  <div key={stat.l}>
-                    <dd className="text-[30px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
-                      {stat.v}
-                    </dd>
-                    <dt className="mt-2 font-mono text-[11px] tracking-[0.12em] text-ink-3 uppercase">
-                      {stat.l}
-                    </dt>
-                  </div>
-                ))}
-              </dl>
+              <h1 className="text-[40px] sm:text-[54px] lg:text-[62px]">
+                Roz ek kaam.
+                <br />
+                <span className="text-accent">Silsila</span> chalta rahe.
+              </h1>
             </div>
-
-            {/* The product as an object, not a description: the chat on a
-                phone, the grade and the filling grid floating off it. */}
-            <div className="lg:col-span-5">
-              <HeroVisual />
-              <p className="mt-8 text-center text-[13px] text-ink-3">
-                Graded, not marked done by you. A checkbox teaches nothing and
-                can be lied to.
+            <div className="lg:col-span-5 lg:pt-2">
+              <p className="text-[19px] leading-[1.4] font-medium">
+                Whatever you&rsquo;re trying to become, broken into 84 small
+                days. You do one. Silsila keeps the rest.
+              </p>
+              <p className="mt-4 text-[15px] text-ink-3">
+                <span className="font-mono text-[13px] text-ink-2">silsila</span>{" "}
+                (سلسلہ) — an unbroken chain. One thing after another, without a
+                break.
               </p>
             </div>
           </div>
+
+          <div className="mt-14">
+            <TwoPaths />
+          </div>
+
+          <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+              href="#form"
+              className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
+            >
+              Get your first week — free
+            </a>
+            <span className="text-[15px] text-ink-2">
+              Free · no calls · takes a minute
+            </span>
+            <dl className="ml-auto hidden gap-8 sm:flex">
+              {[
+                { v: "3", l: "months" },
+                { v: "84", l: "tasks" },
+                { v: "30–45", l: "min a day" },
+              ].map((stat) => (
+                <div key={stat.l}>
+                  <dd className="text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
+                    {stat.v}
+                  </dd>
+                  <dt className="mt-1.5 font-mono text-[10px] tracking-[0.12em] text-ink-3 uppercase">
+                    {stat.l}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+          </div>
         </section>
 
-        {/* THE PROBLEM — named before anything is sold. The grid here is the
-            same one that closes the page as six months of finished work, so
-            the reader meets the shape at its worst and recognises it at its
-            best. */}
+        {/* THE PROBLEM — the hero already showed this; here it is named, and
+            the blame is taken off the reader. Deliberately text only: two
+            grids making the same point would weaken both. */}
         <section className={`${shellClass} py-28`}>
           <p className={labelClass}>Why plans die</p>
 
@@ -186,14 +158,53 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16">
-            <PlanVsReality />
-          </div>
-
           <p className="mt-16 max-w-[26ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[32px]">
             The plan was never the hard part.{" "}
             <span className="text-accent">Day four was.</span>
           </p>
+        </section>
+
+        {/* THE DAY — the loop as a conversation, since that is literally
+            where it happens. */}
+        <section className="py-28">
+          <div className={shellClass}>
+            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <p className={labelClass}>A day on Silsila</p>
+                <h2 className={`mt-5 ${headingClass}`}>
+                  It arrives. You reply. It answers back.
+                </h2>
+                <p className="mt-6 max-w-[42ch] text-[16px] text-ink-2">
+                  No app to remember to open, no dashboard to keep up with. The
+                  task comes to the place you already check forty times a day,
+                  and what you send back gets read.
+                </p>
+
+                <ul className="mt-8 flex flex-col gap-4">
+                  {[
+                    ["Ask in Urdu.", "Answers come back in plain English."],
+                    ["No streaks to lose.", "Miss a week. Come back to a lighter task."],
+                    ["Graded, not ticked.", "A checkbox can be lied to."],
+                  ].map(([term, detail]) => (
+                    <li key={term} className="flex gap-3">
+                      <span
+                        aria-hidden
+                        className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                      />
+                      <p className="text-[15px]">
+                        <span className="font-medium">{term}</span>{" "}
+                        <span className="text-ink-2">{detail}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="lg:col-span-7">
+                <HeroVisual />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* A WEEK — the task-type colours keep the light surface they were
