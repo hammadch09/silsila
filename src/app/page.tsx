@@ -5,7 +5,6 @@ import { SemesterTrack } from "@/components/semester-track";
 import { STEP_VISUALS } from "@/components/step-visuals";
 import { HeroVisual } from "@/components/hero-visual";
 import { TaskMixBar } from "@/components/task-mix-bar";
-import { WaitlistForm } from "@/components/waitlist-form";
 import { WeekStrip } from "@/components/week-strip";
 import { buildHeatmapCells } from "@/lib/viz";
 
@@ -63,10 +62,10 @@ export default function Home() {
         <div className={`${shellClass} flex h-14 items-center justify-between`}>
           <SilsilaLockup markClassName="h-[22px] w-[22px]" />
           <a
-            href="#form"
+            href="/join"
             className="rounded-lg bg-ink px-4 py-2 text-[13px] font-medium text-paper no-underline hover:bg-accent"
           >
-            Join waitlist
+            Start
           </a>
         </div>
       </header>
@@ -108,7 +107,7 @@ export default function Home() {
 
           <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a
-              href="#form"
+              href="/join"
               className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
             >
               Get your first week — free
@@ -425,35 +424,44 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FORM */}
-        <section id="form" className={`${shellClass} scroll-mt-16 py-20`}>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
+        {/* JOIN — the waitlist is gone. Answering the questions IS the
+            signup now, so the page ends by starting the thing. */}
+        <section id="form" className={`${shellClass} scroll-mt-16 py-28`}>
+          <div className="rounded-3xl bg-sky p-8 sm:p-12 lg:p-16">
+            <div className="max-w-[34ch]">
               <h2 className={headingClass}>
-                Get your first week&rsquo;s plan — <span className="mark">free.</span>
+                Eight questions. Then your first week.
               </h2>
-              <p className="mt-6 max-w-[36ch] text-[16px] text-ink-2">
-                Six questions. We send the plan to your WhatsApp within 48
-                hours.
+              <p className="mt-6 max-w-[46ch] text-[17px] text-ink-2">
+                No waitlist and no calls. You answer what you&rsquo;re after,
+                where you are and how much time you actually have, and the plan
+                is built in front of you.
               </p>
 
-              <dl className="mt-10 flex flex-col gap-6 border-t border-rule pt-8">
+              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <a
+                  href="/join"
+                  className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
+                >
+                  Build my plan — free
+                </a>
+                <span className="text-[15px] text-ink-2">
+                  Takes about a minute
+                </span>
+              </div>
+
+              <dl className="mt-12 flex flex-col gap-5 border-t border-sky-deep/15 pt-8">
                 {REASSURANCES.map(([term, detail]) => (
                   <div key={term}>
-                    <dt className="font-semibold">{term}</dt>
-                    <dd className="mt-1 text-[15px] text-ink-2">{detail}</dd>
+                    <dt className="font-medium">{term}</dt>
+                    <dd className="mt-0.5 text-[15px] text-ink-2">{detail}</dd>
                   </div>
                 ))}
               </dl>
             </div>
-
-            <div className="lg:col-span-7">
-              <div className="rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)] lg:p-8">
-                <WaitlistForm />
-              </div>
-            </div>
           </div>
         </section>
+
       </main>
 
       <footer className="border-t border-rule">
