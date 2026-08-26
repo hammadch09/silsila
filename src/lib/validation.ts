@@ -1,6 +1,11 @@
 import { z } from "zod";
 
-import { LaptopAccess, WeeklyHours } from "@/generated/prisma/enums";
+import {
+  Destination,
+  LaptopAccess,
+  SkillLevel,
+  WeeklyHours,
+} from "@/generated/prisma/enums";
 import { DEPARTMENTS, UNIVERSITIES } from "@/lib/intake-options";
 
 export const WHATSAPP_ERROR =
@@ -41,6 +46,9 @@ export const waitlistIntakeSchema = z.object({
   goal: z.string().trim().max(500).optional().default(""),
   hours: z.enum(WeeklyHours),
   laptop: z.enum(LaptopAccess),
+  // The one answer that changes the plan most (product.md §2).
+  destination: z.enum(Destination),
+  level: z.enum(SkillLevel),
   source: z.string().trim().max(120).optional(),
 });
 

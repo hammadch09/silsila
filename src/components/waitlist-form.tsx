@@ -5,6 +5,8 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import {
   DEFAULT_UNIVERSITY,
   DEPARTMENTS,
+  DESTINATIONS,
+  LEVELS,
   UNIVERSITIES,
 } from "@/lib/intake-options";
 import { isValidPakistaniMobile, WHATSAPP_ERROR } from "@/lib/validation";
@@ -54,8 +56,21 @@ const FIELDS: Field[] = [
     })),
   },
   {
+    id: "destination",
+    label: "What are you after?",
+    required: true,
+    helper: "This changes which tasks you get, so answer honestly.",
+    options: DESTINATIONS.map((d) => ({ value: d.value, label: d.label })),
+  },
+  {
+    id: "level",
+    label: "How much can you build right now?",
+    required: true,
+    options: LEVELS.map((l) => ({ value: l.value, label: l.label })),
+  },
+  {
     id: "goal",
-    label: "What do you want to do after you graduate?",
+    label: "Anything specific you want to end up doing?",
     type: "text",
     placeholder: "Not sure yet — that's fine, say that",
   },

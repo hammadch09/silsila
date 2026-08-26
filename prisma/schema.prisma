@@ -40,18 +40,24 @@ enum WaitlistStatus {
 /// One completed intake form. `whatsapp` is the identity — students here do not
 /// check email (product.md §5).
 model WaitlistEntry {
-  id         String         @id @default(cuid())
-  whatsapp   String         @unique
+  id         String       @id @default(cuid())
+  whatsapp   String       @unique
   university String
   department String
   semester   Int
   goal       String // free text; "not sure yet" is a valid answer
   hours      WeeklyHours
   laptop     LaptopAccess
-  status     WaitlistStatus @default(PENDING)
-  source     String? // utm / referral, for Phase 4 distribution
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
+
+  /// Which of the two destinations they are after (product.md §2). This is the
+  /// single answer that most changes the plan, so it is asked at signup rather
+  /// than discovered later.
+  destination Destination    @default(JOB)
+  level       SkillLevel     @default(NONE)
+  status      WaitlistStatus @default(PENDING)
+  source      String? // utm / referral, for Phase 4 distribution
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 
   user User?
 
@@ -70,10 +76,33 @@ enum TaskType {
   HUMAN
 }
 
-enum SubmissionStatus {
+/// product.md §2: two destinations, same machinery. The task mix differs —
+/// a founder track weights Human, Signal and Artifact over deep Skill work.
+enum Destination {
+  JOB
+  FOUNDER
+}
+
+enum SkillLevel {
+  NONE
+  SOME
+  COMFORTABLE
+}
+
+enum PlanStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+  ABANDONED
+}
+
+/// Why a day has no submission. "Paused for exams" is a first-class state, not
+/// a failure — product.md §4 Phase 3: streak-shaming makes them delete the app.
+enum DayStatus {
+  PENDING
   SUBMITTED
-  REVIEWED
-  NEEDS_REWORK
+  GRADED
+  SKIPPED
 }
 
 model User {
@@ -86,24 +115,31 @@ model User {
   waitlistEntryId String?        @unique
   waitlistEntry   WaitlistEntry? @relation(fields: [waitlistEntryId], references: [id], onDelete: SetNull)
 
-  trackId String?
-  track   Track?  @relation(fields: [trackId], references: [id], onDelete: SetNull)
+  // Intake answers that shape the plan.
+  destination Destination @default(JOB)
+  level       SkillLevel  @default(NONE)
+  semester    Int?
+  daysPerWeek Int         @default(5)
 
+  plans       Plan[]
   submissions Submission[]
+  questions   Question[]
+  loginCodes  LoginCode[]
 }
 
-/// A curated track template (web dev, data/AI, design, ...). Content is
-/// authored, not LLM-generated per user (product.md §3).
+/// A curated track template (software dev, data/AI, frontend, founder).
+/// Content is authored, not LLM-generated per user (product.md §3).
 model Track {
-  id          String   @id @default(cuid())
-  slug        String   @unique
+  id          String      @id @default(cuid())
+  slug        String      @unique
   title       String
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  destination Destination @default(JOB)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 
   tasks Task[]
-  users User[]
+  plans Plan[]
 }
 
 /// One day's task within a track. `dayIndex` is the position in the template.
@@ -119,27 +155,120 @@ model Task {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  submissions Submission[]
+  planDays PlanDay[]
 
   @@unique([trackId, dayIndex])
   @@index([type])
 }
 
-/// Proof of work. A link, a file URL, or a few lines of text — never a checkbox.
+/// One student's 3-month run at a track. Generated once at intake and stored —
+/// never regenerated per day, which is what keeps the LLM cost survivable at
+/// PKR pricing (product.md §3, §4 Phase 2).
+model Plan {
+  id      String     @id @default(cuid())
+  userId  String
+  user    User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trackId String
+  track   Track      @relation(fields: [trackId], references: [id], onDelete: Restrict)
+  status  PlanStatus @default(ACTIVE)
+
+  /// Which run this is for the student. Plans chain: finish one, start the
+  /// next. §7 tracks the share who start a second one as the strongest signal
+  /// the product works.
+  sequence  Int       @default(1)
+  weeks     Int       @default(12)
+  startedAt DateTime  @default(now())
+  endedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  days PlanDay[]
+
+  @@unique([userId, sequence])
+  @@index([status])
+}
+
+/// A dated slot in a plan. This is what the student sees each morning, and
+/// what makes "today" a lookup rather than a generation.
+model PlanDay {
+  id     String @id @default(cuid())
+  planId String
+  plan   Plan   @relation(fields: [planId], references: [id], onDelete: Cascade)
+  taskId String
+  task   Task   @relation(fields: [taskId], references: [id], onDelete: Restrict)
+
+  dayIndex     Int
+  scheduledFor DateTime  @db.Date
+  status       DayStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  submission Submission?
+
+  @@unique([planId, dayIndex])
+  @@index([planId, scheduledFor])
+  @@index([status])
+}
+
+/// Proof of work. A link, a screenshot, a few lines — never a checkbox.
+/// Submitting IS the completion event; there is nothing else to tick.
 model Submission {
-  id       String           @id @default(cuid())
-  userId   String
-  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  taskId   String
-  task     Task             @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  status   SubmissionStatus @default(SUBMITTED)
-  proofUrl String?
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planDayId String  @unique
+  planDay   PlanDay @relation(fields: [planDayId], references: [id], onDelete: Cascade)
+
+  proofUrl  String?
   proofText String?
-  review   String? // AI or pod-lead feedback
+
+  /// 1–5 band plus one thing done well and one thing to fix (product.md §3b).
+  /// Null until graded — grading is asynchronous and may be done by hand for
+  /// the first cohort.
+  grade    Int?
+  didWell  String?
+  toFix    String?
+  gradedAt DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([userId, createdAt])
-  @@index([taskId])
+  @@index([grade])
+}
+
+/// The ask channel — product.md §2 mechanic 3, "the emotionally most important
+/// thing in the product". Stored because §7 counts questions per active
+/// student as a proxy for whether they feel supported.
+model Question {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Which day they were stuck on, when we know. §7 compares completion after
+  /// a question was asked against completion with no question.
+  planDayId String?
+
+  body       String
+  answer     String?
+  answeredAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([userId, createdAt])
+}
+
+/// Phone-first auth: a short code over WhatsApp, no password. These students
+/// do not check email and will not remember a password.
+model LoginCode {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  codeHash  String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, createdAt])
 }

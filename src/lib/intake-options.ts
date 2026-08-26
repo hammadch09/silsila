@@ -31,3 +31,16 @@ export const DEPARTMENTS = [
 
 export type University = (typeof UNIVERSITIES)[number];
 export type Department = (typeof DEPARTMENTS)[number];
+
+/** product.md §2 — two destinations, same machinery, different task mix. */
+export const DESTINATIONS = [
+  { value: "JOB", label: "Get a job" },
+  { value: "FOUNDER", label: "Start something of my own" },
+] as const;
+
+/** Where they are starting from. Changes the first few weeks, not the shape. */
+export const LEVELS = [
+  { value: "NONE", label: "Nothing yet — total beginner" },
+  { value: "SOME", label: "Did a course or two, built nothing" },
+  { value: "COMFORTABLE", label: "I can build small things" },
+] as const;
