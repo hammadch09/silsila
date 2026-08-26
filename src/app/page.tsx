@@ -1,4 +1,6 @@
 import { SilsilaLockup, SilsilaMark } from "@/components/logo";
+import { SemesterTrack } from "@/components/semester-track";
+import { STEP_VISUALS } from "@/components/step-visuals";
 import { HeroVisual } from "@/components/hero-visual";
 import { PlanVsReality } from "@/components/plan-vs-reality";
 import { TaskMixBar } from "@/components/task-mix-bar";
@@ -26,25 +28,6 @@ const STEPS = [
   {
     title: "It piles up.",
     body: "Every graded submission adds to a profile you can send an employer. Finish one 3-month plan, start the next.",
-  },
-];
-
-const TIMELINE = [
-  {
-    when: "SEM 1–3",
-    title: "Foundations",
-    what: "Build the habit. Widen what you know exists.",
-  },
-  {
-    when: "SEM 4–6",
-    title: "Internship push",
-    what: "Portfolio pieces that survive a real screen. CV and LinkedIn at a real standard. How to find openings, how to apply, what to expect on day one.",
-    emphasis: true,
-  },
-  {
-    when: "SEM 7–8",
-    title: "Full-time, or founder",
-    what: "Deeper artifacts, referrals, applications.",
   },
 ];
 
@@ -276,11 +259,18 @@ export default function Home() {
 
             <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {STEPS.map((step, index) => (
-                <li key={step.title} className="rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)]">
-                  <span className="font-mono text-[12px] text-ink-3 tabular-nums">
+                <li
+                  key={step.title}
+                  className="flex flex-col rounded-2xl bg-raised p-5 shadow-[var(--shadow-card)]"
+                >
+                  {(() => {
+                    const Visual = STEP_VISUALS[index];
+                    return <Visual />;
+                  })()}
+                  <span className="mt-5 font-mono text-[12px] text-ink-3 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="mt-3 text-[19px] leading-[1.2] font-semibold tracking-[-0.02em]">
+                  <p className="mt-2 text-[19px] leading-[1.2] font-semibold tracking-[-0.02em]">
                     {step.title}
                   </p>
                   <p className="mt-2.5 text-[15px] text-ink-2">{step.body}</p>
@@ -307,32 +297,9 @@ export default function Home() {
               you&rsquo;re still a student.
             </p>
 
-            <ol className="mt-14 grid gap-8 lg:grid-cols-3 lg:gap-10">
-              {TIMELINE.map((row) => (
-                <li
-                  key={row.when}
-                  className={`rounded-2xl bg-raised p-6 shadow-[var(--shadow-card)] ${
-                    row.emphasis ? "ring-1 ring-accent" : ""
-                  }`}
-                >
-                  <p
-                    className={`font-mono text-[11px] tracking-[0.14em] ${
-                      row.emphasis ? "text-accent" : "text-ink-3"
-                    }`}
-                  >
-                    {row.when}
-                  </p>
-                  <p className="mt-3 text-[20px] leading-[1.2] font-semibold tracking-[-0.02em]">
-                    {row.title}
-                  </p>
-                  <p
-                    className="mt-2.5 text-[15px] text-ink-2"
-                  >
-                    {row.what}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <div className="mt-14">
+              <SemesterTrack />
+            </div>
           </div>
         </section>
 

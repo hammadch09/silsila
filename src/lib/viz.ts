@@ -58,10 +58,10 @@ export const SAMPLE_WEEK: {
   { day: "SUN", type: "SKILL", task: "Fix what came back in yesterday's grade.", mins: 40 },
 ];
 
-// Sequential blue, light→dark. Step 0 is a warm neutral tuned to the paper, so
-// "no work that day" reads as absence rather than as a low value — a cool grey
-// here would sit visibly wrong against the warm surface.
-const HEATMAP_STEPS = ["#e5e0d5", "#9ec5f4", "#3987e5", "#1c5cab"] as const;
+// Sequential blue, light→dark. Step 0 is a neutral tuned to the surface, so
+// "no work that day" reads as absence rather than as a low value. It moved
+// cool when the palette did — the old warm beige read as dirt on near-white.
+const HEATMAP_STEPS = ["#e8ebf0", "#9ec5f4", "#3987e5", "#1c5cab"] as const;
 
 export const HEATMAP_CELL_COUNT = 182;
 
