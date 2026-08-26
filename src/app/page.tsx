@@ -1,3 +1,4 @@
+import { IllustrationSteps } from "@/components/illustration-steps";
 import { SilsilaLockup, SilsilaMark } from "@/components/logo";
 import { TwoPaths } from "@/components/two-paths";
 import { SemesterTrack } from "@/components/semester-track";
@@ -82,15 +83,16 @@ export default function Home() {
           <div className="mt-7 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <h1 className="text-[40px] sm:text-[54px] lg:text-[62px]">
-                Roz ek kaam.
+                Everyone starts.
                 <br />
-                <span className="text-accent">Silsila</span> chalta rahe.
+                <span className="text-accent">Almost nobody finishes.</span>
               </h1>
             </div>
             <div className="lg:col-span-5 lg:pt-2">
               <p className="text-[19px] leading-[1.4] font-medium">
-                Whatever you&rsquo;re trying to become, broken into 84 small
-                days. You do one. Silsila keeps the rest.
+                Four years of starting over is a degree and a blank CV. Silsila
+                breaks what you want to become into 84 small days, and tracks
+                every one.
               </p>
               <p className="mt-4 text-[15px] text-ink-3">
                 <span className="font-mono text-[13px] text-ink-2">silsila</span>{" "}
@@ -158,10 +160,22 @@ export default function Home() {
             </p>
           </div>
 
-          <p className="mt-16 max-w-[26ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[32px]">
-            The plan was never the hard part.{" "}
-            <span className="text-accent">Day four was.</span>
-          </p>
+          <div className="mt-14 grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <IllustrationSteps className="w-full" />
+            </div>
+            <div className="lg:col-span-6">
+              <p className="max-w-[22ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[32px]">
+                The plan was never the hard part.{" "}
+                <span className="text-accent">Day four was.</span>
+              </p>
+              <p className="mt-6 max-w-[44ch] text-[16px] text-ink-2">
+                A goal is one enormous block, and nobody can lift it. Silsila
+                cuts it into pieces small enough to pick up on a bad day, then
+                keeps count so you never have to.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* THE DAY — the loop as a conversation, since that is literally
