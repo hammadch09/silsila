@@ -1,11 +1,12 @@
 import { GoalCrack } from "@/components/goal-crack";
+import { Reveal } from "@/components/reveal";
 import { SilsilaMark } from "@/components/logo";
 import { SemesterLoop } from "@/components/semester-loop";
 import { SiteHeader } from "@/components/site-header";
 import { TwoPaths } from "@/components/two-paths";
 import { SemesterTrack } from "@/components/semester-track";
 import { STEP_VISUALS } from "@/components/step-visuals";
-import { HeroVisual } from "@/components/hero-visual";
+import { DayThread } from "@/components/day-thread";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WeekStrip } from "@/components/week-strip";
 import { buildHeatmapCells } from "@/lib/viz";
@@ -144,8 +145,10 @@ export default function Home() {
             {FAILURES.map((failure, index) => {
               const last = index === FAILURES.length - 1;
               return (
-                <li
+                <Reveal
+                  as="li"
                   key={failure.title}
+                  delay={index * 110}
                   className={`grid gap-3 rounded-2xl p-6 sm:grid-cols-[44px_1fr_1.1fr] sm:items-start sm:gap-6 sm:p-7 ${
                     last
                       ? "bg-deep text-paper"
@@ -167,7 +170,7 @@ export default function Home() {
                   >
                     {failure.body}
                   </p>
-                </li>
+                </Reveal>
               );
             })}
           </ol>
@@ -185,38 +188,71 @@ export default function Home() {
           <div className="mt-12">
             <TwoPaths />
           </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+              href="/join"
+              className="inline-block rounded-xl bg-accent px-6 py-3.5 text-[15px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
+            >
+              Get your first week — free
+            </a>
+            <span className="text-[14px] text-ink-3">
+              No card · no calls · takes a minute
+            </span>
+            <dl className="ml-auto hidden gap-8 sm:flex">
+              {[
+                { v: "3", l: "months" },
+                { v: "84", l: "tasks" },
+                { v: "30–45", l: "min a day" },
+              ].map((stat) => (
+                <div key={stat.l}>
+                  <dd className="text-[22px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
+                    {stat.v}
+                  </dd>
+                  <dt className="mt-1.5 font-mono text-[10px] tracking-[0.12em] text-ink-3 uppercase">
+                    {stat.l}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+          </div>
         </section>
 
         {/* HOW THE GOAL GETS SMALLER */}
-        <section id="problem" className={`${shellClass} py-24`}>
-          <p className={labelClass}>How the goal gets smaller</p>
+        {/* HOW THE GOAL GETS SMALLER — on a white band, so the page reads
+            in movements instead of one continuous scroll. */}
+        <section id="problem" className="border-y border-rule bg-raised py-24">
+          <div className={shellClass}>
+            <p className={labelClass}>How the goal gets smaller</p>
 
-          <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
-            <h2 className={headingClass}>
-              One goal nobody can lift.{" "}
-              <span className="text-accent">Eighty-four you can.</span>
-            </h2>
-            <div className="flex flex-col gap-4 lg:pt-2">
-              <p className="text-[16px] text-ink-2">
-                Silsila takes the thing you want to become and cuts it down to
-                individual days — each one small enough to do on a bad evening,
-                in the thirty minutes you actually have.
-              </p>
-              <p className="text-[16px] text-ink-2">
-                Consistency stops being a personality trait you were born
-                without and becomes a size problem someone else already solved.
-              </p>
+            <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+              <h2 className={headingClass}>
+                One goal nobody can lift.{" "}
+                <span className="text-accent">Eighty-four you can.</span>
+              </h2>
+              <div className="flex flex-col gap-4 lg:pt-2">
+                <p className="text-[16px] text-ink-2">
+                  Silsila takes the thing you want to become and cuts it down to
+                  individual days — each one small enough to do on a bad
+                  evening, in the thirty minutes you actually have.
+                </p>
+                <p className="text-[16px] text-ink-2">
+                  Consistency stops being a personality trait you were born
+                  without and becomes a size problem someone else already
+                  solved.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="mt-12">
-            <GoalCrack />
+            <div className="mt-12">
+              <GoalCrack />
+            </div>
           </div>
         </section>
 
         {/* THE DAY — the loop as a conversation, since that is literally
             where it happens. */}
-        <section className="py-28">
+        <section id="day" className="py-28">
           <div className={shellClass}>
             <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">
@@ -225,16 +261,25 @@ export default function Home() {
                   It arrives. You reply. It answers back.
                 </h2>
                 <p className="mt-6 max-w-[42ch] text-[16px] text-ink-2">
-                  No app to remember to open, no dashboard to keep up with. The
+                  No app to remember to open. No dashboard to keep up with. The
                   task comes to the place you already check forty times a day,
                   and what you send back gets read.
                 </p>
 
                 <ul className="mt-8 flex flex-col gap-4">
                   {[
-                    ["Ask in Urdu.", "Answers come back in plain English."],
-                    ["No streaks to lose.", "Miss a week. Come back to a lighter task."],
-                    ["Graded, not ticked.", "A checkbox can be lied to."],
+                    [
+                      "Ask in your own words.",
+                      "Answers come back in plain English.",
+                    ],
+                    [
+                      "No streaks to lose.",
+                      "Miss a week. Come back to a lighter task.",
+                    ],
+                    [
+                      "Every reply is graded.",
+                      "One thing you did well, one thing to fix.",
+                    ],
                   ].map(([term, detail]) => (
                     <li key={term} className="flex gap-3">
                       <span
@@ -251,7 +296,7 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-7">
-                <HeroVisual />
+                <DayThread />
               </div>
             </div>
           </div>

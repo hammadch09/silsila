@@ -66,7 +66,7 @@ export function GoalCrack() {
   return (
     <div
       ref={ref}
-      className="rounded-2xl bg-raised p-5 shadow-[var(--shadow-card)] sm:p-7"
+      className="rounded-2xl bg-paper p-5 sm:p-7"
     >
       <div className="flex items-center justify-between gap-4">
         <span

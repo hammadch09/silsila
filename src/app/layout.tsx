@@ -1,30 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Bricolage_Grotesque,
-  IBM_Plex_Mono,
-  Instrument_Sans,
-} from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Display. Bricolage at 500/600 — the weight matters: at 700+ its lowercase y
-// straightens far enough that "days" reads as "daus" at headline size.
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// One family for everything, as the artifact has it. Archivo is a grotesque
+// with enough weight range to carry an 80px headline and still set body copy
+// at 15px — no second display face needed, and one less font to download on a
+// phone with patchy data.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["500", "600"],
-  display: "swap",
-});
-
-// Body. Quiet, wide aperture, holds up at 15px on a cheap phone screen.
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 // Labels, counters, day markers. Keeps data reading as data.
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -36,7 +27,7 @@ export const metadata: Metadata = {
   ),
   title: "Silsila — four years of starting over, one blank CV",
   description:
-    "Silsila sends you one task a day for 84 days. Thirty minutes each, and it grades what you send back. For computing students in Pakistan.",
+    "Not a motivation problem. Silsila cuts what you want to become into 84 small days and tracks every one. For computing students in Pakistan.",
 };
 
 export const viewport: Viewport = {
@@ -47,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${instrumentSans.variable} ${plexMono.variable} h-full`}
+      className={`${archivo.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}

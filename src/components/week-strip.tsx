@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { SAMPLE_WEEK, TASK_COLORS } from "@/lib/viz";
 
 /**
@@ -12,9 +13,13 @@ export function WeekStrip() {
   return (
     <div className="-mx-6 overflow-x-auto px-6 pb-2 lg:mx-0 lg:px-0">
       <ol className="flex min-w-[720px] gap-3 lg:min-w-0">
-        {SAMPLE_WEEK.map((entry) => (
-          <li
+        {/* Each day arrives after the one before it — the section is about a
+            week accumulating, so it should accumulate. */}
+        {SAMPLE_WEEK.map((entry, index) => (
+          <Reveal
+            as="li"
             key={entry.day}
+            delay={index * 70}
             className="flex flex-1 flex-col overflow-hidden rounded-xl bg-raised shadow-[var(--shadow-card)]"
           >
             {/* The task-type colour is a solid cap rather than a hairline, so
@@ -40,7 +45,7 @@ export function WeekStrip() {
                 </span>
               </p>
             </div>
-          </li>
+          </Reveal>
         ))}
       </ol>
     </div>

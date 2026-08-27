@@ -42,9 +42,8 @@
   --color-marigold: #ff7a00;
   --color-deep: #0b0e14;
 
-  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
-  --font-display: var(--font-bricolage), var(--font-instrument-sans), sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Soft, layered, low-opacity. A single hard offset shadow was the most
      brutalist thing on the page. */
@@ -73,8 +72,6 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
-    font-optical-sizing: auto;
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.08;

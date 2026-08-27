@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 import { TASK_COLORS, TASK_MIX } from "@/lib/viz";
 
 /**
@@ -9,8 +13,35 @@ import { TASK_COLORS, TASK_MIX } from "@/lib/viz";
  * every series is labelled in the legend — colour is never the only channel.
  */
 export function TaskMixBar() {
+  const ref = useRef<HTMLElement>(null);
+  const [grown, setGrown] = useState(false);
+
+  // Bars start at zero width and grow to their share, so the mix is watched
+  // being built rather than presented finished.
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const frame = requestAnimationFrame(() => setGrown(true));
+      return () => cancelAnimationFrame(frame);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        setGrown(true);
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <figure className="m-0">
+    <figure ref={ref} className="m-0">
       <div
         className="flex h-14 w-full gap-[2px] overflow-hidden rounded"
         role="img"
@@ -28,8 +59,10 @@ export function TaskMixBar() {
               index === TASK_MIX.length - 1 ? "rounded-r" : ""
             }`}
             style={{
-              width: `${segment.share}%`,
+              width: grown ? `${segment.share}%` : "0%",
               background: TASK_COLORS[segment.type],
+              transition: "width .9s cubic-bezier(.2,.7,.3,1)",
+              transitionDelay: `${index * 90}ms`,
             }}
           />
         ))}
