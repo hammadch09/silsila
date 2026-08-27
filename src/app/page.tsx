@@ -1,5 +1,6 @@
-import { IllustrationSteps } from "@/components/illustration-steps";
+import { GoalCrack } from "@/components/goal-crack";
 import { SilsilaMark } from "@/components/logo";
+import { SemesterLoop } from "@/components/semester-loop";
 import { SiteHeader } from "@/components/site-header";
 import { TwoPaths } from "@/components/two-paths";
 import { SemesterTrack } from "@/components/semester-track";
@@ -8,6 +9,25 @@ import { HeroVisual } from "@/components/hero-visual";
 import { TaskMixBar } from "@/components/task-mix-bar";
 import { WeekStrip } from "@/components/week-strip";
 import { buildHeatmapCells } from "@/lib/viz";
+
+const FAILURES = [
+  {
+    title: "The goal is too big to start today.",
+    body: "“Become a backend engineer” is not something you can do at 9pm on a Tuesday. So the day passes, and the goal is exactly where you left it.",
+  },
+  {
+    title: "Nobody tells you what today is.",
+    body: "Deciding what to work on costs more than the work. Most evenings the only decision made is what to skip.",
+  },
+  {
+    title: "Nobody looks at what you made.",
+    body: "You finish something and it goes nowhere. No grade, no correction, no idea if it was any good. Work without feedback stops feeling like progress.",
+  },
+  {
+    title: "So nothing accumulates.",
+    body: "Four years of scattered effort and no single place that shows it. That is the blank CV — not a talent problem, four missing pieces of scaffolding.",
+  },
+];
 
 const STEPS = [
   {
@@ -62,107 +82,135 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* HERO — the two paths are the pitch. A student recognises the
-            left panel before reading a word of copy, and the right panel is
-            the product without needing to explain it. */}
-        <section className={`${shellClass} pt-16 pb-24 lg:pt-20`}>
-          <p className={labelClass}>For computing students at IUB</p>
+        {/* HERO */}
+        <section id="top" className={`${shellClass} pt-20 pb-4 lg:pt-28`}>
+          <p className={labelClass}>For computing students</p>
 
-          <div className="mt-7 grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <h1 className="text-[40px] sm:text-[54px] lg:text-[62px]">
-                Everyone starts.
+          <div className="mt-7 grid items-end gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+            <h1 className="text-[38px] leading-[0.96] tracking-[-0.035em] text-balance sm:text-[62px] lg:text-[80px]">
+              Four years of starting over.
+              <br />
+              <span className="text-accent">One blank CV.</span>
+            </h1>
+            <div className="flex flex-col gap-5 pb-2">
+              <p className="text-[19px] leading-[1.5] text-ink-2 text-pretty">
+                Not a motivation problem. Nobody breaks the four years into
+                today. Silsila cuts what you want to become into 84 small days
+                and tracks every one.
+              </p>
+              <p className="font-mono text-[13px] leading-[1.7] text-ink-3">
+                silsila — an unbroken chain.
                 <br />
-                <span className="text-accent">Almost nobody finishes.</span>
-              </h1>
-            </div>
-            <div className="lg:col-span-5 lg:pt-2">
-              <p className="text-[19px] leading-[1.4] font-medium">
-                Four years of starting over is a degree and a blank CV. Silsila
-                breaks what you want to become into 84 small days, and tracks
-                every one.
-              </p>
-              <p className="mt-4 text-[15px] text-ink-3">
-                <span className="font-mono text-[13px] text-ink-2">silsila</span>{" "}
-                (سلسلہ) — an unbroken chain. One thing after another, without a
-                break.
+                One thing after another, without a break.
               </p>
             </div>
-          </div>
-
-          <div className="mt-14">
-            <TwoPaths />
-          </div>
-
-          <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a
-              href="/join"
-              className="inline-block rounded-xl bg-accent px-7 py-4 text-[16px] font-medium text-white no-underline shadow-[var(--shadow-card)] transition-colors hover:bg-ink"
-            >
-              Get your first week — free
-            </a>
-            <span className="text-[15px] text-ink-2">
-              Free · no calls · takes a minute
-            </span>
-            <dl className="ml-auto hidden gap-8 sm:flex">
-              {[
-                { v: "3", l: "months" },
-                { v: "84", l: "tasks" },
-                { v: "30–45", l: "min a day" },
-              ].map((stat) => (
-                <div key={stat.l}>
-                  <dd className="text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums">
-                    {stat.v}
-                  </dd>
-                  <dt className="mt-1.5 font-mono text-[10px] tracking-[0.12em] text-ink-3 uppercase">
-                    {stat.l}
-                  </dt>
-                </div>
-              ))}
-            </dl>
           </div>
         </section>
 
-        {/* THE PROBLEM — the hero already showed this; here it is named, and
-            the blame is taken off the reader. Deliberately text only: two
-            grids making the same point would weaken both. */}
-        <section id="problem" className={`${shellClass} py-28`}>
-          <p className={labelClass}>Why plans die</p>
+        {/* LAYER ONE — the failure is not one bad semester, it is the same
+            two weeks eight times. Watching it repeat lands harder than any
+            sentence describing it. */}
+        <section id="loop" className={`${shellClass} pt-24 pb-16 lg:pt-32`}>
+          <p className={labelClass}>Layer one · the loop</p>
 
-          <h2 className={`mt-6 max-w-[20ch] ${headingClass}`}>
-            You&rsquo;ve made this plan before.
-          </h2>
-
-          <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-16">
-            <p className="max-w-[52ch] text-[18px] text-ink-2 lg:col-span-7">
-              Maybe in first semester. Maybe last week. You wrote it down, you
-              were serious, and you meant every line of it. You were not being
-              lazy — you were being{" "}
-              <span className="text-ink">a person with a life</span>.
-            </p>
-            <p className="max-w-[46ch] text-[16px] text-ink-2 lg:col-span-5">
-              Four years of starting over is a degree, a blank CV, and the
-              belief that it was your fault. It wasn&rsquo;t. Consistency
-              isn&rsquo;t a personality trait you were born without — it&rsquo;s
-              a thing other people have help with.
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+            <h2 className={headingClass}>
+              It is not one failure.
+              <br />
+              It is the <span className="text-peach-deep">same failure</span>,
+              eight times.
+            </h2>
+            <p className="max-w-[46ch] text-[16px] text-ink-2 lg:pt-2">
+              Every semester starts with a decision and dies in the same place.
+              Not week twelve. Week one, week two, week four — whenever the
+              first real deadline lands.
             </p>
           </div>
 
-          <div className="mt-14 grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-6">
-              <IllustrationSteps className="w-full" />
-            </div>
-            <div className="lg:col-span-6">
-              <p className="max-w-[22ch] text-[26px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[32px]">
-                The plan was never the hard part.{" "}
-                <span className="text-accent">Day four was.</span>
+          <div className="mt-12">
+            <SemesterLoop />
+          </div>
+        </section>
+
+        {/* LAYER TWO */}
+        <section id="layers" className={`${shellClass} py-24`}>
+          <p className={labelClass}>Layer two · why it keeps happening</p>
+          <h2 className={`mt-6 max-w-[24ch] ${headingClass}`}>
+            Four things go wrong, and they go wrong{" "}
+            <span className="text-accent">in order.</span>
+          </h2>
+
+          <ol className="mt-12 flex flex-col gap-3">
+            {FAILURES.map((failure, index) => {
+              const last = index === FAILURES.length - 1;
+              return (
+                <li
+                  key={failure.title}
+                  className={`grid gap-3 rounded-2xl p-6 sm:grid-cols-[44px_1fr_1.1fr] sm:items-start sm:gap-6 sm:p-7 ${
+                    last
+                      ? "bg-deep text-paper"
+                      : "bg-raised shadow-[var(--shadow-card)]"
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-[12px] tabular-nums ${
+                      last ? "text-paper/45" : "text-ink-3"
+                    }`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[18px] leading-[1.25] font-semibold tracking-[-0.02em]">
+                    {failure.title}
+                  </h3>
+                  <p
+                    className={`text-[15px] ${last ? "text-paper/70" : "text-ink-2"}`}
+                  >
+                    {failure.body}
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+
+          <p className="mt-14 max-w-[56ch] text-[18px] text-ink-2">
+            Silsila exists to fix all four at once: it cuts the goal into days,
+            sends today&rsquo;s, grades what you send back, and keeps every
+            piece in one place.
+          </p>
+        </section>
+
+        {/* LAYER THREE */}
+        <section className={`${shellClass} py-24`}>
+          <p className={labelClass}>Layer three · what changes</p>
+          <div className="mt-12">
+            <TwoPaths />
+          </div>
+        </section>
+
+        {/* HOW THE GOAL GETS SMALLER */}
+        <section id="problem" className={`${shellClass} py-24`}>
+          <p className={labelClass}>How the goal gets smaller</p>
+
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-16">
+            <h2 className={headingClass}>
+              One goal nobody can lift.{" "}
+              <span className="text-accent">Eighty-four you can.</span>
+            </h2>
+            <div className="flex flex-col gap-4 lg:pt-2">
+              <p className="text-[16px] text-ink-2">
+                Silsila takes the thing you want to become and cuts it down to
+                individual days — each one small enough to do on a bad evening,
+                in the thirty minutes you actually have.
               </p>
-              <p className="mt-6 max-w-[44ch] text-[16px] text-ink-2">
-                A goal is one enormous block, and nobody can lift it. Silsila
-                cuts it into pieces small enough to pick up on a bad day, then
-                keeps count so you never have to.
+              <p className="text-[16px] text-ink-2">
+                Consistency stops being a personality trait you were born
+                without and becomes a size problem someone else already solved.
               </p>
             </div>
+          </div>
+
+          <div className="mt-12">
+            <GoalCrack />
           </div>
         </section>
 
@@ -261,7 +309,7 @@ export default function Home() {
 
         {/* HOW — the section a student most needs to actually read, so it gets
             cards on a quiet surface rather than a shouted colour field. */}
-        <section id="how" className="py-28">
+        <section id="how" className="border-y border-rule bg-surface py-28">
           <div className={shellClass}>
             <p className={labelClass}>
               How it works
@@ -289,6 +337,20 @@ export default function Home() {
                   <p className="mt-2.5 text-[15px] text-ink-2">{step.body}</p>
                 </li>
               ))}
+              <li className="flex flex-col justify-center rounded-2xl bg-accent-soft p-6">
+                <p className="text-[19px] leading-[1.2] font-semibold tracking-[-0.02em]">
+                  Eight questions, then day one.
+                </p>
+                <p className="mt-2.5 text-[15px] text-ink-2">
+                  No waitlist, no calls. The plan is built in front of you.
+                </p>
+                <a
+                  href="/join"
+                  className="mt-5 inline-block self-start rounded-xl bg-accent px-5 py-3 text-[15px] font-medium text-white no-underline transition-colors hover:bg-ink"
+                >
+                  Build my plan — free
+                </a>
+              </li>
             </ol>
           </div>
         </section>

@@ -19,7 +19,8 @@ import { SilsilaLockup } from "@/components/logo";
  */
 
 const NAV = [
-  { href: "#problem", label: "Why it fails" },
+  { href: "#loop", label: "The loop" },
+  { href: "#layers", label: "Why it repeats" },
   { href: "#how", label: "How it works" },
   { href: "#profile", label: "What you get" },
 ];

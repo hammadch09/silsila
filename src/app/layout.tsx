@@ -1,47 +1,53 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  IBM_Plex_Mono,
+  Instrument_Sans,
+} from "next/font/google";
 import "./globals.css";
 
-// A neo-grotesque, not a geometric and not a character face. Bricolage had a
-// voice at 96px and that voice was "fun" — wrong register for a product asking
-// students to trust it with two years. This one is quiet, has real weight
-// range, and does not look like the default.
-const schibsted = Schibsted_Grotesk({
-  variable: "--font-schibsted",
+// Display. Bricolage at 500/600 — the weight matters: at 700+ its lowercase y
+// straightens far enough that "days" reads as "daus" at headline size.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600"],
   display: "swap",
 });
 
-// Labels, day markers, figures. Keeps data reading as data.
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+// Body. Quiet, wide aperture, holds up at 15px on a cheap phone screen.
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Labels, counters, day markers. Keeps data reading as data.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  // Without this the OG image resolves against localhost in production and the
-  // WhatsApp link preview silently breaks — which is the one preview that
-  // matters most here.
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
-  title: "Silsila — roz ek kaam, silsila chalta rahe",
+  title: "Silsila — four years of starting over, one blank CV",
   description:
-    "Silsila (سلسلہ) means an unbroken chain. A 3-month plan, one 30-minute task a day, graded — for computing students in Pakistan who got the roadmap and stopped on day four.",
+    "Silsila sends you one task a day for 84 days. Thirty minutes each, and it grades what you send back. For computing students in Pakistan.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbfbfd",
+  themeColor: "#fafaf8",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${schibsted.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${bricolage.variable} ${instrumentSans.variable} ${plexMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         {children}

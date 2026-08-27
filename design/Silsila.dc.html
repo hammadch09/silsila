@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FAFAF8;color:#0B0E14;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:#2455E0;text-decoration:none}
+  a:hover{color:#0B0E14}
+  ::selection{background:#DCE6FB}
+  @keyframes sil-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+</style>
+</helmet>
+
+<div style="max-width:100%;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(250,250,248,.86);backdrop-filter:blur(12px);border-bottom:1px solid #ECECE6">
+    <div style="max-width:1240px;margin:0 auto;padding:14px clamp(18px,4vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;color:#0B0E14">
+        <span style="display:block;width:22px;height:22px;border-radius:6px;background:#2455E0"></span>
+        <span style="font-size:19px;font-weight:600;letter-spacing:-.02em">silsila</span>
+      </a>
+      <nav data-nav style="display:flex;gap:28px;font-size:15px;color:#4A5160">
+        <a href="#loop" style="color:#4A5160">The loop</a>
+        <a href="#layers" style="color:#4A5160">Why it repeats</a>
+        <a href="#day" style="color:#4A5160">A day</a>
+        <a href="#how" style="color:#4A5160">How it works</a>
+        <a href="#proof" style="color:#4A5160">What you get</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2455E0;background:#E9EFFD;padding:7px 12px;border-radius:999px" data-hide="700">100 SEATS · EARLY ACCESS</span>
+        <a href="#cta" style="background:#0B0E14;color:#fff;font-size:15px;font-weight:500;padding:11px 18px;border-radius:10px">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="max-width:1240px;margin:0 auto;padding:clamp(52px,8vw,96px) clamp(18px,4vw,32px) 40px">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:28px">FOR COMPUTING STUDENTS</div>
+    <div data-stack="900" style="display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,64px);align-items:end">
+      <h1 data-reveal data-reveal-delay="60" style="margin:0;font-size:clamp(36px,8.6vw,88px);line-height:.96;letter-spacing:-.04em;font-weight:600;text-wrap:balance">Four years of starting over.<br><span style="color:#2455E0">One blank CV.</span></h1>
+      <div data-reveal data-reveal-delay="140" style="display:flex;flex-direction:column;gap:20px;padding-bottom:8px">
+        <p style="margin:0;font-size:20px;line-height:1.5;color:#333A48;text-wrap:pretty">Not a motivation problem. Nobody breaks the four years into today. Silsila cuts what you want to become into 84 small days and tracks every one.</p>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;color:#8A909E">silsila — an unbroken chain.<br>One thing after another, without a break.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="loop" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,32px) clamp(40px,6vw,64px)">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">LAYER ONE · THE LOOP</div>
+    <div data-stack="900" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 data-reveal data-reveal-delay="60" style="margin:0;font-size:clamp(30px,6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:600">It is not one failure.<br>It is the <span style="color:#C0522B">same failure</span>, eight times.</h2>
+      <p data-reveal data-reveal-delay="120" style="margin:0;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">Every semester starts with a decision and dies in the same place. Not week twelve. Week one, week two, week four — whenever the first real deadline lands.</p>
+    </div>
+
+    <div data-loop style="background:#fff;border:1px solid #ECECE6;border-radius:24px;padding:clamp(22px,4vw,44px)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8A909E;padding-bottom:20px;border-bottom:1px solid #F0F0EA;margin-bottom:12px">
+        <span>SEMESTER</span>
+        <span>14 WEEKS →</span>
+        <span data-loop-count style="color:#C0522B">RESTARTS 0</span>
+      </div>
+
+      <div data-loop-row data-die="3" data-reason="Started strong. Then midterms." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 1</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="2" data-reason="Waited for the semester to calm down." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 2</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="4" data-reason="New course, new plan. Same week four." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 3</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="2" data-reason="Bought a course. Watched two videos." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 4</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="5" data-reason="Internship applications. Nothing to show." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0;background:#FDF6F1;border-radius:8px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#C0522B;padding-left:8px">SEM 5</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F5E2D3;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#C0522B;padding-right:8px"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="1" data-reason="Decided to start properly after exams." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 6</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="3" data-reason="Final year project ate everything." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 7</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+      <div data-loop-row data-die="1" data-reason="Three nights, one CV, nothing to put on it." style="display:grid;grid-template-columns:64px 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:11px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5AAB6">SEM 8</span>
+        <div style="display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+          <div data-loop-cells style="flex:1;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells14 }}" as="c" hint-placeholder-count="14"><div style="height:16px;border-radius:3px;background:#F0F0EA;transition:background .3s ease"></div></sc-for>
+          </div>
+          <span data-loop-reason style="flex:0 0 clamp(150px,17vw,240px);font-size:14px;line-height:1.35;color:#8A909E"></span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;margin-top:28px;padding-top:26px;border-top:1px solid #F0F0EA">
+        <div><div style="font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1">8</div><div style="font-size:14px;color:#8A909E;margin-top:6px">plans made</div></div>
+        <div><div style="font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1">0</div><div style="font-size:14px;color:#8A909E;margin-top:6px">plans finished</div></div>
+        <div><div style="font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1">1</div><div style="font-size:14px;color:#8A909E;margin-top:6px">degree, no evidence</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="layers" style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(18px,4vw,32px)">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">LAYER TWO · WHY IT KEEPS HAPPENING</div>
+    <h2 data-reveal data-reveal-delay="60" style="margin:0 0 clamp(36px,5vw,56px);max-width:900px;font-size:clamp(30px,6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:600">Four things go wrong, and they go wrong <span style="color:#2455E0">in order.</span></h2>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div data-reveal style="background:#fff;border:1px solid #ECECE6;border-radius:16px;padding:clamp(22px,3.4vw,34px);display:grid;grid-template-columns:56px 1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start" data-stack="760">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C6C9D2">01</div>
+        <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25">The goal is too big to start today.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;color:#6B7180">“Become a backend engineer” is not a thing you can do at 9pm on a Tuesday. So the day passes, and the goal is still exactly where you left it.</p>
+      </div>
+      <div data-reveal data-reveal-delay="80" style="background:#fff;border:1px solid #ECECE6;border-radius:16px;padding:clamp(22px,3.4vw,34px);display:grid;grid-template-columns:56px 1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start" data-stack="760">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C6C9D2">02</div>
+        <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25">Nobody tells you what today is.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;color:#6B7180">Deciding what to work on costs more energy than the work. Most days the decision is what you skip, not the task.</p>
+      </div>
+      <div data-reveal data-reveal-delay="160" style="background:#fff;border:1px solid #ECECE6;border-radius:16px;padding:clamp(22px,3.4vw,34px);display:grid;grid-template-columns:56px 1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start" data-stack="760">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#C6C9D2">03</div>
+        <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25">Nobody looks at what you made.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;color:#6B7180">You finish something and it goes nowhere. No grade, no correction, no idea whether it was any good. Work without feedback stops feeling like progress.</p>
+      </div>
+      <div data-reveal data-reveal-delay="240" style="background:#0B0E14;color:#fff;border-radius:16px;padding:clamp(22px,3.4vw,34px);display:grid;grid-template-columns:56px 1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start" data-stack="760">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#5A6478">04</div>
+        <h3 style="margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25">So nothing accumulates.</h3>
+        <p style="margin:0;font-size:17px;line-height:1.5;color:#9AA1B1">Four years of scattered effort and no single place that shows it. That is the blank CV. It was never a talent problem — it was four missing pieces of scaffolding.</p>
+      </div>
+    </div>
+
+    <p data-reveal style="margin:clamp(40px,5vw,64px) 0 0;max-width:760px;font-size:clamp(20px,2.4vw,26px);line-height:1.4;letter-spacing:-.02em;color:#0B0E14;text-wrap:pretty">Silsila exists to fix all four at once: it cuts the goal into days, sends today's, grades what you send back, and keeps every piece in one place.</p>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:32px clamp(18px,4vw,32px) clamp(64px,9vw,112px)">
+    <div data-reveal style="display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#8A909E" data-hide="560">LAYER THREE · WHAT CHANGES</span>
+      <span style="flex:1;height:1px;background:#E6E6DF"></span>
+      <span data-sim-day style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#0B0E14">DAY 00</span>
+      <button data-sim-replay type="button" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2455E0;background:#E9EFFD;border:0;padding:7px 12px;border-radius:999px;cursor:pointer">REPLAY</button>
+    </div>
+
+    <div data-sim-root data-stack="820" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div data-reveal style="background:#FBEFE6;border-radius:20px;padding:clamp(20px,3.4vw,32px)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#C0522B;margin-bottom:10px">ON YOUR OWN</div>
+        <h3 style="margin:0 0 28px;font-size:26px;font-weight:600;letter-spacing:-.02em">Four months, mostly waiting.</h3>
+        <div data-sim-grid="a" style="display:grid;grid-template-columns:repeat(14,1fr);gap:5px;margin-bottom:28px">
+          <sc-for list="{{ cells }}" as="c" hint-placeholder-count="84">
+            <div data-cell style="aspect-ratio:1;border-radius:4px;background:#F5E2D3;transition:background .35s ease,transform .35s ease"></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:40px;padding-top:22px;border-top:1px solid #EEDCCB">
+          <div><div data-sim-stat="a-days" style="font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1">0</div><div style="font-size:14px;color:#7A7263;margin-top:6px">days worked</div></div>
+          <div><div data-sim-stat="a-built" style="font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1">0</div><div style="font-size:14px;color:#7A7263;margin-top:6px">things built</div></div>
+        </div>
+        <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:#7A7263">A folder of half-finished tutorials, and three nights of panic at the end.</p>
+      </div>
+
+      <div data-reveal data-reveal-delay="100" style="background:#E9EFFD;border-radius:20px;padding:clamp(20px,3.4vw,32px)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#2455E0;margin-bottom:10px">WITH SILSILA</div>
+        <h3 style="margin:0 0 28px;font-size:26px;font-weight:600;letter-spacing:-.02em">Four months, 30 minutes at a time.</h3>
+        <div data-sim-grid="b" style="display:grid;grid-template-columns:repeat(14,1fr);gap:5px;margin-bottom:28px">
+          <sc-for list="{{ cells }}" as="c" hint-placeholder-count="84">
+            <div data-cell style="aspect-ratio:1;border-radius:4px;background:#D6E1F8;transition:background .35s ease,transform .35s ease"></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:40px;padding-top:22px;border-top:1px solid #D6E1F8">
+          <div><div data-sim-stat="b-days" style="font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1">0</div><div style="font-size:14px;color:#5A6478;margin-top:6px">days worked</div></div>
+          <div><div data-sim-stat="b-built" style="font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1">0</div><div style="font-size:14px;color:#5A6478;margin-top:6px">things built</div></div>
+        </div>
+        <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:#5A6478">The two gaps are exam week and a wedding. You came back. That is the only rule.</p>
+      </div>
+    </div>
+
+    <div data-reveal style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:44px">
+      <a href="#cta" style="background:#2455E0;color:#fff;font-size:17px;font-weight:500;padding:16px 28px;border-radius:12px">Get your first week — free</a>
+      <span style="font-size:15px;color:#6B7180">No card · no calls · takes a minute</span>
+      <span style="flex:1"></span>
+      <div style="display:flex;gap:clamp(20px,3vw,36px);flex-wrap:wrap">
+        <div><div style="font-size:28px;font-weight:600;letter-spacing:-.02em">3</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-top:4px">MONTHS</div></div>
+        <div><div style="font-size:28px;font-weight:600;letter-spacing:-.02em">84</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-top:4px">TASKS</div></div>
+        <div><div style="font-size:28px;font-weight:600;letter-spacing:-.02em">30–45</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-top:4px">MIN A DAY</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem" style="border-top:1px solid #ECECE6;background:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">HOW THE GOAL GETS SMALLER</div>
+      <div data-stack="900" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,72px);align-items:start">
+        <h2 data-reveal style="margin:0;font-size:clamp(30px,6vw,60px);line-height:1.02;letter-spacing:-.035em;font-weight:600">One goal nobody can lift. <span style="color:#2455E0">Eighty-four you can.</span></h2>
+        <div data-reveal data-reveal-delay="120" style="display:flex;flex-direction:column;gap:18px;padding-top:6px">
+          <p style="margin:0;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">Silsila takes the thing you want to become and cuts it down to individual days — each one small enough to do on a bad evening, in the thirty minutes you actually have.</p>
+          <p style="margin:0;font-size:19px;line-height:1.55;color:#6B7180;text-wrap:pretty">Nothing is asked of you that a semester project can outrank. Consistency stops being a personality trait you were born without and becomes a size problem someone else already solved.</p>
+        </div>
+      </div>
+
+      <div data-crack style="margin-top:80px;padding:clamp(26px,5vw,56px) clamp(16px,4vw,40px);background:#FAFAF8;border:1px solid #ECECE6;border-radius:24px;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em">
+          <span data-crack-label style="color:#8A909E">ONE GOAL · UNLIFTABLE</span>
+          <span style="color:#C6C9D2">SCROLL</span>
+        </div>
+        <div data-crack-grid style="display:grid;grid-template-columns:repeat(14,1fr);gap:0;max-width:840px;margin:0 auto">
+          <sc-for list="{{ cells }}" as="c" hint-placeholder-count="84">
+            <div data-tile style="aspect-ratio:1;background:#2455E0;border-radius:0;transition:transform .5s cubic-bezier(.2,.7,.3,1),border-radius .5s ease"></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:center;gap:56px;margin-top:40px">
+          <div style="text-align:center"><div style="font-size:26px;font-weight:600;letter-spacing:-.02em">84</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-top:4px">DAYS</div></div>
+          <div style="text-align:center"><div style="font-size:26px;font-weight:600;letter-spacing:-.02em">1</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-top:4px">AT A TIME</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="day" style="border-top:1px solid #ECECE6">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div data-stack="900" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px);align-items:center">
+        <div>
+          <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">A DAY ON SILSILA</div>
+          <h2 data-reveal data-reveal-delay="60" style="margin:0 0 28px;font-size:clamp(30px,6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:600">It arrives. You reply.<br>It answers back.</h2>
+          <p data-reveal data-reveal-delay="120" style="margin:0 0 32px;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">No app to remember to open. No dashboard to keep up with. The task comes to the place you already check forty times a day, and what you send back gets read.</p>
+          <div data-reveal data-reveal-delay="180" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;gap:14px"><span style="color:#2455E0;line-height:1.5">●</span><p style="margin:0;font-size:17px;line-height:1.5;color:#333A48"><strong style="font-weight:600">Ask in your own words.</strong> <span style="color:#6B7180">Answers come back in plain English.</span></p></div>
+            <div style="display:flex;gap:14px"><span style="color:#2455E0;line-height:1.5">●</span><p style="margin:0;font-size:17px;line-height:1.5;color:#333A48"><strong style="font-weight:600">No streaks to lose.</strong> <span style="color:#6B7180">Miss a week. Come back to a lighter task.</span></p></div>
+            <div style="display:flex;gap:14px"><span style="color:#2455E0;line-height:1.5">●</span><p style="margin:0;font-size:17px;line-height:1.5;color:#333A48"><strong style="font-weight:600">Every reply is graded.</strong> <span style="color:#6B7180">One thing you did well, one thing to fix.</span></p></div>
+          </div>
+        </div>
+
+        <div data-reveal data-reveal-delay="120" style="position:relative">
+          <div data-thread style="background:#0B0E14;border-radius:36px;padding:12px;box-shadow:0 40px 80px -30px rgba(11,14,20,.4)">
+            <div style="background:#EDEAE4;border-radius:26px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:12px;padding:18px 18px 14px;background:#fff;border-bottom:1px solid #EAEAE4">
+                <span style="width:36px;height:36px;border-radius:50%;background:#2455E0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">s</span>
+                <div><div style="font-size:15px;font-weight:600">Silsila</div><div style="font-size:12px;color:#8A909E">checks in daily</div></div>
+              </div>
+              <div style="padding:18px;display:flex;flex-direction:column;gap:12px;min-height:420px">
+                <div data-msg data-side="in" style="align-self:flex-start;max-width:82%;background:#fff;border-radius:14px 14px 14px 4px;padding:12px 14px">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#2455E0;margin-bottom:6px">DAY 12 · ARTIFACT · 40 MIN</div>
+                  <div style="font-size:15px;line-height:1.45">Build a page that fetches live currency rates and deploy it.</div>
+                </div>
+                <div data-msg data-side="out" style="align-self:flex-end;max-width:78%;background:#DCE6FB;border-radius:14px 14px 4px 14px;padding:12px 14px;font-size:15px;line-height:1.45">what do I do if the API goes down?</div>
+                <div data-msg data-side="in" style="align-self:flex-start;max-width:82%;background:#fff;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.45">Show the last rate you saved, with its timestamp. That is what a real app does.</div>
+                <div data-msg data-side="out" style="align-self:flex-end;max-width:78%;background:#DCE6FB;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.45">done — rates.netlify.app</div>
+                <div data-msg data-side="in" style="align-self:flex-start;max-width:88%;background:#fff;border-radius:14px 14px 14px 4px;padding:14px">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#1B9E5F;margin-bottom:8px">● GRADED 4/5</div>
+                  <div style="font-size:15px;line-height:1.45;margin-bottom:10px"><strong style="font-weight:600">Good</strong> — deployed, and you handled the offline case.</div>
+                  <div style="font-size:14px;line-height:1.45;color:#6B7180;margin-bottom:12px">Next time: show the timestamp in local time.</div>
+                  <div style="display:flex;gap:5px">
+                    <span style="flex:1;height:6px;border-radius:3px;background:#2455E0"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#2455E0"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#2455E0"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#2455E0"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#DDE2EC"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #ECECE6;background:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:64px;flex-wrap:wrap;margin-bottom:52px">
+        <div>
+          <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">WHAT A WEEK LOOKS LIKE</div>
+          <h2 data-reveal data-reveal-delay="60" style="margin:0;font-size:clamp(30px,6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:600">Seven days.<br>Seven <span style="color:#2455E0">small things.</span></h2>
+        </div>
+        <p data-reveal data-reveal-delay="120" style="margin:0;max-width:420px;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">Nothing here needs a free afternoon. That is the whole design — a semester project cannot justify skipping thirty minutes.</p>
+      </div>
+      <div data-stack="week" style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px">
+        <div data-reveal data-reveal-delay="0" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#2455E0"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">MON</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">JavaScript course, section 4. Push your solutions.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>SKILL</span><span>45m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="60" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#E2673A"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">TUE</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Watch how a real product was built. Write three lines on it.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>HORIZON</span><span>30m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="120" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#2455E0"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">WED</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Section 5. Push again.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>SKILL</span><span>45m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="180" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#1B9E5F"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">THU</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Build a live currency rates page. Deploy it.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>ARTIFACT</span><span>40m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="240" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#E8B01F"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">FRI</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Rewrite your LinkedIn headline.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>SIGNAL</span><span>30m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="300" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#E0629B"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">SAT</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Message one senior in your field. Template inside.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>HUMAN</span><span>30m</span></div>
+          </div>
+        </div>
+        <div data-reveal data-reveal-delay="360" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <span style="height:5px;background:#2455E0"></span>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E">SUN</div>
+            <div style="font-size:16px;line-height:1.35;flex:1">Fix what came back in yesterday's grade.</div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8A909E"><span>SKILL</span><span>40m</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div data-stack="900" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,4vw,72px);align-items:center;margin-top:clamp(64px,8vw,104px)">
+        <div>
+          <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">THE MIX</div>
+          <h2 data-reveal data-reveal-delay="60" style="margin:0 0 24px;font-size:clamp(28px,5.4vw,48px);line-height:1.03;letter-spacing:-.035em;font-weight:600">Not tutorials on repeat.</h2>
+          <p data-reveal data-reveal-delay="120" style="margin:0 0 14px;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">If every task were “watch a React video”, this would be a worse Coursera. The rotation is the product.</p>
+          <p data-reveal data-reveal-delay="160" style="margin:0;font-size:17px;line-height:1.55;color:#8A909E">Human tasks have the worst completion rate and the highest long-term value. They stay in.</p>
+        </div>
+        <div data-reveal data-reveal-delay="120" data-mix>
+          <div style="display:flex;gap:4px;margin-bottom:22px">
+            <span data-mix-bar style="width:40%;height:64px;border-radius:6px 0 0 6px;background:#2455E0;transition:width .9s cubic-bezier(.2,.7,.3,1)"></span>
+            <span data-mix-bar style="width:20%;height:64px;background:#E2673A;transition:width .9s cubic-bezier(.2,.7,.3,1) .08s"></span>
+            <span data-mix-bar style="width:20%;height:64px;background:#1B9E5F;transition:width .9s cubic-bezier(.2,.7,.3,1) .16s"></span>
+            <span data-mix-bar style="width:10%;height:64px;background:#E8B01F;transition:width .9s cubic-bezier(.2,.7,.3,1) .24s"></span>
+            <span data-mix-bar style="width:10%;height:64px;border-radius:0 6px 6px 0;background:#E0629B;transition:width .9s cubic-bezier(.2,.7,.3,1) .32s"></span>
+          </div>
+          <div data-stack="mix" style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:6px"><span style="color:#2455E0">■</span> SKILL <span style="color:#8A909E">40%</span></div><div style="font-size:14px;line-height:1.4;color:#6B7180">The technical spine</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:6px"><span style="color:#E2673A">■</span> HORIZON <span style="color:#8A909E">20%</span></div><div style="font-size:14px;line-height:1.4;color:#6B7180">What you didn't know existed</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:6px"><span style="color:#1B9E5F">■</span> ARTIFACT <span style="color:#8A909E">20%</span></div><div style="font-size:14px;line-height:1.4;color:#6B7180">Something that leaves a trace</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:6px"><span style="color:#E8B01F">■</span> SIGNAL <span style="color:#8A909E">10%</span></div><div style="font-size:14px;line-height:1.4;color:#6B7180">CV, profile, positioning</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:6px"><span style="color:#E0629B">■</span> HUMAN <span style="color:#8A909E">10%</span></div><div style="font-size:14px;line-height:1.4;color:#6B7180">Talking to actual people</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="border-top:1px solid #ECECE6">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">HOW IT WORKS</div>
+      <h2 data-reveal data-reveal-delay="60" style="margin:0 0 60px;font-size:clamp(30px,6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:600">A plan that runs itself,<br>and checks on you.</h2>
+      <div data-stack="880" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div data-reveal style="background:#fff;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3vw,26px)">
+          <div style="background:#FAFAF8;border-radius:12px;padding:22px;margin-bottom:26px;display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+            <sc-for list="{{ cells28 }}" as="c" hint-placeholder-count="28">
+              <div style="aspect-ratio:1;border-radius:3px;background:#DCE6FB"></div>
+            </sc-for>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A909E;margin-bottom:10px">01</div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">It builds the plan.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#6B7180">You say what you are after. It asks your semester, your level and the hours you actually have, then writes three months down to individual days.</p>
+        </div>
+        <div data-reveal data-reveal-delay="80" style="background:#fff;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3vw,26px)">
+          <div style="background:#FAFAF8;border-radius:12px;padding:22px;margin-bottom:26px">
+            <div style="background:#fff;border:1px solid #EAEAE4;border-radius:10px;padding:14px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:#1B9E5F;margin-bottom:10px">● ARTIFACT · 40 MIN</div>
+              <span style="display:block;height:8px;border-radius:4px;background:#EDEDE7;margin-bottom:6px"></span>
+              <span style="display:block;height:8px;width:64%;border-radius:4px;background:#EDEDE7"></span>
+            </div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A909E;margin-bottom:10px">02</div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">It sends one task a day.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#6B7180">Thirty to forty-five minutes. Small enough that a semester project cannot justify skipping it.</p>
+        </div>
+        <div data-reveal data-reveal-delay="160" style="background:#fff;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3vw,26px)">
+          <div style="background:#FAFAF8;border-radius:12px;padding:22px;margin-bottom:26px;display:flex;align-items:center;gap:18px">
+            <div style="font-size:34px;font-weight:600;letter-spacing:-.03em">4<span style="font-size:18px;color:#8A909E">/5</span></div>
+            <div style="flex:1;display:flex;gap:4px">
+              <span style="flex:1;height:8px;border-radius:4px;background:#2455E0"></span>
+              <span style="flex:1;height:8px;border-radius:4px;background:#2455E0"></span>
+              <span style="flex:1;height:8px;border-radius:4px;background:#2455E0"></span>
+              <span style="flex:1;height:8px;border-radius:4px;background:#2455E0"></span>
+              <span style="flex:1;height:8px;border-radius:4px;background:#DDE2EC"></span>
+            </div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A909E;margin-bottom:10px">03</div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">It grades what you send back.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#6B7180">Not a tick. A grade against the task's own criteria — one thing you did well, one thing to fix. For most students it is the first time anyone has looked.</p>
+        </div>
+        <div data-reveal data-reveal-delay="60" style="background:#fff;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3vw,26px)">
+          <div style="background:#FAFAF8;border-radius:12px;padding:22px;margin-bottom:26px;display:flex;flex-direction:column;gap:8px">
+            <span style="align-self:flex-end;background:#DCE6FB;border-radius:10px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:11px">stuck, what now?</span>
+            <span style="align-self:flex-start;background:#fff;border:1px solid #EAEAE4;border-radius:10px;padding:10px 12px;width:70%"><span style="display:block;height:7px;border-radius:4px;background:#EDEDE7;margin-bottom:5px"></span><span style="display:block;height:7px;width:60%;border-radius:4px;background:#EDEDE7"></span></span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A909E;margin-bottom:10px">04</div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">You can ask it anything.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#6B7180">Stuck at 11pm with nobody to ask is the moment people quit. It knows your plan and where you are in it.</p>
+        </div>
+        <div data-reveal data-reveal-delay="140" style="background:#fff;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3vw,26px)">
+          <div style="background:#FAFAF8;border-radius:12px;padding:22px;margin-bottom:26px;display:flex;align-items:flex-end;gap:5px;height:104px">
+            <span style="flex:1;height:22%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:30%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:38%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:48%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:56%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:70%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:82%;border-radius:3px;background:#E3E6EE"></span>
+            <span style="flex:1;height:100%;border-radius:3px;background:#2455E0"></span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A909E;margin-bottom:10px">05</div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">It piles up.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#6B7180">Every graded submission adds to a profile you can send an employer. Finish one three-month plan, start the next.</p>
+        </div>
+        <div data-reveal data-reveal-delay="220" style="background:#E9EFFD;border-radius:18px;padding:clamp(20px,3vw,26px);display:flex;flex-direction:column;justify-content:flex-end">
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.02em">Eight questions, then day one.</h3>
+          <p style="margin:0 0 22px;font-size:16px;line-height:1.5;color:#5A6478">No waitlist, no calls. The plan is built in front of you.</p>
+          <a href="#cta" style="align-self:flex-start;background:#2455E0;color:#fff;font-size:16px;font-weight:500;padding:13px 22px;border-radius:11px">Build my plan — free</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #ECECE6;background:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
+        <div>
+          <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">THE MILESTONE IS AN INTERNSHIP</div>
+          <h2 data-reveal data-reveal-delay="60" style="margin:0 0 24px;font-size:clamp(28px,5.6vw,52px);line-height:1.03;letter-spacing:-.035em;font-weight:600">Not graduation. That is <span style="color:#2455E0">too far away</span> to hold anyone.</h2>
+          <p data-reveal data-reveal-delay="120" style="margin:0;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">Most companies hire interns out of semesters four to six. That is close enough to work toward, and it happens while you are still a student.</p>
+        </div>
+        <div data-reveal data-reveal-delay="120" style="background:#FAFAF8;border:1px solid #ECECE6;border-radius:18px;padding:clamp(20px,3.4vw,34px)">
+          <div data-sem style="position:relative;margin-bottom:34px">
+            <span data-sem-band style="position:absolute;top:2px;left:37.5%;width:0%;height:16px;border-radius:999px;background:#DCE6FB;transition:width 1s cubic-bezier(.2,.7,.3,1) .3s"></span>
+            <div style="position:relative;display:grid;grid-template-columns:repeat(8,1fr)">
+              <div style="text-align:center"><span style="display:block;width:9px;height:9px;border-radius:50%;background:#D2D5DE;margin:6px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A5AAB6">1</span></div>
+              <div style="text-align:center"><span style="display:block;width:9px;height:9px;border-radius:50%;background:#D2D5DE;margin:6px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A5AAB6">2</span></div>
+              <div style="text-align:center"><span style="display:block;width:9px;height:9px;border-radius:50%;background:#D2D5DE;margin:6px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A5AAB6">3</span></div>
+              <div style="text-align:center"><span style="display:block;width:11px;height:11px;border-radius:50%;background:#2455E0;margin:5px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#2455E0">4</span></div>
+              <div style="text-align:center"><span style="display:block;width:11px;height:11px;border-radius:50%;background:#2455E0;margin:5px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#2455E0">5</span></div>
+              <div style="text-align:center"><span style="display:block;width:11px;height:11px;border-radius:50%;background:#2455E0;margin:5px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#2455E0">6</span></div>
+              <div style="text-align:center"><span style="display:block;width:9px;height:9px;border-radius:50%;background:#D2D5DE;margin:6px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A5AAB6">7</span></div>
+              <div style="text-align:center"><span style="display:block;width:9px;height:9px;border-radius:50%;background:#D2D5DE;margin:6px auto 12px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A5AAB6">8</span></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-top:26px;border-top:1px solid #E6E6DF" data-stack="640">
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-bottom:10px">SEM 1–3</div><div style="font-size:16px;font-weight:600;margin-bottom:6px">Foundations</div><div style="font-size:14px;line-height:1.45;color:#6B7180">Build the habit. Widen what you know exists.</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#2455E0;margin-bottom:10px">SEM 4–6 · THE HINGE</div><div style="font-size:16px;font-weight:600;margin-bottom:6px">Internship push</div><div style="font-size:14px;line-height:1.45;color:#6B7180">A portfolio that survives a real screen.</div></div>
+            <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-bottom:10px">SEM 7–8</div><div style="font-size:16px;font-weight:600;margin-bottom:6px">Full-time, or founder</div><div style="font-size:14px;line-height:1.45;color:#6B7180">Deeper artifacts, referrals, applications.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof" style="border-top:1px solid #ECECE6">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div data-stack="900" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,4vw,72px);align-items:center">
+        <div>
+          <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#8A909E;margin-bottom:24px">WHAT YOU END UP WITH</div>
+          <h2 data-reveal data-reveal-delay="60" style="margin:0 0 24px;font-size:clamp(28px,5.6vw,52px);line-height:1.03;letter-spacing:-.035em;font-weight:600">A page, not a <span style="color:#2455E0">blank CV.</span></h2>
+          <p data-reveal data-reveal-delay="120" style="margin:0;font-size:19px;line-height:1.55;color:#333A48;text-wrap:pretty">Every graded submission lands here. After two three-month plans, it is the thing you send an employer.</p>
+        </div>
+        <div data-reveal data-reveal-delay="120" data-proof style="background:#fff;border:1px solid #ECECE6;border-radius:20px;padding:clamp(20px,3.4vw,34px);box-shadow:0 30px 60px -40px rgba(11,14,20,.25)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:26px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:16px">silsila.pk/ayesha-r</div>
+            <div style="font-size:14px;color:#8A909E">Semester 5 · Computer Science</div>
+          </div>
+          <div data-proof-grid style="display:grid;grid-template-columns:repeat(26,1fr);gap:4px;margin-bottom:14px">
+            <sc-for list="{{ cells182 }}" as="c" hint-placeholder-count="182">
+              <div data-proof-cell style="aspect-ratio:1;border-radius:2px;background:#EDEFF3;transition:background .4s ease"></div>
+            </sc-for>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8A909E;margin-bottom:30px">26 WEEKS →</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:26px;border-top:1px solid #EFEFE9">
+            <div><div style="font-size:38px;font-weight:600;letter-spacing:-.03em;line-height:1">148</div><div style="font-size:14px;color:#8A909E;margin-top:6px">tasks graded</div></div>
+            <div><div style="font-size:38px;font-weight:600;letter-spacing:-.03em;line-height:1">9</div><div style="font-size:14px;color:#8A909E;margin-top:6px">things built</div></div>
+            <div><div style="font-size:38px;font-weight:600;letter-spacing:-.03em;line-height:1">4.1</div><div style="font-size:14px;color:#8A909E;margin-top:6px">grade average</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#0B0E14;color:#fff">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(18px,4vw,32px)">
+      <div data-stack="900" style="display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(28px,4vw,72px);align-items:start">
+        <div data-reveal>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6E7688;margin-bottom:28px">WHAT WE PROMISE</div>
+          <p style="margin:0 0 14px;font-size:19px;line-height:1.5;color:#9AA1B1">We do not promise you a job.</p>
+          <p style="margin:0 0 14px;font-size:19px;line-height:1.5;color:#9AA1B1">We do not promise you a company.</p>
+          <p style="margin:0;font-size:19px;line-height:1.5;color:#9AA1B1">We promise the four years will not be blank.</p>
+        </div>
+        <div data-reveal data-reveal-delay="100">
+          <h2 style="margin:0 0 24px;font-size:clamp(30px,6vw,56px);line-height:1.03;letter-spacing:-.035em;font-weight:600">When you graduate, you will have <span style="color:#7EA2FF">something to say.</span></h2>
+          <p style="margin:0;max-width:620px;font-size:19px;line-height:1.55;color:#9AA1B1;text-wrap:pretty">Something in your skill set. A profile that has been worked on for months rather than assembled the week before a deadline. And the habit that made it, which is the part that outlasts the degree.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" style="background:#0B0E14;padding:0 clamp(18px,4vw,32px) clamp(64px,9vw,112px)">
+    <div style="max-width:1240px;margin:0 auto">
+      <div data-reveal style="background:#E9EFFD;border-radius:24px;padding:clamp(30px,5vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);align-items:center;color:#0B0E14" data-stack="820">
+        <div>
+          <h2 style="margin:0 0 22px;font-size:clamp(28px,5.6vw,52px);line-height:1.02;letter-spacing:-.035em;font-weight:600">Eight questions.<br>Then your first week.</h2>
+          <p style="margin:0 0 32px;font-size:19px;line-height:1.55;color:#4A5364;text-wrap:pretty">No waitlist and no calls. You answer what you are after, where you are and how much time you actually have, and the plan is built in front of you.</p>
+          <a href="#cta" style="display:inline-block;background:#2455E0;color:#fff;font-size:18px;font-weight:500;padding:17px 30px;border-radius:12px">Build my plan — free</a>
+          <div style="margin-top:14px;font-size:15px;color:#6B7180">Takes about a minute</div>
+        </div>
+        <div data-divider style="display:flex;flex-direction:column;gap:24px;border-left:1px solid #CFDBF6;padding-left:48px">
+          <div><div style="font-size:17px;font-weight:600;margin-bottom:6px">No streaks to lose.</div><div style="font-size:16px;line-height:1.5;color:#5A6478">Miss a week for exams. Come back and it picks a lighter task.</div></div>
+          <div><div style="font-size:17px;font-weight:600;margin-bottom:6px">Free while we are in early access.</div><div style="font-size:16px;line-height:1.5;color:#5A6478">No card, no calls. 100 seats.</div></div>
+          <div><div style="font-size:17px;font-weight:600;margin-bottom:6px">Works on your phone.</div><div style="font-size:16px;line-height:1.5;color:#5A6478">Everything runs through WhatsApp.</div></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:56px;color:#6E7688;font-size:14px">
+        <div style="display:flex;align-items:center;gap:10px"><span style="display:block;width:18px;height:18px;border-radius:5px;background:#2455E0"></span><span style="color:#fff;font-weight:600;font-size:16px">silsila</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em">AN UNBROKEN CHAIN</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() {
+    const n = (k) => Array.from({length: k}, (_, i) => i);
+    return { cells: n(84), cells14: n(14), cells28: n(28), cells182: n(182) };
+  }
+
+  componentDidMount() {
+    this.setupReveal();
+    this.setupSim();
+    this.setupCrack();
+    this.setupThread();
+    this.setupGrow();
+    this.setupProof();
+    this.setupResponsive();
+    this.setupLoop();
+  }
+
+  setupLoop() {
+    const wrap = document.querySelector('[data-loop]');
+    if (!wrap) return;
+    const rows = Array.from(wrap.querySelectorAll('[data-loop-row]'));
+    const counter = wrap.querySelector('[data-loop-count]');
+    const warm = (row) => row.style.background !== '';
+
+    rows.forEach(row => {
+      const reason = row.querySelector('[data-loop-reason]');
+      if (reason) {
+        reason.textContent = row.getAttribute('data-reason');
+        reason.style.opacity = '0';
+        reason.style.transform = 'translateX(-6px)';
+        reason.style.transition = 'opacity .5s ease, transform .5s cubic-bezier(.2,.7,.3,1)';
+      }
+    });
+
+    this.onceVisible(wrap, () => {
+      let restarts = 0;
+      const playRow = (ri) => {
+        const row = rows[ri];
+        if (!row) return;
+        const cells = Array.from(row.querySelector('[data-loop-cells]').children);
+        const die = parseInt(row.getAttribute('data-die'), 10);
+        const reason = row.querySelector('[data-loop-reason]');
+        const alive = warm(row) ? '#C0522B' : '#2455E0';
+        const dead = warm(row) ? '#EFDDCE' : '#E7E7E1';
+        let i = 0;
+        const step = () => {
+          if (i < die) {
+            cells[i].style.background = alive;
+            i++;
+            setTimeout(step, 70);
+            return;
+          }
+          if (cells[die]) {
+            cells[die].style.background = warm(row) ? '#E09A6E' : '#D8B3A0';
+            cells[die].style.transform = 'scaleY(.42)';
+            cells[die].style.transition = 'background .3s ease, transform .3s ease';
+          }
+          for (let k = die + 1; k < cells.length; k++) cells[k].style.background = dead;
+          restarts++;
+          if (counter) counter.textContent = 'RESTARTS ' + restarts;
+          if (reason) { reason.style.opacity = '1'; reason.style.transform = 'none'; }
+          setTimeout(() => playRow(ri + 1), 340);
+        };
+        setTimeout(step, 60);
+      };
+      setTimeout(() => playRow(0), 320);
+    });
+  }
+
+  setupResponsive() {
+    const grids = Array.from(document.querySelectorAll('[data-stack]')).map(el => ({
+      el,
+      mode: el.getAttribute('data-stack'),
+      cols: el.style.gridTemplateColumns,
+      gap: el.style.gap
+    }));
+    const nav = document.querySelector('[data-nav]');
+    const navCols = nav ? nav.style.gap : null;
+    const hidden = Array.from(document.querySelectorAll('[data-hide]'));
+    const loopRows = Array.from(document.querySelectorAll('[data-loop-row]')).map(row => ({
+      row,
+      inner: row.children[1],
+      label: row.children[0],
+      reason: row.querySelector('[data-loop-reason]')
+    }));
+    const divider = document.querySelector('[data-divider]');
+    const thread = document.querySelector('[data-thread]');
+
+    const apply = () => {
+      const w = window.innerWidth;
+      grids.forEach(g => {
+        let cols = g.cols, stacked = false;
+        if (g.mode === 'week') {
+          if (w < 520) { cols = '1fr'; stacked = true; }
+          else if (w < 780) { cols = 'repeat(2,1fr)'; stacked = true; }
+          else if (w < 1080) { cols = 'repeat(3,1fr)'; stacked = true; }
+        } else if (g.mode === 'mix') {
+          if (w < 560) { cols = 'repeat(2,1fr)'; stacked = true; }
+          else if (w < 900) { cols = 'repeat(3,1fr)'; stacked = true; }
+        } else if (w < parseInt(g.mode, 10)) {
+          cols = '1fr';
+          stacked = true;
+        }
+        g.el.style.gridTemplateColumns = cols;
+        if (stacked && g.gap) g.el.style.gap = 'min(' + g.gap + ', 32px)';
+        else if (g.gap) g.el.style.gap = g.gap;
+      });
+
+      if (nav) {
+        const wrap = w < 900;
+        nav.style.order = wrap ? '3' : '';
+        nav.style.width = wrap ? '100%' : '';
+        nav.style.gap = wrap ? '18px' : navCols;
+        nav.style.fontSize = wrap ? '14px' : '15px';
+        nav.style.overflowX = wrap ? 'auto' : '';
+        nav.style.paddingTop = wrap ? '2px' : '';
+      }
+      hidden.forEach(el => {
+        el.style.display = w < parseInt(el.getAttribute('data-hide'), 10) ? 'none' : '';
+      });
+      loopRows.forEach(({ row, inner, label, reason }) => {
+        const stacked = w < 760;
+        row.style.gridTemplateColumns = stacked ? '1fr' : '64px 1fr';
+        row.style.gap = stacked ? '7px' : 'clamp(10px,2vw,20px)';
+        row.style.padding = stacked ? '13px 0' : '11px 0';
+        if (label) label.style.paddingLeft = stacked && row.style.background ? '8px' : (row.style.background ? '8px' : '');
+        if (inner) {
+          inner.style.flexDirection = stacked ? 'column' : 'row';
+          inner.style.alignItems = stacked ? 'flex-start' : 'center';
+          inner.style.gap = stacked ? '8px' : 'clamp(10px,2vw,22px)';
+          inner.style.width = '100%';
+          const cells = inner.querySelector('[data-loop-cells]');
+          if (cells) cells.style.width = stacked ? '100%' : '';
+        }
+        if (reason) {
+          reason.style.flex = stacked ? 'none' : '0 0 clamp(150px,17vw,240px)';
+          reason.style.width = stacked ? '100%' : '';
+          reason.style.paddingRight = stacked ? '0' : '';
+          reason.style.fontSize = stacked ? '15px' : '14px';
+        }
+      });
+
+      if (divider) {
+        const stacked = w < 820;
+        divider.style.borderLeft = stacked ? '0' : '1px solid #CFDBF6';
+        divider.style.paddingLeft = stacked ? '0' : '48px';
+        divider.style.borderTop = stacked ? '1px solid #CFDBF6' : '0';
+        divider.style.paddingTop = stacked ? '30px' : '0';
+      }
+      if (thread) {
+        const small = w < 560;
+        thread.style.borderRadius = small ? '28px' : '36px';
+        thread.style.maxWidth = w < 900 ? '460px' : '';
+        thread.style.margin = w < 900 ? '0 auto' : '';
+      }
+    };
+
+    apply();
+    let t = null;
+    window.addEventListener('resize', () => {
+      if (t) cancelAnimationFrame(t);
+      t = requestAnimationFrame(apply);
+    });
+  }
+
+  setupCrack() {
+    const wrap = document.querySelector('[data-crack]');
+    const grid = document.querySelector('[data-crack-grid]');
+    if (!wrap || !grid) return;
+    const label = document.querySelector('[data-crack-label]');
+    const tiles = Array.from(grid.children);
+    const seeds = tiles.map((_, i) => ({
+      x: ((i * 37) % 17 - 8) / 8,
+      y: ((i * 53) % 13 - 6) / 6,
+      r: ((i * 29) % 11 - 5) / 5
+    }));
+    let raf = null;
+    const frame = () => {
+      raf = null;
+      const r = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+      let p = 1 - (r.top - vh * 0.18) / (vh * 0.62);
+      p = Math.max(0, Math.min(1, p));
+      const ease = p * p * (3 - 2 * p);
+      grid.style.gap = (ease * 6).toFixed(2) + 'px';
+      tiles.forEach((t, i) => {
+        const s = seeds[i];
+        t.style.transform = 'translate(' + (s.x * ease * 7).toFixed(2) + 'px,' + (s.y * ease * 7).toFixed(2) + 'px) rotate(' + (s.r * ease * 5).toFixed(2) + 'deg)';
+        t.style.borderRadius = (ease * 4).toFixed(2) + 'px';
+        t.style.opacity = String(0.5 + 0.5 * ease);
+      });
+      if (label) label.textContent = ease > 0.55 ? '84 DAYS · ONE AT A TIME' : 'ONE GOAL · UNLIFTABLE';
+      if (label) label.style.color = ease > 0.55 ? '#2455E0' : '#8A909E';
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    frame();
+  }
+
+  setupThread() {
+    const thread = document.querySelector('[data-thread]');
+    if (!thread) return;
+    const msgs = Array.from(thread.querySelectorAll('[data-msg]'));
+    msgs.forEach(m => {
+      m.style.opacity = '0';
+      m.style.transform = 'translateY(10px) scale(.98)';
+      m.style.transition = 'opacity .45s ease, transform .45s cubic-bezier(.2,.7,.3,1)';
+    });
+    this.onceVisible(thread, () => {
+      msgs.forEach((m, i) => setTimeout(() => {
+        m.style.opacity = '1';
+        m.style.transform = 'none';
+      }, 500 + i * 850));
+    });
+  }
+
+  setupGrow() {
+    const mix = document.querySelector('[data-mix]');
+    if (mix) {
+      const bars = Array.from(mix.querySelectorAll('[data-mix-bar]'));
+      const widths = bars.map(b => b.style.width);
+      bars.forEach(b => { b.style.width = '0%'; });
+      this.onceVisible(mix, () => bars.forEach((b, i) => { b.style.width = widths[i]; }));
+    }
+    const band = document.querySelector('[data-sem-band]');
+    const sem = document.querySelector('[data-sem]');
+    if (band && sem) this.onceVisible(sem, () => { band.style.width = '37.5%'; });
+  }
+
+  setupProof() {
+    const grid = document.querySelector('[data-proof-grid]');
+    if (!grid) return;
+    const cells = Array.from(grid.children);
+    const shades = ['#2455E0', '#4E77E8', '#8DA9F0', '#C3D3F7'];
+    this.onceVisible(grid, () => {
+      cells.forEach((c, i) => {
+        const on = ((i * 7919) % 100) > 42;
+        if (!on) return;
+        setTimeout(() => { c.style.background = shades[(i * 31) % 4]; }, (i % 26) * 22 + Math.floor(i / 26) * 90);
+      });
+    });
+  }
+
+  q(sel) { return Array.from(document.querySelectorAll(sel)); }
+
+  onceVisible(el, fn) {
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { fn(); io.disconnect(); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+    io.observe(el);
+  }
+
+  setupReveal() {
+    const els = this.q('[data-reveal]');
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)';
+    });
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        const d = parseInt(e.target.getAttribute('data-reveal-delay') || '0', 10);
+        setTimeout(() => { e.target.style.opacity = '1'; e.target.style.transform = 'none'; }, d);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  // day index -> worked? for each track
+  simPlan() {
+    const a = new Set([0,1,2,3,4,5,6,7,66,79,80,81,82,83].slice(0,14));
+    const b = new Set();
+    for (let i = 0; i < 84; i++) {
+      const exam = i >= 34 && i <= 40;
+      const wedding = i >= 58 && i <= 60;
+      if (!exam && !wedding) b.add(i);
+    }
+    return { a, b };
+  }
+
+  setupSim() {
+    const root = document.querySelector('[data-sim-root]');
+    if (!root) return;
+    const gA = document.querySelector('[data-sim-grid="a"]');
+    const gB = document.querySelector('[data-sim-grid="b"]');
+    const dayEl = document.querySelector('[data-sim-day]');
+    const stat = (k) => document.querySelector('[data-sim-stat="' + k + '"]');
+    const plan = this.simPlan();
+
+    const reset = () => {
+      Array.from(gA.children).forEach(c => { c.style.background = '#F5E2D3'; c.style.transform = 'none'; });
+      Array.from(gB.children).forEach(c => { c.style.background = '#D6E1F8'; c.style.transform = 'none'; });
+      ['a-days','a-built','b-days','b-built'].forEach(k => { const e = stat(k); if (e) e.textContent = '0'; });
+      if (dayEl) dayEl.textContent = 'DAY 00';
+    };
+
+    let timer = null;
+    const play = () => {
+      if (timer) clearInterval(timer);
+      reset();
+      let i = 0, aD = 0, bD = 0;
+      timer = setInterval(() => {
+        if (i >= 84) { clearInterval(timer); timer = null; return; }
+        const ca = gA.children[i], cb = gB.children[i];
+        if (plan.a.has(i)) { aD++; if (ca) { ca.style.background = '#C0522B'; ca.style.transform = 'scale(1.14)'; setTimeout(() => { ca.style.transform = 'none'; }, 260); } }
+        if (plan.b.has(i)) { bD++; if (cb) { cb.style.background = '#2455E0'; cb.style.transform = 'scale(1.14)'; setTimeout(() => { cb.style.transform = 'none'; }, 260); } }
+        i++;
+        if (dayEl) dayEl.textContent = 'DAY ' + String(i).padStart(2, '0');
+        const sad = stat('a-days'), sab = stat('a-built'), sbd = stat('b-days'), sbb = stat('b-built');
+        if (sad) sad.textContent = String(aD);
+        if (sab) sab.textContent = '0';
+        if (sbd) sbd.textContent = String(bD);
+        if (sbb) sbb.textContent = String(Math.floor(bD / 10));
+      }, 42);
+    };
+
+    this.onceVisible(root, () => setTimeout(play, 260));
+    const btn = document.querySelector('[data-sim-replay]');
+    if (btn) btn.addEventListener('click', play);
+  }
+}
+</script>
+</body>
+</html>
