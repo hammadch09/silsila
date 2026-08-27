@@ -1,5 +1,6 @@
 import { IllustrationSteps } from "@/components/illustration-steps";
-import { SilsilaLockup, SilsilaMark } from "@/components/logo";
+import { SilsilaMark } from "@/components/logo";
+import { SiteHeader } from "@/components/site-header";
 import { TwoPaths } from "@/components/two-paths";
 import { SemesterTrack } from "@/components/semester-track";
 import { STEP_VISUALS } from "@/components/step-visuals";
@@ -58,26 +59,14 @@ export default function Home() {
 
   return (
     <>
-      <header className="sticky top-0 z-20 border-b border-rule bg-paper/85 backdrop-blur">
-        <div className={`${shellClass} flex h-14 items-center justify-between`}>
-          <SilsilaLockup markClassName="h-[22px] w-[22px]" />
-          <a
-            href="/join"
-            className="rounded-lg bg-ink px-4 py-2 text-[13px] font-medium text-paper no-underline hover:bg-accent"
-          >
-            Start
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         {/* HERO — the two paths are the pitch. A student recognises the
             left panel before reading a word of copy, and the right panel is
             the product without needing to explain it. */}
         <section className={`${shellClass} pt-16 pb-24 lg:pt-20`}>
-          <p className={labelClass}>
-            Early access · computing students · 100 places
-          </p>
+          <p className={labelClass}>For computing students at IUB</p>
 
           <div className="mt-7 grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
@@ -137,7 +126,7 @@ export default function Home() {
         {/* THE PROBLEM — the hero already showed this; here it is named, and
             the blame is taken off the reader. Deliberately text only: two
             grids making the same point would weaken both. */}
-        <section className={`${shellClass} py-28`}>
+        <section id="problem" className={`${shellClass} py-28`}>
           <p className={labelClass}>Why plans die</p>
 
           <h2 className={`mt-6 max-w-[20ch] ${headingClass}`}>
@@ -272,7 +261,7 @@ export default function Home() {
 
         {/* HOW — the section a student most needs to actually read, so it gets
             cards on a quiet surface rather than a shouted colour field. */}
-        <section className="py-28">
+        <section id="how" className="py-28">
           <div className={shellClass}>
             <p className={labelClass}>
               How it works
@@ -328,7 +317,7 @@ export default function Home() {
         </section>
 
         {/* PROFILE */}
-        <section className={`${shellClass} py-20`}>
+        <section id="profile" className={`${shellClass} py-20`}>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className={labelClass}>What you end up with</p>
